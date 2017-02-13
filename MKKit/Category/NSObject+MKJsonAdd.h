@@ -16,3 +16,19 @@
 @interface NSDictionary (MKJsonAdd)
 + (NSDictionary *)mk_dictionaryWithJson:(id)json;
 @end
+
+
+@interface NSObject (MKJsonAdd);
+
+/** model -> jsonString */
+- (NSString *)mk_jsonString;
+- (NSString *)mk_jsonStringWithPrettyPrint:(BOOL)pretty;
+
+/** model -> jsonData */
+- (NSData *)mk_jsonData;
+- (NSData *)mk_jsonDataWithPrettyPrint:(BOOL)pretty;
+
+/** model -> jsonObject */
+- (id)mk_jsonObject;
+
+@end

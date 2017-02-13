@@ -44,6 +44,7 @@
                                                     green:((float)((rgbValue & 0xFF00) >> 8))/255.0f \
                                                     blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0f]
 
+
 /** 单例 */
 #define MKImpl_sharedInstance(type) + (instancetype)sharedInstance {\
     static type *sharedInstance = nil;\
@@ -81,6 +82,13 @@ typedef void (^MKBoolBlock)(BOOL bRet);
 typedef void (^MKVoidBlock)(void);
 typedef void (^MKIntegerBlock)(NSInteger index);
 
+
+/** function */
+static inline NSUInteger hexStringToInt(NSString *str) {
+    uint32_t result = 0;
+    sscanf([str UTF8String], "%X", &result);
+    return result;
+}
 
 /** 处理分割线没在最左边问题：ios8以后才有的问题 */
 #define AddTableViewLineAdjust \
