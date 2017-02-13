@@ -7,5 +7,6 @@
 //
 
 #import "NSObject+MKJsonAdd.h"
-
+#import "UIImage+MKAdd.h"
+#import "UINavigationController+MKAdd.h"
 

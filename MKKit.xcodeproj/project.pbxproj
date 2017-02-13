@@ -39,6 +39,8 @@
 		C547B4381E4D4F8D002CECB1 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C547B42E1E4D4F8D002CECB1 /* NSString+MJExtension.m */; };
 		C547B48D1E4D5CD4002CECB1 /* NSObject+MKJsonAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C547B48C1E4D5CD4002CECB1 /* NSObject+MKJsonAdd.m */; };
 		C57BE2F71E4D8CCA00177D4F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57BE2F61E4D8CCA00177D4F /* CoreFoundation.framework */; };
+		C57BE3001E4DBEA300177D4F /* UINavigationController+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C57BE2FF1E4DBEA300177D4F /* UINavigationController+MKAdd.m */; };
+		C57BE3031E4DC24400177D4F /* UIImage+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C57BE3021E4DC24400177D4F /* UIImage+MKAdd.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -118,6 +120,10 @@
 		C547B48B1E4D5CD4002CECB1 /* NSObject+MKJsonAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MKJsonAdd.h"; sourceTree = "<group>"; };
 		C547B48C1E4D5CD4002CECB1 /* NSObject+MKJsonAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MKJsonAdd.m"; sourceTree = "<group>"; };
 		C57BE2F61E4D8CCA00177D4F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		C57BE2FE1E4DBEA300177D4F /* UINavigationController+MKAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+MKAdd.h"; sourceTree = "<group>"; };
+		C57BE2FF1E4DBEA300177D4F /* UINavigationController+MKAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+MKAdd.m"; sourceTree = "<group>"; };
+		C57BE3011E4DC24400177D4F /* UIImage+MKAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MKAdd.h"; sourceTree = "<group>"; };
+		C57BE3021E4DC24400177D4F /* UIImage+MKAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MKAdd.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +275,10 @@
 				C547B4881E4D5BFF002CECB1 /* MKCategoryHead.h */,
 				C547B48B1E4D5CD4002CECB1 /* NSObject+MKJsonAdd.h */,
 				C547B48C1E4D5CD4002CECB1 /* NSObject+MKJsonAdd.m */,
+				C57BE3011E4DC24400177D4F /* UIImage+MKAdd.h */,
+				C57BE3021E4DC24400177D4F /* UIImage+MKAdd.m */,
+				C57BE2FE1E4DBEA300177D4F /* UINavigationController+MKAdd.h */,
+				C57BE2FF1E4DBEA300177D4F /* UINavigationController+MKAdd.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -337,6 +347,7 @@
 				C52DB3A21E4C7F5D009FBA5A /* MASLayoutConstraint.m in Sources */,
 				C547B42F1E4D4F8D002CECB1 /* MJExtensionConst.m in Sources */,
 				C52DB30B1E4C4AFC009FBA5A /* UIView+Toast.m in Sources */,
+				C57BE3031E4DC24400177D4F /* UIImage+MKAdd.m in Sources */,
 				C547B4371E4D4F8D002CECB1 /* NSObject+MJProperty.m in Sources */,
 				C547B4341E4D4F8D002CECB1 /* NSObject+MJClass.m in Sources */,
 				C52DB3A81E4C7F5D009FBA5A /* ViewController+MASAdditions.m in Sources */,
@@ -350,6 +361,7 @@
 				C547B4351E4D4F8D002CECB1 /* NSObject+MJCoding.m in Sources */,
 				C547B4381E4D4F8D002CECB1 /* NSString+MJExtension.m in Sources */,
 				C52DB3A01E4C7F5D009FBA5A /* MASConstraint.m in Sources */,
+				C57BE3001E4DBEA300177D4F /* UINavigationController+MKAdd.m in Sources */,
 				C52DB3A71E4C7F5D009FBA5A /* View+MASAdditions.m in Sources */,
 				C52DB3A31E4C7F5D009FBA5A /* MASViewAttribute.m in Sources */,
 			);
@@ -449,6 +461,8 @@
 		C52DB2FD1E4C48EB009FBA5A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -458,6 +472,8 @@
 		C52DB2FE1E4C48EB009FBA5A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
