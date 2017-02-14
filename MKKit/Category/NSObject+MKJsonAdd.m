@@ -9,12 +9,6 @@
 #import "NSObject+MKJsonAdd.h"
 #import "MKKitConst.h"
 
-@implementation NSString (MKJsonAdd)
-
-
-@end
-
-
 @implementation NSDictionary (MKJsonAdd)
 + (NSDictionary *)mk_dictionaryWithJson:(id)json{
     if (!json || json == (id)kCFNull) return nil;
