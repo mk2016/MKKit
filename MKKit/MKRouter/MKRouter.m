@@ -39,14 +39,10 @@ MKImpl_sharedInstance(MKRouter)
     
     UIViewController *viewController = [[controllerClass alloc] init];
     if ([viewController respondsToSelector:@selector(setParams:)]) {
-        NSString *codeStr = params[@"param"];
-        NSRange range = [codeStr rangeOfString:@"%"];
-        if (codeStr && range.location != NSNotFound) {
-            NSString *json = [codeStr mk_stringByURLDecode];
-            
-            NSMutableDictionary *tempDic = [params mutableCopy];
-            [tempDic setValue:json forKey:@"param"];
-            params = [tempDic mutableCopy];
+        NSString *param = params[@"param"];
+        if (param && param.length) {
+            NSString *decodeParam = [param mk_stringByURLDecode];
+            [params setValue:decodeParam forKey:@"param"];
         }
         [viewController performSelector:@selector(setParams:) withObject:[params copy]];
     }
