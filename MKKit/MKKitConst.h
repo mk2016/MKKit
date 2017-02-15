@@ -11,6 +11,10 @@
 
 #import "MKCategoryHead.h"
 
+#import "MKAppInfoHelper.h"
+#import "MKDeviceHelper.h"
+#import "MKUIHelper.h"
+
 #import "Masonry.h"
 #import "MJExtension.h"
 
@@ -24,6 +28,16 @@
 #   define ELog(...)
 #   define DebugStatus NO
 #endif
+
+#define MKAssertNil(condition, description, ...) NSAssert(!(condition), (description), ##__VA_ARGS__)
+#define MKCAssertNil(condition, description, ...) NSCAssert(!(condition), (description), ##__VA_ARGS__)
+
+#define MKAssertNotNil(condition, description, ...) NSAssert((condition), (description), ##__VA_ARGS__)
+#define MKCAssertNotNil(condition, description, ...) NSCAssert((condition), (description), ##__VA_ARGS__)
+
+#define MKAssertMainThread() NSAssert([NSThread isMainThread], @"This method must be called on the main thread")
+#define MKCAssertMainThread() NSCAssert([NSThread isMainThread], @"This method must be called on the main thread")
+
 
 /** 系统单例 简写 */
 #define MKApplication       [UIApplication sharedApplication]

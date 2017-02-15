@@ -8,6 +8,7 @@
 
 #import "MKRouter.h"
 #import "MKKitConst.h"
+#import "MKAppInfoHelper.h"
 
 @interface MKRouter()
 @property (nonatomic, strong) NSMutableDictionary *routes;
@@ -18,25 +19,32 @@ static NSString * kMKRouterEndKey               = @"_";
 static NSString * kMKRouterBlockKey             = @"block";
 
 @implementation MKRouter
+
 MKImpl_sharedInstance(MKRouter)
 
 #pragma mark - ***** public method *****
 /** regiser route */
 - (void)map:(NSString *)route toControllerClass:(Class)controllerClass{
+    MKAssertNotNil(route && controllerClass, @"route and controllerClass unable by nil");
     NSMutableDictionary *subRoutes = [self subRoutesToRoute:route];
     subRoutes[kMKRouterEndKey] = controllerClass;
 }
 
 - (void)map:(NSString *)route toBlock:(MKRouteBlock)block{
+    MKAssertNotNil(route && block, @"route and controllerClass unable by nil");
     NSMutableDictionary *subRoutes = [self subRoutesToRoute:route];
     subRoutes[kMKRouterEndKey] = [block copy];
 }
 
 /** match route */
 - (UIViewController *)matchController:(NSString *)route{
+    MKAssertNotNil(route, @"route unable by nil");
     NSDictionary *params = [self paramsInRoute:route];
-    Class controllerClass = params[kMKRouterControllerClassKey];
+    if (!params || !params[kMKRouterControllerClassKey]) {
+        return nil;
+    }
     
+    Class controllerClass = params[kMKRouterControllerClassKey];
     UIViewController *viewController = [[controllerClass alloc] init];
     if ([viewController respondsToSelector:@selector(setParams:)]) {
         NSString *param = params[@"param"];
@@ -50,10 +58,12 @@ MKImpl_sharedInstance(MKRouter)
 }
 
 - (MKRouteBlock)matchBlock:(NSString *)route{
+    MKAssertNotNil(route, @"route unable by nil");
     NSDictionary *params = [self paramsInRoute:route];
     if (!params || !params[kMKRouterBlockKey]){
         return nil;
     }
+    
     MKRouteBlock routerBlock = [params[kMKRouterBlockKey] copy];
     MKRouteBlock returnBlock = ^id(NSDictionary *aParams) {
         if (routerBlock) {
@@ -67,7 +77,10 @@ MKImpl_sharedInstance(MKRouter)
     return [returnBlock copy];
 }
 
+
+/** execute block route */
 - (id)callBlock:(NSString *)route{
+    MKAssertNotNil(route, @"route unable by nil");
     NSDictionary *params = [self paramsInRoute:route];
     if (!params){
         return nil;
@@ -80,6 +93,7 @@ MKImpl_sharedInstance(MKRouter)
 }
 
 - (MKRouteType)canRoute:(NSString *)route{
+    MKAssertNotNil(route, @"route unable by nil");
     NSDictionary *params = [self paramsInRoute:route];
     if (params[kMKRouterControllerClassKey]) {
         return MKRouteTypeViewController;
@@ -124,7 +138,7 @@ MKImpl_sharedInstance(MKRouter)
 /** 提取 route 中的 params */
 - (NSDictionary *)paramsInRoute:(NSString *)route{
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"route"] = [self stringFromFilterAppUrlScheme:route];
+    params[@"route"] = [MKRouter filterAppUrlScheme:route];
     
     NSMutableDictionary *subRoutes = self.routes;
     NSArray *pathComponents = [self pathComponentsFromRoute:params[@"route"]];
@@ -184,27 +198,16 @@ MKImpl_sharedInstance(MKRouter)
     return [NSDictionary dictionaryWithDictionary:params];
 }
 
-/** 去除 scheme */
-- (NSString *)stringFromFilterAppUrlScheme:(NSString *)string{
-    // filter out the app URL compontents.
-    for (NSString *appUrlScheme in [self appUrlSchemes]) {
-        if ([string hasPrefix:[NSString stringWithFormat:@"%@:", appUrlScheme]]) {
-            return [string substringFromIndex:appUrlScheme.length + 2];
+/** route filter scheme */
++ (NSString *)filterAppUrlScheme:(NSString *)route{
+    for (NSString *appUrlScheme in [MKAppInfoHelper appUrlSchemes]) {
+        if ([route hasPrefix:[NSString stringWithFormat:@"%@:", appUrlScheme]]) {
+            return [route substringFromIndex:appUrlScheme.length + 2];
         }
     }
-    return string;
+    return route;
 }
 
-/** app URL schemes */
-- (NSArray *)appUrlSchemes{
-    NSMutableArray *appUrlSchemes = [NSMutableArray array];
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    for (NSDictionary *dic in infoDictionary[@"CFBundleURLTypes"]) {
-        NSString *appUrlScheme = dic[@"CFBundleURLSchemes"][0];
-        [appUrlSchemes addObject:appUrlScheme];
-    }
-    return [appUrlSchemes copy];
-}
 
 #pragma mark - ***** lazy *****
 - (NSMutableDictionary *)routes{

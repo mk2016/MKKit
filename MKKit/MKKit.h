@@ -8,6 +8,7 @@
 
 #import "MKKitConst.h"
 
+#import "MKRouter/MKRouterHelper.h"
 
 /** 
  * 第三方库版本

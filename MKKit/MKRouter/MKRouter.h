@@ -25,17 +25,21 @@ typedef id (^MKRouteBlock)(id params);
 
 + (instancetype)sharedInstance;
 
-/** 注册 */
+/** register route */
 - (void)map:(NSString *)route toControllerClass:(Class)controllerClass;
 - (void)map:(NSString *)route toBlock:(MKRouteBlock)block;
 
-/** 匹配 */
+/** match route */
 - (UIViewController *)matchController:(NSString *)route;
 - (MKRouteBlock)matchBlock:(NSString *)route;
 
+/** execute block route */
 - (id)callBlock:(NSString *)route;
+
 - (MKRouteType)canRoute:(NSString *)route;
 
+/** route filter scheme */
++ (NSString *)filterAppUrlScheme:(NSString *)route;
 @end
 
 
