@@ -14,14 +14,14 @@
 + (id)getVCFromStoryboard:(NSString *)storyboard identify:(NSString *)identify;
 
 #pragma mark - ***** top View adn window ******
-+ (UIView *)topView;
-+ (UIWindow *)topFullWindow;
-+ (UIWindow *)getWindow:(NSInteger)windowLevel fullScreen:(BOOL)fullScreen;
++ (UIView *)getTopView;
++ (UIWindow *)getTopFullWindow;
++ (UIWindow *)getWindow:(UIWindowLevel)windowLevel fullScreen:(BOOL)fullScreen;
 
 #pragma mark - ***** current ViewController ******
 + (UIViewController *)getCurrentVC;
 + (UIViewController *)getCurrentVCIncludePresentedVC:(BOOL)isIncludePVC;
-+ (UIViewController *)getCurrentVCWithWindowLevel:(CGFloat)windowLevel includePresentedVC:(BOOL)isIncludePVC;
++ (UIViewController *)getCurrentVCWithWindowLevel:(UIWindowLevel)windowLevel includePresentedVC:(BOOL)isIncludePVC;
 + (UIViewController *)getPresentedVC;
 
 @end

@@ -17,16 +17,16 @@
 }
 
 #pragma mark - ***** top View adn window ******
-+ (UIView *)topView{
++ (UIView *)getTopView{
     return [[[self getWindow:UIWindowLevelNormal fullScreen:YES] subviews] lastObject];
 }
 
 /** 根据 windowLevel 获取 window */
-+ (UIWindow *)topFullWindow{
-    return [self getCurrentVC].view.window;
++ (UIWindow *)getTopFullWindow{
+    return [self getWindow:UIWindowLevelNormal fullScreen:YES];
 }
 
-+ (UIWindow *)getWindow:(NSInteger)windowLevel fullScreen:(BOOL)fullScreen{
++ (UIWindow *)getWindow:(UIWindowLevel)windowLevel fullScreen:(BOOL)fullScreen{
     UIWindow *topWindow = [[UIApplication sharedApplication] keyWindow];
     if (!topWindow || topWindow.windowLevel != windowLevel) {
         NSEnumerator *windows = [UIApplication.sharedApplication.windows reverseObjectEnumerator];
@@ -54,7 +54,7 @@
     return [self getCurrentVCWithWindowLevel:UIWindowLevelNormal includePresentedVC:isIncludePVC];
 }
 
-+ (UIViewController *)getCurrentVCWithWindowLevel:(CGFloat)windowLevel includePresentedVC:(BOOL)isIncludePVC{
++ (UIViewController *)getCurrentVCWithWindowLevel:(UIWindowLevel)windowLevel includePresentedVC:(BOOL)isIncludePVC{
     UIViewController *result = nil;
     
     if (isIncludePVC) {
