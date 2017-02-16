@@ -8,6 +8,7 @@
 
 #import "MKUIHelper.h"
 #import <MessageUI/MessageUI.h>
+#import "MKKitConst.h"
 
 @implementation MKUIHelper
 
@@ -15,40 +16,55 @@
     return [[UIStoryboard storyboardWithName:storyboard bundle:nil] instantiateViewControllerWithIdentifier:identify];
 }
 
-#pragma mark - ***** top View ******
-+ (UIView *)getTopView{
-    return [[[[UIApplication sharedApplication] keyWindow] subviews] lastObject];
+#pragma mark - ***** top View adn window ******
++ (UIView *)topView{
+    return [[[self getWindow:UIWindowLevelNormal fullScreen:YES] subviews] lastObject];
+}
+
+/** 根据 windowLevel 获取 window */
++ (UIWindow *)topFullWindow{
+    return [self getCurrentVC].view.window;
+}
+
++ (UIWindow *)getWindow:(NSInteger)windowLevel fullScreen:(BOOL)fullScreen{
+    UIWindow *topWindow = [[UIApplication sharedApplication] keyWindow];
+    if (!topWindow || topWindow.windowLevel != windowLevel) {
+        NSEnumerator *windows = [UIApplication.sharedApplication.windows reverseObjectEnumerator];
+        for (UIWindow *window in windows) {
+            if ([window isKindOfClass:NSClassFromString(@"UITextEffectsWindow")]) {
+                continue;
+            }
+            if (window.windowLevel == windowLevel){
+                if (!fullScreen || (window.bounds.size.width == MKSCREEN_WIDTH && window.bounds.size.height == MKSCREEN_HEIGHT)) {
+                    topWindow = window;
+                }
+            }
+        }
+    }
+    return topWindow;
 }
 
 #pragma mark - ***** current ViewController ******
 /** default include presentedViewController */
-+ (UIViewController *)getCurrentViewController{
-    return [self getCurrentViewControllerWithWindowLevel:UIWindowLevelNormal includePresentedVC:YES];
++ (UIViewController *)getCurrentVC{
+    return [self getCurrentVCWithWindowLevel:UIWindowLevelNormal includePresentedVC:YES];
 }
 
-+ (UIViewController *)getCurrentViewControllerIncludePresentedVC:(BOOL)isIncludePVC{
-    return [self getCurrentViewControllerWithWindowLevel:UIWindowLevelNormal includePresentedVC:isIncludePVC];
++ (UIViewController *)getCurrentVCIncludePresentedVC:(BOOL)isIncludePVC{
+    return [self getCurrentVCWithWindowLevel:UIWindowLevelNormal includePresentedVC:isIncludePVC];
 }
 
-+ (UIViewController *)getCurrentViewControllerWithWindowLevel:(CGFloat)windowLevel includePresentedVC:(BOOL)isIncludePVC{
++ (UIViewController *)getCurrentVCWithWindowLevel:(CGFloat)windowLevel includePresentedVC:(BOOL)isIncludePVC{
     UIViewController *result = nil;
     
     if (isIncludePVC) {
-        result = [self getPresentedViewController];
+        result = [self getPresentedVC];
         if (result) {
             return result;
         }
     }
     
-    UIWindow *topWindow = [[UIApplication sharedApplication] keyWindow];
-    if (topWindow.windowLevel != windowLevel) {
-        NSArray *windows = [[UIApplication sharedApplication] windows];
-        for (UIWindow *window in windows) {
-            if (window.windowLevel == windowLevel) {
-                topWindow = window;
-            }
-        }
-    }
+    UIWindow *topWindow = [self getWindow:windowLevel fullScreen:YES];
     
     UIView *rootView;
     NSArray *subViews = [topWindow subviews];
@@ -59,17 +75,13 @@
     }
     
     id nextResponder = [rootView nextResponder];
-    //    UIWindow* nextResWindow;
-    //    if ([nextResponder isKindOfClass:[UIWindow class]]) {
-    //        nextResWindow = (UIWindow*)nextResponder;
-    //    }
-    
+
     if ([nextResponder isKindOfClass:[UIViewController class]]) {
         result = nextResponder;
-        //    }else if (nextResWindow != nil && [nextResponder respondsToSelector:@selector(rootViewController)] && nextResWindow.rootViewController != nil){
-        //        result = nextResWindow.rootViewController;
-    }else if ([topWindow respondsToSelector:@selector(rootViewController)] && topWindow.rootViewController != nil){
-        result = topWindow.rootViewController;
+    }else if ([topWindow respondsToSelector:@selector(rootViewController)]){
+        if ([topWindow rootViewController]) {
+            result = [topWindow rootViewController];
+        }
     }else{
         NSAssert(NO, @"MKToolsKit: Could not find a root view controller.");
     }
@@ -80,7 +92,7 @@
     return result;
 }
 
-+ (UIViewController *)getPresentedViewController{
++ (UIViewController *)getPresentedVC{
     UIWindow *topWindow = [[UIApplication sharedApplication] keyWindow];
     UIViewController *appRootVC = topWindow.rootViewController;
     UIViewController *topVC = nil;
@@ -92,11 +104,15 @@
             
             if (topVC && [topVC isKindOfClass:[UINavigationController class]]) {
                 UINavigationController *nav = (UINavigationController *)topVC;
-                topVC = nav.topViewController;
+                if (nav.topViewController) {
+                    topVC = nav.topViewController;
+                }
             }
         }
     }
     return topVC;
 }
+
+
 
 @end
