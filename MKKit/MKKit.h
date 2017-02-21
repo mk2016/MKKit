@@ -9,6 +9,8 @@
 #import "MKKitConst.h"
 
 #import "MKRouter/MKRouterHelper.h"
+#import "MKImagesBrowser.h"
+
 
 /** 
  * 第三方库版本

@@ -12,7 +12,11 @@
 
 /** 以color生成Image */
 + (UIImage *)mk_imageWithColor:(UIColor *)color{
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    return [self mk_imageWithColor:color size:CGSizeMake(1.f, 1.f)];
+}
+
++ (UIImage *)mk_imageWithColor:(UIColor *)color size:(CGSize)size{
+    CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
     // 开启位图上下文
     UIGraphicsBeginImageContext(rect.size);
     // 获取位图上下文

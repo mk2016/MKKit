@@ -12,7 +12,7 @@
 
 /** 以color生成Image */
 + (UIImage *)mk_imageWithColor:(UIColor *)color;
-
++ (UIImage *)mk_imageWithColor:(UIColor *)color size:(CGSize)size;
 /** 生成二维码 */
 + (UIImage *)mk_imageWithQRString:(NSString *)qrStr imageWidth:(CGFloat)imageWidth;
 
