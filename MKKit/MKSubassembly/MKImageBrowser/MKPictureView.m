@@ -9,7 +9,11 @@
 #import "MKPictureView.h"
 #import "MKKitConst.h"
 
+#import "SDImageCache.h"
+#import "UIImageView+WebCache.h"
+
 @interface MKPictureView ()<UIScrollViewDelegate>
+@property (nonatomic, assign) CGFloat progress;
 @end
 
 @implementation MKPictureView
@@ -42,12 +46,52 @@
 }
 
 /** 设置图片 */
+- (void)setShowHDImageWithUrl:(NSString *)url placeholderImage:(UIImage *)placeholderImage{
+    if (!url) {
+        [self setShowImage:placeholderImage];
+        return;
+    }
+    
+    UIImage *urlImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:[NSURL URLWithString:url].absoluteString];
+    if (urlImage) {
+        [self setShowImage:urlImage];
+        return;
+    }
+    self.progress = 0.01f;
+    MKWEAKSELF
+    [self.imageView setShowActivityIndicatorView:YES];
+    [self setShowImage:placeholderImage];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:url]
+                      placeholderImage:placeholderImage options:SDWebImageRetryFailed |
+                                                                SDWebImageLowPriority |
+                                                                SDWebImageHandleCookies
+                              progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                  weakSelf.progress = (CGFloat)receivedSize / expectedSize ;
+                                  ELog(@"progress : %f", weakSelf.progress);
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (error) {
+            DLog(@"加载图片失败 image url : %@",imageURL);
+        }else{
+            weakSelf.imageView.image = image;
+            [weakSelf.imageView setNeedsDisplay];
+            [UIView animateWithDuration:0.3 animations:^{
+                [weakSelf setMaxAndMinZoomScales];
+            }];
+        }
+    }];
+}
+
 - (void)setShowImage:(UIImage *)image{
     if (image) {
         self.imageView.image = image;
         [self setMaxAndMinZoomScales];
         [self setNeedsLayout];
     }
+}
+
+- (void)resetImageZoomScale{
+    self.maximumZoomScale = 1.0;
+    self.minimumZoomScale = 1.0;
 }
 
 /** 设置最大最小比例 */

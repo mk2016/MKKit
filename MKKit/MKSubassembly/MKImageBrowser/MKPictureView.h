@@ -21,5 +21,5 @@
 @property (nonatomic, weak) id<MKPictureViewDelegate> pictureViewDelegate;
 @property (nonatomic, strong) UIImageView *imageView;
 
-- (void)setShowImage:(UIImage *)image;
+- (void)setShowHDImageWithUrl:(NSString *)url placeholderImage:(UIImage *)placeholderImage;
 @end

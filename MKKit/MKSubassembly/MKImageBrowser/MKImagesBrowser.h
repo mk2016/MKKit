@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, MKIBPageControlAlignment) {
 /** 
  * 获取默认的图片
  */
-- (UIImage *)imagesBrowser:(MKImagesBrowser *)browser placeholderImageWithIndex:(NSInteger)index;
+- (UIImage *)imagesBrowser:(MKImagesBrowser *)browser sourceImageWithIndex:(NSInteger)index;
 
 /**
  * 获取界面上显示的imageView，用于获取frame 做 开始结束的 放大缩小动画
@@ -51,8 +51,16 @@ typedef void (^MKImagesBrowserLongPressBlock)(MKImagesBrowser *broeser, NSUInteg
 @property (nonatomic, weak) id<MKImagesBrowserDelegate> delegate;
 @property (nonatomic, copy) MKImagesBrowserLongPressBlock longPressblock;   /*!< 长按事件回调 */
 
-@property (nonatomic, assign) MKIBPageControlAlignment pageControlAlignment;
-@property (nonatomic, assign ) NSUInteger currentIndex;                 /*!< current image index */
+@property (nonatomic, strong) UIColor *bgColor;                             /*!< 背景颜色 */
+@property (nonatomic, assign ) NSUInteger currentIndex;                     /*!< current image index */
+@property (nonatomic, strong) UIImage *placeholderImage;                    /*!< 占位图 */
+/** pageControl set */
+@property (nonatomic, assign) MKIBPageControlAlignment pageControlAlignment;/*!< 控制 pageControl 位置 */
+@property (nonatomic, assign) BOOL hidePageControlWhenSinglePage;           /*!< 单图是否隐藏 pageControl. default:YES */
+@property (nonatomic, strong) UIColor *pageDotColor;                        /*!< pageControl normal dot color */
+@property (nonatomic, strong) UIColor *pageDotCurrentColor;                 /*!< pageControl current page dot color */
+@property (nonatomic, strong) UIImage *pageDotImage;
+@property (nonatomic, strong) UIImage *pageDotCurrentImage;
 
 - (void)show;
 @end

@@ -16,18 +16,13 @@
 @interface MKImagesBrowser()<UIScrollViewDelegate, MKPictureViewDelegate>
 
 @property (nonatomic, strong) UIWindow *bgWindow;
-@property (nonatomic, strong) UIColor *bgColor;
 @property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, assign ) NSInteger imageCount;    /*!< 图片总数 */
-@property (nonatomic, strong) NSMutableArray *picturesArray;
+@property (nonatomic, assign) NSInteger imageCount;             /*!< 图片总数 */
+@property (nonatomic, strong) NSMutableArray<MKPictureView *> *picturesArray;    /*!< picture imageView array */
 /** pageControlDot */
 @property (nonatomic, strong) UIControl *pageControl;
 @property (nonatomic, assign) CGSize pageControlDotSize;
-@property (nonatomic, assign) BOOL hideForSinglePage;
-@property (nonatomic, strong) UIColor *pageDotColor;
-@property (nonatomic, strong) UIColor *pageDotSelectedColor;
-@property (nonatomic, strong) UIImage *pageDotImage;
-@property (nonatomic, strong) UIImage *pageDotSelectedImage;
+
 @end
 
 @implementation MKImagesBrowser
@@ -40,10 +35,9 @@
 }
 
 - (void)initData{
-    self.backgroundColor = self.bgColor;
     _pageControlAlignment = MKIBPageControlAlignmentCenter;
     _pageControlDotSize = CGSizeMake(10, 10);
-    _hideForSinglePage = YES;
+    _hidePageControlWhenSinglePage = YES;
     _currentIndex = 0;
     _imageCount = 0;
 }
@@ -51,6 +45,7 @@
 
 
 - (void)show{
+    self.backgroundColor = self.bgColor;
     [self.bgWindow addSubview:self];
     self.frame = self.bgWindow.bounds;
     self.alpha = 0.0f;
@@ -65,8 +60,8 @@
     if ([self.dataSource respondsToSelector:@selector(imagesBrowser:viewWithIndex:)]) {
         fromImageView = [self.dataSource imagesBrowser:self viewWithIndex:self.currentIndex];
     }
-    if ([self.dataSource respondsToSelector:@selector(imagesBrowser:placeholderImageWithIndex:)]) {
-        targetImage = [self.dataSource imagesBrowser:self placeholderImageWithIndex:self.currentIndex];
+    if ([self.dataSource respondsToSelector:@selector(imagesBrowser:sourceImageWithIndex:)]) {
+        targetImage = [self.dataSource imagesBrowser:self sourceImageWithIndex:self.currentIndex];
     }
 
     if (fromImageView && targetImage) {
@@ -99,13 +94,13 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     UIImageView *imageView = nil;
     UIImage *targetImage = nil;
-    UIImageView *curImageView = [self.picturesArray objectAtIndex:self.currentIndex];
+    UIImageView *curImageView = [self.picturesArray objectAtIndex:self.currentIndex].imageView;
 
     if ([self.dataSource respondsToSelector:@selector(imagesBrowser:viewWithIndex:)]) {
         imageView = [self.dataSource imagesBrowser:self viewWithIndex:self.currentIndex];
     }
-    if ([self.dataSource respondsToSelector:@selector(imagesBrowser:placeholderImageWithIndex:)]) {
-        targetImage = [self.dataSource imagesBrowser:self placeholderImageWithIndex:self.currentIndex];
+    if ([self.dataSource respondsToSelector:@selector(imagesBrowser:sourceImageWithIndex:)]) {
+        targetImage = [self.dataSource imagesBrowser:self sourceImageWithIndex:self.currentIndex];
     }
     
     if (imageView && targetImage && curImageView) {
@@ -163,14 +158,37 @@
     [self.picturesArray removeAllObjects];
     for (NSInteger i = 0; i < self.imageCount; i++) {
         MKPictureView *pictureView = [[MKPictureView alloc] init];
+        pictureView.tag = i;
         pictureView.pictureViewDelegate = self;
         pictureView.frame = CGRectMake((self.bounds.size.width+MKIBImageViewMargin)*i, 0, self.bounds.size.width, self.bounds.size.height);
         [self.scrollView addSubview:pictureView];
-        if ([self.dataSource respondsToSelector:@selector(imagesBrowser:placeholderImageWithIndex:)]) {
-            UIImage *placeholdImage = [self.dataSource imagesBrowser:self placeholderImageWithIndex:i];
-            [pictureView setShowImage:placeholdImage];
+        if ([self.dataSource respondsToSelector:@selector(imagesBrowser:sourceImageWithIndex:)]) {
+            UIImage *sourceImage = [self.dataSource imagesBrowser:self sourceImageWithIndex:i];
+            if (!sourceImage) {
+                sourceImage = self.placeholderImage;
+            }
+            NSString *imgUrl = nil;
+            if ([self.dataSource respondsToSelector:@selector(imagesBrowser:HDImageUrlWithIndex:)]) {
+                imgUrl = [self.dataSource imagesBrowser:self HDImageUrlWithIndex:i];
+            }
+            [pictureView setShowHDImageWithUrl:imgUrl placeholderImage:sourceImage];
         }
-        [self.picturesArray addObject:pictureView.imageView];
+        [self.picturesArray addObject:pictureView];
+    }
+}
+
+- (void)showPageView{
+    NSMutableArray *ary = @[].mutableCopy;
+    for (MKPictureView *view in self.picturesArray) {
+        if (view.tag < self.currentIndex-1 || view.tag > self.currentIndex+1) {
+            [view removeFromSuperview];
+            [self.picturesArray removeObject:view];
+            [ary addObject:view];
+        }else{
+        }
+    }
+    if (self.currentIndex == 0) {
+        
     }
 }
 
@@ -179,21 +197,14 @@
         [_pageControl removeFromSuperview];
         _pageControl = nil;
     }
-    if ((self.imageCount <= 1 && self.hideForSinglePage) || self.pageControlAlignment == MKIBPageControlAlignmentNone) {
+    if ((self.imageCount <= 1 && self.hidePageControlWhenSinglePage) || self.pageControlAlignment == MKIBPageControlAlignmentNone) {
         return;
     }
-    
-    UIPageControl *pageControl = [[UIPageControl alloc] init];
+    UIPageControl *pageControl = (UIPageControl *)self.pageControl;
     pageControl.numberOfPages = self.imageCount;
-    pageControl.pageIndicatorTintColor = self.pageDotColor;
-    pageControl.currentPageIndicatorTintColor = self.pageDotSelectedColor;
-    pageControl.userInteractionEnabled = NO;
     pageControl.currentPage = self.currentIndex;
-    [self addSubview:pageControl];
-    self.pageControl = pageControl;
     
-    
-    CGSize size = CGSizeMake(self.imageCount * self.pageControlDotSize.width * 1.2, self.pageControlDotSize.height);
+    CGSize size = CGSizeMake(self.imageCount * (self.pageControlDotSize.width + 14), self.pageControlDotSize.height);
     if (self.pageControlAlignment == MKIBPageControlAlignmentCenter){
         self.pageControl.frame = CGRectMake((MKSCREEN_WIDTH-size.width)/2, MKSCREEN_HEIGHT-30, size.width, size.height);
     }else if (self.pageControlAlignment == MKIBPageControlAlignmentLeft){
@@ -203,13 +214,19 @@
     }
 }
 
+
+
 /** 更新 pageControl */
 - (void)updatePageControlIndex{
-    if (self.imageCount == 1 && self.hideForSinglePage && self.pageControl) {
+    if (self.imageCount == 1 && self.hidePageControlWhenSinglePage && self.pageControl) {
         self.pageControl.hidden = YES;
         return;
     }
-    ((UIPageControl *)self.pageControl).currentPage = self.currentIndex;
+    NSInteger currentIndex = ((UIPageControl *)self.pageControl).currentPage;
+    if (currentIndex != self.currentIndex) {
+        ((UIPageControl *)self.pageControl).currentPage = self.currentIndex;
+    }
+    
 }
 
 #pragma mark - ***** UIScrollView delegate*****
@@ -283,6 +300,30 @@
     return _scrollView;
 }
 
+- (UIControl *)pageControl{
+    if (!_pageControl) {
+        UIPageControl *pageControl = [[UIPageControl alloc] init];
+        if (self.pageDotColor) {
+            pageControl.pageIndicatorTintColor = self.pageDotColor;
+        }
+        if (self.pageDotCurrentColor) {
+            pageControl.currentPageIndicatorTintColor = self.pageDotCurrentColor;
+        }
+        if (self.pageDotImage ) {
+            [pageControl setValue:self.pageDotImage forKey:@"_pageImage"];
+            _pageControlDotSize = self.pageDotImage.size;
+        }
+        if (self.pageDotCurrentImage) {
+            [pageControl setValue:self.pageDotCurrentImage forKey:@"_currentPageImage"];
+        }
+        
+        pageControl.userInteractionEnabled = NO;
+        [self addSubview:pageControl];
+        _pageControl = pageControl;
+    }
+    return _pageControl;
+}
+
 - (UIColor *)bgColor{
     if (!_bgColor) {
         _bgColor = [UIColor blackColor];
@@ -295,6 +336,13 @@
         _picturesArray = @[].mutableCopy;
     }
     return _picturesArray;
+}
+
+- (UIImage *)placeholderImage{
+    if (!_placeholderImage) {
+        _placeholderImage = [UIImage mk_imageWithColor:[UIColor grayColor]];
+    }
+    return _placeholderImage;
 }
 
 - (void)dealloc{
