@@ -47,6 +47,7 @@
 
 /** 设置图片 */
 - (void)setShowHDImageWithUrl:(NSString *)url placeholderImage:(UIImage *)placeholderImage{
+    [self resetImageZoomScale];
     if (!url) {
         [self setShowImage:placeholderImage];
         return;
@@ -159,7 +160,6 @@
 
 - (void)doubleTapEvent:(UITapGestureRecognizer *)doubleTap{
     ELog(@"doubleTap");
-    self.userInteractionEnabled = NO;
     [self handleDoubleTap:[doubleTap locationInView:doubleTap.view]];
 }
 

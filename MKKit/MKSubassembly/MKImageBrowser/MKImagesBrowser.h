@@ -52,7 +52,7 @@ typedef void (^MKImagesBrowserLongPressBlock)(MKImagesBrowser *broeser, NSUInteg
 @property (nonatomic, copy) MKImagesBrowserLongPressBlock longPressblock;   /*!< 长按事件回调 */
 
 @property (nonatomic, strong) UIColor *bgColor;                             /*!< 背景颜色 */
-@property (nonatomic, assign ) NSUInteger currentIndex;                     /*!< current image index */
+@property (nonatomic, assign ) NSInteger currentIndex;                     /*!< current image index */
 @property (nonatomic, strong) UIImage *placeholderImage;                    /*!< 占位图 */
 /** pageControl set */
 @property (nonatomic, assign) MKIBPageControlAlignment pageControlAlignment;/*!< 控制 pageControl 位置 */

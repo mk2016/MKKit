@@ -19,6 +19,7 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, assign) NSInteger imageCount;             /*!< 图片总数 */
 @property (nonatomic, strong) NSMutableArray<MKPictureView *> *picturesArray;    /*!< picture imageView array */
+@property (nonatomic, strong) NSMutableArray<MKPictureView *> *tempPicArray;
 /** pageControlDot */
 @property (nonatomic, strong) UIControl *pageControl;
 @property (nonatomic, assign) CGSize pageControlDotSize;
@@ -94,7 +95,13 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     UIImageView *imageView = nil;
     UIImage *targetImage = nil;
-    UIImageView *curImageView = [self.picturesArray objectAtIndex:self.currentIndex].imageView;
+    UIImageView *curImageView = nil;
+    for (MKPictureView *view in self.picturesArray) {
+        if (view.tag == self.currentIndex) {
+            curImageView = view.imageView;
+        }
+    }
+//    [self.picturesArray objectAtIndex:self.currentIndex].imageView;
 
     if ([self.dataSource respondsToSelector:@selector(imagesBrowser:viewWithIndex:)]) {
         imageView = [self.dataSource imagesBrowser:self viewWithIndex:self.currentIndex];
@@ -156,7 +163,14 @@
     self.scrollView.contentOffset = CGPointMake(self.currentIndex*(self.scrollView.bounds.size.width), 0);
     
     [self.picturesArray removeAllObjects];
-    for (NSInteger i = 0; i < self.imageCount; i++) {
+    for (NSInteger i = self.currentIndex-1; i <= self.currentIndex+1; i++) {
+        if (i < 0 || i >= self.imageCount) {
+            MKPictureView *view = [[MKPictureView alloc] init];
+            view.delegate = self;
+            [self.tempPicArray addObject:view];
+            [self.scrollView addSubview:view];
+            continue;
+        }
         MKPictureView *pictureView = [[MKPictureView alloc] init];
         pictureView.tag = i;
         pictureView.pictureViewDelegate = self;
@@ -177,18 +191,49 @@
     }
 }
 
-- (void)showPageView{
-    NSMutableArray *ary = @[].mutableCopy;
+- (void)updatePageView{
+  
+    NSMutableArray *tagAry = @[].mutableCopy;
     for (MKPictureView *view in self.picturesArray) {
         if (view.tag < self.currentIndex-1 || view.tag > self.currentIndex+1) {
-            [view removeFromSuperview];
-            [self.picturesArray removeObject:view];
-            [ary addObject:view];
+            [self.tempPicArray addObject:view];
         }else{
+            [tagAry addObject:@(view.tag)];
         }
     }
-    if (self.currentIndex == 0) {
-        
+    if (self.tempPicArray.count == 0) {
+        return;
+    }
+    [self.picturesArray removeObjectsInArray:self.tempPicArray];
+    for (NSInteger i = self.currentIndex-1; i <= self.currentIndex+1; i++) {
+        if (i < 0 || i >= self.imageCount) {
+            continue;
+        }
+        BOOL have = NO;
+        for (NSNumber *tagNum in tagAry) {
+            if (tagNum.integerValue == i) {
+                have = YES;
+                break;
+            }
+        }
+        if (!have && self.tempPicArray.count > 0) {
+            MKPictureView *view = self.tempPicArray.firstObject;
+            view.tag = i;
+            view.frame = CGRectMake((self.bounds.size.width+MKIBImageViewMargin)*i, 0, self.bounds.size.width, self.bounds.size.height);
+            if ([self.dataSource respondsToSelector:@selector(imagesBrowser:sourceImageWithIndex:)]) {
+                UIImage *sourceImage = [self.dataSource imagesBrowser:self sourceImageWithIndex:i];
+                if (!sourceImage) {
+                    sourceImage = self.placeholderImage;
+                }
+                NSString *imgUrl = nil;
+                if ([self.dataSource respondsToSelector:@selector(imagesBrowser:HDImageUrlWithIndex:)]) {
+                    imgUrl = [self.dataSource imagesBrowser:self HDImageUrlWithIndex:i];
+                }
+                [view setShowHDImageWithUrl:imgUrl placeholderImage:sourceImage];
+            }
+            [self.tempPicArray removeObject:view];
+            [self.picturesArray addObject:view];
+        }
     }
 }
 
@@ -234,12 +279,16 @@
     CGFloat offsetX = scrollView.contentOffset.x;
     double page = offsetX/scrollView.bounds.size.width;
     NSUInteger pageInt = (int)(page+0.5f);
+    if (pageInt == self.currentIndex) {
+        return;
+    }
     if (pageInt < self.imageCount) {
         self.currentIndex = pageInt;
     }else{
         self.currentIndex = self.imageCount-1;
     }
     [self updatePageControlIndex];
+    [self updatePageView];
 }
 
 #pragma mark - ***** MKPictureView delegate *****
@@ -336,6 +385,13 @@
         _picturesArray = @[].mutableCopy;
     }
     return _picturesArray;
+}
+
+- (NSMutableArray *)tempPicArray{
+    if (!_tempPicArray) {
+        _tempPicArray = @[].mutableCopy;
+    }
+    return _tempPicArray;
 }
 
 - (UIImage *)placeholderImage{
