@@ -6,8 +6,13 @@
 //  Copyright © 2017年 mk. All rights reserved.
 //
 
-#import "MKConst.h"
+#ifndef MKKitMacro
+#defind MKKitMacro
 
+#import "MKConst.h"
+#import "MKCategoryHeads.h"
+
+#endif
 //#import "MKRouter/MKRouterHelper.h"
 //#import "MKImagesBrowser.h"
 //#import "MKActionSheet.h"

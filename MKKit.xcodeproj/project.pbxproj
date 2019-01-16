@@ -38,6 +38,12 @@
 		C58BBB8921EDC7D000DF1D2F /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB7F21EDC7D000DF1D2F /* MASViewConstraint.m */; };
 		C58BBB8A21EDC7D000DF1D2F /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB8021EDC7D000DF1D2F /* MASViewAttribute.m */; };
 		C58BBB8E21EDC87900DF1D2F /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB8D21EDC87900DF1D2F /* UIView+Toast.m */; };
+		C58BBB9121EDCACC00DF1D2F /* UIView+MKLogAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9021EDCACC00DF1D2F /* UIView+MKLogAdd.m */; };
+		C58BBB9421EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9321EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m */; };
+		C58BBB9621EDCEEE00DF1D2F /* MKCategoryHeads.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.m */; };
+		C58BBB9921EDD89B00DF1D2F /* NSObject+MKPropertyAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9821EDD89B00DF1D2F /* NSObject+MKPropertyAdd.m */; };
+		C58BBB9C21EDD9F800DF1D2F /* NSString+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9B21EDD9F800DF1D2F /* NSString+MKAdd.m */; };
+		C58BBB9F21EDE6D200DF1D2F /* NSDate+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9E21EDE6D200DF1D2F /* NSDate+MKAdd.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -114,6 +120,17 @@
 		C58BBB8021EDC7D000DF1D2F /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
 		C58BBB8C21EDC87900DF1D2F /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		C58BBB8D21EDC87900DF1D2F /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		C58BBB8F21EDCACC00DF1D2F /* UIView+MKLogAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MKLogAdd.h"; sourceTree = "<group>"; };
+		C58BBB9021EDCACC00DF1D2F /* UIView+MKLogAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKLogAdd.m"; sourceTree = "<group>"; };
+		C58BBB9221EDCE7F00DF1D2F /* NSObject+MKJsonAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MKJsonAdd.h"; sourceTree = "<group>"; };
+		C58BBB9321EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MKJsonAdd.m"; sourceTree = "<group>"; };
+		C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCategoryHeads.m; sourceTree = "<group>"; };
+		C58BBB9721EDD89B00DF1D2F /* NSObject+MKPropertyAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MKPropertyAdd.h"; sourceTree = "<group>"; };
+		C58BBB9821EDD89B00DF1D2F /* NSObject+MKPropertyAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MKPropertyAdd.m"; sourceTree = "<group>"; };
+		C58BBB9A21EDD9F800DF1D2F /* NSString+MKAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MKAdd.h"; sourceTree = "<group>"; };
+		C58BBB9B21EDD9F800DF1D2F /* NSString+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+MKAdd.m"; sourceTree = "<group>"; };
+		C58BBB9D21EDE6D200DF1D2F /* NSDate+MKAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+MKAdd.h"; sourceTree = "<group>"; };
+		C58BBB9E21EDE6D200DF1D2F /* NSDate+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MKAdd.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +219,17 @@
 		C547B4871E4D5BE6002CECB1 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.m */,
+				C58BBB9D21EDE6D200DF1D2F /* NSDate+MKAdd.h */,
+				C58BBB9E21EDE6D200DF1D2F /* NSDate+MKAdd.m */,
+				C58BBB9221EDCE7F00DF1D2F /* NSObject+MKJsonAdd.h */,
+				C58BBB9321EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m */,
+				C58BBB9721EDD89B00DF1D2F /* NSObject+MKPropertyAdd.h */,
+				C58BBB9821EDD89B00DF1D2F /* NSObject+MKPropertyAdd.m */,
+				C58BBB9A21EDD9F800DF1D2F /* NSString+MKAdd.h */,
+				C58BBB9B21EDD9F800DF1D2F /* NSString+MKAdd.m */,
+				C58BBB8F21EDCACC00DF1D2F /* UIView+MKLogAdd.h */,
+				C58BBB9021EDCACC00DF1D2F /* UIView+MKLogAdd.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -308,7 +336,7 @@
 		C52DB2EB1E4C48EB009FBA5A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = mk;
 				TargetAttributes = {
 					C52DB2F21E4C48EB009FBA5A = {
@@ -350,16 +378,22 @@
 				C58BBB8721EDC7D000DF1D2F /* View+MASAdditions.m in Sources */,
 				C58BBB6221EDC79000DF1D2F /* NSObject+MJProperty.m in Sources */,
 				C58BBB6621EDC79000DF1D2F /* MJFoundation.m in Sources */,
+				C58BBB9121EDCACC00DF1D2F /* UIView+MKLogAdd.m in Sources */,
+				C58BBB9921EDD89B00DF1D2F /* NSObject+MKPropertyAdd.m in Sources */,
 				C58BBB8521EDC7D000DF1D2F /* MASLayoutConstraint.m in Sources */,
 				C58BBB8421EDC7D000DF1D2F /* MASConstraintMaker.m in Sources */,
+				C58BBB9421EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m in Sources */,
 				C58BBB6121EDC79000DF1D2F /* MJExtensionConst.m in Sources */,
 				C58BBB6521EDC79000DF1D2F /* MJPropertyKey.m in Sources */,
 				C58BBB5E21EDC79000DF1D2F /* NSObject+MJKeyValue.m in Sources */,
+				C58BBB9F21EDE6D200DF1D2F /* NSDate+MKAdd.m in Sources */,
+				C58BBB9C21EDD9F800DF1D2F /* NSString+MKAdd.m in Sources */,
 				C58BBB8621EDC7D000DF1D2F /* NSArray+MASAdditions.m in Sources */,
 				C58BBB5F21EDC79000DF1D2F /* MJProperty.m in Sources */,
 				C58BBB8E21EDC87900DF1D2F /* UIView+Toast.m in Sources */,
 				C58BBB6321EDC79000DF1D2F /* NSObject+MJClass.m in Sources */,
 				C58BBB5D21EDC79000DF1D2F /* MJPropertyType.m in Sources */,
+				C58BBB9621EDCEEE00DF1D2F /* MKCategoryHeads.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,15 +409,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -422,15 +464,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

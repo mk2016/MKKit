@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#ifndef MKKitMacro
-#defind MKKitMacro
 
 /** LOG */
 #ifdef DEBUG
@@ -185,5 +183,3 @@ static inline NSUInteger hexStringToInt(NSString *str) {
     return result;
 }
 
-
-#endif
