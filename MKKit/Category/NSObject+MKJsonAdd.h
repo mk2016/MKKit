@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (MKJsonAdd)
+- (id)mk_copySelfPerfect;
+
 /** model -> jsonString */
 - (NSString *)mk_jsonString;
 - (NSString *)mk_jsonStringByPrettyPrint:(BOOL)pretty;

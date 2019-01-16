@@ -9,8 +9,8 @@
 #import "NSObject+MKPropertyAdd.h"
 #import <objc/runtime.h>
 
-static const int mk_property_key;
-static const int mk_tagObj_key;
+static const int kMKPropertyKey;
+static const int kMKTagObjKey;
 
 @implementation NSObject (MKPropertyAdd)
 
@@ -47,20 +47,20 @@ static const int mk_tagObj_key;
     if (!aTagObj) {
         return;
     }
-    objc_setAssociatedObject(self, &mk_tagObj_key, aTagObj, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &kMKTagObjKey, aTagObj, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (id)mk_tagObj{
-    return objc_getAssociatedObject(self, &mk_tagObj_key);
+    return objc_getAssociatedObject(self, &kMKTagObjKey);
 }
 
 #pragma mark - ***** lazy *****
 - (NSMutableDictionary *)_allProperties{
-    NSMutableDictionary *allPropertiesDic = objc_getAssociatedObject(self, &mk_property_key);
+    NSMutableDictionary *allPropertiesDic = objc_getAssociatedObject(self, &kMKPropertyKey);
     
     if (!allPropertiesDic) {
         allPropertiesDic = [NSMutableDictionary new];
-        objc_setAssociatedObject(self, &mk_property_key, allPropertiesDic, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, &kMKPropertyKey, allPropertiesDic, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return allPropertiesDic;
 }

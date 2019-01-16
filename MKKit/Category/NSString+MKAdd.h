@@ -19,4 +19,30 @@
 
 /** string URLDecode */
 - (NSString *)mk_stringByURLDecode;
+
+#pragma mark - ***** chinese string ******
+/** is chinese word */
+- (BOOL)mk_isChinese:(unichar)word;
+
+/** check the string is include chinese word */
+- (BOOL)mk_isIncludeChinese;
+
+/** Check the string is all in Chinese */
+- (BOOL)mk_isChineseString;
+
+/** validate email format */
+- (BOOL)mk_validateEmail;
+
+/** validate id card format */
+- (BOOL)mk_validateIdentityCard;
+
+#pragma mark - ***** chinese to pinyin ******
+/** get pinyin from chinese first word */
+- (NSString *)mk_chineseNameFirstLetter;
+
+/** chinese name -> pinyin */
+- (NSString *)mk_chineseNameToPinyin;
+
+/** chinese -> pinyin */
+- (NSString *)mk_hanziToPinyinIsChineseName:(BOOL)isName;
 @end

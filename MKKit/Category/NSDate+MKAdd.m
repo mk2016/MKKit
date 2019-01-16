@@ -11,6 +11,14 @@
 @implementation NSDate (MKAdd)
 
 #pragma mark - ***** timestamp ******
+/** timestamp -> NSDate */
++ (NSDate *)mk_dataWithTimestamp:(long long)timestamp{
+    while (timestamp > 10000000000) {
+        timestamp = timestamp/1000;
+    }
+    return [NSDate dateWithTimeIntervalSince1970:timestamp];
+}
+
 /** current timestamp ，millisecond，length : 13  */
 + (NSTimeInterval)mk_currentTimestamp{
     return [[NSDate date] mk_dateToMillisecond];
@@ -34,26 +42,35 @@
     return interval*1000*1000;
 }
 
-/** timestamp -> NSDate */
-+ (NSDate *)mk_dataWithTimestamp:(long long)timestamp{
-    while (timestamp > 10000000000) {
-        timestamp = timestamp/1000;
-    }
-    return [NSDate dateWithTimeIntervalSince1970:timestamp];
-}
+
 
 #pragma mark - ***** format ******
+/** UTC -> NSDate */
++ (NSDate *)mk_dateWithUTC:(NSString *)utc{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];//2017-01-11T07:42:47.000Z
+    return [dateFormatter dateFromString:utc];
+}
+
+/** timestamp -> yyyy-MM-dd HH:mm:ss */
++ (NSString *)mk_formatFullWithTimestamp:(long long)timestamp{
+    NSDate *date = [NSDate mk_dataWithTimestamp:timestamp];
+    return [date mk_dateToStringWithFormatFull];
+}
+
+/** current date -> format  */
++ (NSString *)mk_currentDateStringWithFormat:(NSString *)format{
+    return [[NSDate date] mk_dateToStringWithFormat:format];
+}
+
+
 /** NSDate -> format */
 - (NSString *)mk_dateToStringWithFormat:(NSString *)format{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
     [dateFormatter setDateFormat:format];
     return [dateFormatter stringFromDate:self];
-}
-
-/** current date format  */
-+ (NSString *)mk_currentDateStringWithFormat:(NSString *)format{
-    return [[NSDate date] mk_dateToStringWithFormat:format];
 }
 
 /** NSDate -> yyyy-MM-dd HH:mm:ss */
@@ -66,21 +83,6 @@
     return [self mk_dateToStringWithFormat:@"yyyy-MM-dd"];
 }
 
-/** timestamp -> yyyy-MM-dd HH:mm:ss */
-+ (NSString *)mk_formatFullWithTimestamp:(long long)timestamp{
-    NSDate *date = [NSDate mk_dataWithTimestamp:timestamp];
-    return [date mk_dateToStringWithFormatFull];
-}
-
-/** UTC -> NSDate */
-+ (NSDate *)mk_dateWithUTC:(NSString *)utc{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];//2017-01-11T07:42:47.000Z
-    return [dateFormatter dateFromString:utc];
-}
-
-
 /** NSDate -> NSDate 00:00:00 */
 - (NSDate *)mk_dateForZeroTime{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -90,6 +92,7 @@
     dateStr = [NSString stringWithFormat:@"%@ 00:00:00", dateStr];
     return [formatter dateFromString:dateStr];
 }
+
 @end
 
 @implementation NSString (MKDateAdd)

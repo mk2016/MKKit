@@ -40,10 +40,20 @@
 		C58BBB8E21EDC87900DF1D2F /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB8D21EDC87900DF1D2F /* UIView+Toast.m */; };
 		C58BBB9121EDCACC00DF1D2F /* UIView+MKLogAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9021EDCACC00DF1D2F /* UIView+MKLogAdd.m */; };
 		C58BBB9421EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9321EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m */; };
-		C58BBB9621EDCEEE00DF1D2F /* MKCategoryHeads.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.m */; };
+		C58BBB9621EDCEEE00DF1D2F /* MKCategoryHeads.h in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.h */; };
 		C58BBB9921EDD89B00DF1D2F /* NSObject+MKPropertyAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9821EDD89B00DF1D2F /* NSObject+MKPropertyAdd.m */; };
 		C58BBB9C21EDD9F800DF1D2F /* NSString+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9B21EDD9F800DF1D2F /* NSString+MKAdd.m */; };
 		C58BBB9F21EDE6D200DF1D2F /* NSDate+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9E21EDE6D200DF1D2F /* NSDate+MKAdd.m */; };
+		C58BBBA221EEFFD800DF1D2F /* UIButton+MKHitRect.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBA021EEFFD800DF1D2F /* UIButton+MKHitRect.m */; };
+		C58BBBA521EF028400DF1D2F /* UIImage+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBA421EF028400DF1D2F /* UIImage+MKAdd.m */; };
+		C58BBBA821EF0F1100DF1D2F /* UIImageView+MKTapAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBA621EF0F1100DF1D2F /* UIImageView+MKTapAdd.m */; };
+		C58BBBAB21EF12F300DF1D2F /* UILabel+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBA921EF12F300DF1D2F /* UILabel+MKAdd.m */; };
+		C58BBBB121EF14C400DF1D2F /* UINavigationController+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBAF21EF14C300DF1D2F /* UINavigationController+MKAdd.m */; };
+		C58BBBB421EF177C00DF1D2F /* UITabBar+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBB221EF177C00DF1D2F /* UITabBar+MKAdd.m */; };
+		C58BBBB721EF1BBC00DF1D2F /* UITextField+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBB621EF1BBC00DF1D2F /* UITextField+MKAdd.m */; };
+		C58BBBBA21EF1EB600DF1D2F /* UITableViewCell+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBB921EF1EB600DF1D2F /* UITableViewCell+MKAdd.m */; };
+		C58BBBBD21EF21B500DF1D2F /* UIView+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBBC21EF21B400DF1D2F /* UIView+MKAdd.m */; };
+		C58BBBC021EF221200DF1D2F /* UIView+MKFrameAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBBF21EF221200DF1D2F /* UIView+MKFrameAdd.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -124,13 +134,33 @@
 		C58BBB9021EDCACC00DF1D2F /* UIView+MKLogAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKLogAdd.m"; sourceTree = "<group>"; };
 		C58BBB9221EDCE7F00DF1D2F /* NSObject+MKJsonAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MKJsonAdd.h"; sourceTree = "<group>"; };
 		C58BBB9321EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MKJsonAdd.m"; sourceTree = "<group>"; };
-		C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKCategoryHeads.m; sourceTree = "<group>"; };
+		C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKCategoryHeads.h; sourceTree = "<group>"; };
 		C58BBB9721EDD89B00DF1D2F /* NSObject+MKPropertyAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MKPropertyAdd.h"; sourceTree = "<group>"; };
 		C58BBB9821EDD89B00DF1D2F /* NSObject+MKPropertyAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MKPropertyAdd.m"; sourceTree = "<group>"; };
 		C58BBB9A21EDD9F800DF1D2F /* NSString+MKAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MKAdd.h"; sourceTree = "<group>"; };
 		C58BBB9B21EDD9F800DF1D2F /* NSString+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+MKAdd.m"; sourceTree = "<group>"; };
 		C58BBB9D21EDE6D200DF1D2F /* NSDate+MKAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+MKAdd.h"; sourceTree = "<group>"; };
 		C58BBB9E21EDE6D200DF1D2F /* NSDate+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MKAdd.m"; sourceTree = "<group>"; };
+		C58BBBA021EEFFD800DF1D2F /* UIButton+MKHitRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+MKHitRect.m"; sourceTree = "<group>"; };
+		C58BBBA121EEFFD800DF1D2F /* UIButton+MKHitRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+MKHitRect.h"; sourceTree = "<group>"; };
+		C58BBBA321EF028400DF1D2F /* UIImage+MKAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+MKAdd.h"; sourceTree = "<group>"; };
+		C58BBBA421EF028400DF1D2F /* UIImage+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MKAdd.m"; sourceTree = "<group>"; };
+		C58BBBA621EF0F1100DF1D2F /* UIImageView+MKTapAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MKTapAdd.m"; sourceTree = "<group>"; };
+		C58BBBA721EF0F1100DF1D2F /* UIImageView+MKTapAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MKTapAdd.h"; sourceTree = "<group>"; };
+		C58BBBA921EF12F300DF1D2F /* UILabel+MKAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MKAdd.m"; sourceTree = "<group>"; };
+		C58BBBAA21EF12F300DF1D2F /* UILabel+MKAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+MKAdd.h"; sourceTree = "<group>"; };
+		C58BBBAF21EF14C300DF1D2F /* UINavigationController+MKAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+MKAdd.m"; sourceTree = "<group>"; };
+		C58BBBB021EF14C400DF1D2F /* UINavigationController+MKAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+MKAdd.h"; sourceTree = "<group>"; };
+		C58BBBB221EF177C00DF1D2F /* UITabBar+MKAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+MKAdd.m"; sourceTree = "<group>"; };
+		C58BBBB321EF177C00DF1D2F /* UITabBar+MKAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+MKAdd.h"; sourceTree = "<group>"; };
+		C58BBBB521EF1BBC00DF1D2F /* UITextField+MKAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+MKAdd.h"; sourceTree = "<group>"; };
+		C58BBBB621EF1BBC00DF1D2F /* UITextField+MKAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+MKAdd.m"; sourceTree = "<group>"; };
+		C58BBBB821EF1EB600DF1D2F /* UITableViewCell+MKAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+MKAdd.h"; sourceTree = "<group>"; };
+		C58BBBB921EF1EB600DF1D2F /* UITableViewCell+MKAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+MKAdd.m"; sourceTree = "<group>"; };
+		C58BBBBB21EF21B400DF1D2F /* UIView+MKAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MKAdd.h"; sourceTree = "<group>"; };
+		C58BBBBC21EF21B400DF1D2F /* UIView+MKAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKAdd.m"; sourceTree = "<group>"; };
+		C58BBBBE21EF221200DF1D2F /* UIView+MKFrameAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MKFrameAdd.h"; sourceTree = "<group>"; };
+		C58BBBBF21EF221200DF1D2F /* UIView+MKFrameAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKFrameAdd.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,7 +249,7 @@
 		C547B4871E4D5BE6002CECB1 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.m */,
+				C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.h */,
 				C58BBB9D21EDE6D200DF1D2F /* NSDate+MKAdd.h */,
 				C58BBB9E21EDE6D200DF1D2F /* NSDate+MKAdd.m */,
 				C58BBB9221EDCE7F00DF1D2F /* NSObject+MKJsonAdd.h */,
@@ -228,6 +258,26 @@
 				C58BBB9821EDD89B00DF1D2F /* NSObject+MKPropertyAdd.m */,
 				C58BBB9A21EDD9F800DF1D2F /* NSString+MKAdd.h */,
 				C58BBB9B21EDD9F800DF1D2F /* NSString+MKAdd.m */,
+				C58BBBA121EEFFD800DF1D2F /* UIButton+MKHitRect.h */,
+				C58BBBA021EEFFD800DF1D2F /* UIButton+MKHitRect.m */,
+				C58BBBA321EF028400DF1D2F /* UIImage+MKAdd.h */,
+				C58BBBA421EF028400DF1D2F /* UIImage+MKAdd.m */,
+				C58BBBA721EF0F1100DF1D2F /* UIImageView+MKTapAdd.h */,
+				C58BBBA621EF0F1100DF1D2F /* UIImageView+MKTapAdd.m */,
+				C58BBBAA21EF12F300DF1D2F /* UILabel+MKAdd.h */,
+				C58BBBA921EF12F300DF1D2F /* UILabel+MKAdd.m */,
+				C58BBBB021EF14C400DF1D2F /* UINavigationController+MKAdd.h */,
+				C58BBBAF21EF14C300DF1D2F /* UINavigationController+MKAdd.m */,
+				C58BBBB321EF177C00DF1D2F /* UITabBar+MKAdd.h */,
+				C58BBBB221EF177C00DF1D2F /* UITabBar+MKAdd.m */,
+				C58BBBB821EF1EB600DF1D2F /* UITableViewCell+MKAdd.h */,
+				C58BBBB921EF1EB600DF1D2F /* UITableViewCell+MKAdd.m */,
+				C58BBBB521EF1BBC00DF1D2F /* UITextField+MKAdd.h */,
+				C58BBBB621EF1BBC00DF1D2F /* UITextField+MKAdd.m */,
+				C58BBBBB21EF21B400DF1D2F /* UIView+MKAdd.h */,
+				C58BBBBC21EF21B400DF1D2F /* UIView+MKAdd.m */,
+				C58BBBBE21EF221200DF1D2F /* UIView+MKFrameAdd.h */,
+				C58BBBBF21EF221200DF1D2F /* UIView+MKFrameAdd.m */,
 				C58BBB8F21EDCACC00DF1D2F /* UIView+MKLogAdd.h */,
 				C58BBB9021EDCACC00DF1D2F /* UIView+MKLogAdd.m */,
 			);
@@ -371,6 +421,8 @@
 				C58BBB6421EDC79000DF1D2F /* NSString+MJExtension.m in Sources */,
 				C58BBB8821EDC7D000DF1D2F /* MASConstraint.m in Sources */,
 				C58BBB8921EDC7D000DF1D2F /* MASViewConstraint.m in Sources */,
+				C58BBBA521EF028400DF1D2F /* UIImage+MKAdd.m in Sources */,
+				C58BBBBA21EF1EB600DF1D2F /* UITableViewCell+MKAdd.m in Sources */,
 				C58BBB8221EDC7D000DF1D2F /* ViewController+MASAdditions.m in Sources */,
 				C58BBB8A21EDC7D000DF1D2F /* MASViewAttribute.m in Sources */,
 				C58BBB6021EDC79000DF1D2F /* NSObject+MJCoding.m in Sources */,
@@ -380,20 +432,28 @@
 				C58BBB6621EDC79000DF1D2F /* MJFoundation.m in Sources */,
 				C58BBB9121EDCACC00DF1D2F /* UIView+MKLogAdd.m in Sources */,
 				C58BBB9921EDD89B00DF1D2F /* NSObject+MKPropertyAdd.m in Sources */,
+				C58BBBA821EF0F1100DF1D2F /* UIImageView+MKTapAdd.m in Sources */,
 				C58BBB8521EDC7D000DF1D2F /* MASLayoutConstraint.m in Sources */,
 				C58BBB8421EDC7D000DF1D2F /* MASConstraintMaker.m in Sources */,
+				C58BBBBD21EF21B500DF1D2F /* UIView+MKAdd.m in Sources */,
+				C58BBBA221EEFFD800DF1D2F /* UIButton+MKHitRect.m in Sources */,
 				C58BBB9421EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m in Sources */,
 				C58BBB6121EDC79000DF1D2F /* MJExtensionConst.m in Sources */,
 				C58BBB6521EDC79000DF1D2F /* MJPropertyKey.m in Sources */,
 				C58BBB5E21EDC79000DF1D2F /* NSObject+MJKeyValue.m in Sources */,
 				C58BBB9F21EDE6D200DF1D2F /* NSDate+MKAdd.m in Sources */,
+				C58BBBB421EF177C00DF1D2F /* UITabBar+MKAdd.m in Sources */,
+				C58BBBB121EF14C400DF1D2F /* UINavigationController+MKAdd.m in Sources */,
+				C58BBBB721EF1BBC00DF1D2F /* UITextField+MKAdd.m in Sources */,
+				C58BBBC021EF221200DF1D2F /* UIView+MKFrameAdd.m in Sources */,
 				C58BBB9C21EDD9F800DF1D2F /* NSString+MKAdd.m in Sources */,
 				C58BBB8621EDC7D000DF1D2F /* NSArray+MASAdditions.m in Sources */,
 				C58BBB5F21EDC79000DF1D2F /* MJProperty.m in Sources */,
 				C58BBB8E21EDC87900DF1D2F /* UIView+Toast.m in Sources */,
 				C58BBB6321EDC79000DF1D2F /* NSObject+MJClass.m in Sources */,
+				C58BBBAB21EF12F300DF1D2F /* UILabel+MKAdd.m in Sources */,
 				C58BBB5D21EDC79000DF1D2F /* MJPropertyType.m in Sources */,
-				C58BBB9621EDCEEE00DF1D2F /* MKCategoryHeads.m in Sources */,
+				C58BBB9621EDCEEE00DF1D2F /* MKCategoryHeads.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

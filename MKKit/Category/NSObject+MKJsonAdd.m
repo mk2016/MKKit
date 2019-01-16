@@ -12,6 +12,13 @@
 
 @implementation NSObject (MKJsonAdd)
 
+- (id)mk_copySelfPerfect{
+    if (self) {
+        return [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:self]];
+    }
+    return nil;
+}
+
 /** model -> jsonString */
 - (NSString *)mk_jsonString{
     return [self mk_jsonStringByPrettyPrint:YES];

@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDate (MKAdd)
+
+/** timestamp -> NSDate */
++ (NSDate *)mk_dataWithTimestamp:(long long)timestamp;
+
 /** current timestamp ，millisecond，length : 13  */
 + (NSTimeInterval)mk_currentTimestamp;
 
@@ -21,27 +25,25 @@
 /** NSDate -> microsecond , length : 16 */
 - (NSTimeInterval)mk_dateToMicrosecond;
 
-/** timestamp -> NSDate */
-+ (NSDate *)mk_dataWithTimestamp:(long long)timestamp;
 
 #pragma mark - ***** format ******
+/** timestamp -> yyyy-MM-dd HH:mm:ss */
++ (NSString *)mk_formatFullWithTimestamp:(long long)timestamp;
+
+/** UTC -> NSDate */
++ (NSDate *)mk_dateWithUTC:(NSString *)utc;
+
+/** current date -> format  */
++ (NSString *)mk_currentDateStringWithFormat:(NSString *)format;
+
 /** NSDate -> format */
 - (NSString *)mk_dateToStringWithFormat:(NSString *)format;
-
-/** current date format  */
-+ (NSString *)mk_currentDateStringWithFormat:(NSString *)format;
 
 /** NSDate -> yyyy-MM-dd HH:mm:ss */
 - (NSString *)mk_dateToStringWithFormatFull;
 
 /** NSDate -> yyyy-MM-dd */
 - (NSString *)mk_dateToStringWithFormatDate;
-
-/** timestamp -> yyyy-MM-dd HH:mm:ss */
-+ (NSString *)mk_formatFullWithTimestamp:(long long)timestamp;
-
-/** UTC -> NSDate */
-+ (NSDate *)mk_dateWithUTC:(NSString *)utc;
 
 /** NSDate -> NSDate 00:00:00 */
 - (NSDate *)mk_dateForZeroTime;
