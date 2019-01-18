@@ -73,6 +73,19 @@ CGSizeEqualToSize(CGSizeMeke(1242, 2208), [[UIScreen mainScreen] currentMode].si
 #define MK_ONE_PIXEL_HEIGHT             (1.f/[UIScreen mainScreen].scale)
 #define IPHONEX_HEAD_MARGIN             (MK_IS_IPHONE_XX ? 24 : 0)
 
+
+#ifndef MK_iOS_IS_ABOVE
+    #define MK_iOS_IS_ABOVE(s) [[[UIDevice currentDevice] systemVersion] floatValue] > s
+#endif
+
+#ifndef MK_IS_SIMULATOR
+    #if TARGET_OS_SIMULATOR
+        #define MK_IS_SIMULATOR YES
+    #else
+        #define MK_IS_SIMULATOR NO
+    #endif
+#endif
+
 /** 颜色 */
 #define MK_COLOR_RGB(r, g, b)        [UIColor colorWithRed:(r/255.0f) green:(g/255.0f) blue:(b/255.0f) alpha:1]
 #define MK_COLOR_RGBA(r, g, b, a)    [UIColor colorWithRed:(r/255.0f) green:(g/255.0f) blue:(b/255.0f) alpha:(a)]

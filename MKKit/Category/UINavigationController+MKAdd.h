@@ -13,7 +13,7 @@
 /** pop to an appointed viewController */
 - (BOOL)mk_popToViewControllerWithName:(NSString *)vcName animated:(BOOL)animated;
 
-/** 设置底部黑线 隐藏 */
+/** hidden navigationBar bottom line */
 - (void)mk_setBottomLineHidden:(BOOL)hidden;
 
 /** global hidden navigationBar bottom line */

@@ -1,6 +1,6 @@
 //
 //  MKDeviceUtils.h
-//  MKToolsKit
+//  MKKit
 //
 //  Created by xiaomk on 16/5/15.
 //  Copyright © 2016年 xiaomk. All rights reserved.
