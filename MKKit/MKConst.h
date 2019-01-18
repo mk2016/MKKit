@@ -84,9 +84,9 @@ CGSizeEqualToSize(CGSizeMeke(1242, 2208), [[UIScreen mainScreen] currentMode].si
 #define MK_FONT_SYS(a)          [UIFont systemFontOfSize:a]
 #define MK_FONT_BOLD(a)         [UIFont boldSystemFontOfSize:a]
 
-#define MK_FONT_PFSC_Regular(a) [MKDeviceHelper systemIs9Later]?[UIFont fontWithName:@"PingFangSC-Regular" size:a]:[UIFont systemFontOfSize:a]
-#define MK_FONT_PFSC_Light(a)   [MKDeviceHelper systemIs9Later]?[UIFont fontWithName:@"PingFangSC-Light" size:a]:[UIFont systemFontOfSize:a]
-#define MK_FONT_PFSC_Medium(a)  [MKDeviceHelper systemIs9Later]?[UIFont fontWithName:@"PingFangSC-Medium" size:a]:[UIFont boldSystemFontOfSize:a]
+#define MK_FONT_PFSC_Regular(a) [MKDeviceUtils systemIs9Later]?[UIFont fontWithName:@"PingFangSC-Regular" size:a]:[UIFont systemFontOfSize:a]
+#define MK_FONT_PFSC_Light(a)   [MKDeviceUtils systemIs9Later]?[UIFont fontWithName:@"PingFangSC-Light" size:a]:[UIFont systemFontOfSize:a]
+#define MK_FONT_PFSC_Medium(a)  [MKDeviceUtils systemIs9Later]?[UIFont fontWithName:@"PingFangSC-Medium" size:a]:[UIFont boldSystemFontOfSize:a]
 
 /** singleton */
 #define MK_INSTANCETYPE + (instancetype)sharedInstance;

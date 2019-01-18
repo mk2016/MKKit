@@ -54,6 +54,10 @@
 		C58BBBBA21EF1EB600DF1D2F /* UITableViewCell+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBB921EF1EB600DF1D2F /* UITableViewCell+MKAdd.m */; };
 		C58BBBBD21EF21B500DF1D2F /* UIView+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBBC21EF21B400DF1D2F /* UIView+MKAdd.m */; };
 		C58BBBC021EF221200DF1D2F /* UIView+MKFrameAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBBF21EF221200DF1D2F /* UIView+MKFrameAdd.m */; };
+		C58BBBC321EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBC221EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.m */; };
+		C58BBBC621EF2AC300DF1D2F /* MKDeviceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBC521EF2AC300DF1D2F /* MKDeviceUtils.m */; };
+		C58BBBCC21EF2BCA00DF1D2F /* SAMKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBC821EF2BCA00DF1D2F /* SAMKeychainQuery.m */; };
+		C58BBBCD21EF2BCA00DF1D2F /* SAMKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBCB21EF2BCA00DF1D2F /* SAMKeychain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -161,6 +165,14 @@
 		C58BBBBC21EF21B400DF1D2F /* UIView+MKAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKAdd.m"; sourceTree = "<group>"; };
 		C58BBBBE21EF221200DF1D2F /* UIView+MKFrameAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MKFrameAdd.h"; sourceTree = "<group>"; };
 		C58BBBBF21EF221200DF1D2F /* UIView+MKFrameAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKFrameAdd.m"; sourceTree = "<group>"; };
+		C58BBBC121EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDeviceAuthorizationUtils.h; sourceTree = "<group>"; };
+		C58BBBC221EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDeviceAuthorizationUtils.m; sourceTree = "<group>"; };
+		C58BBBC421EF2AC300DF1D2F /* MKDeviceUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDeviceUtils.h; sourceTree = "<group>"; };
+		C58BBBC521EF2AC300DF1D2F /* MKDeviceUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDeviceUtils.m; sourceTree = "<group>"; };
+		C58BBBC821EF2BCA00DF1D2F /* SAMKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMKeychainQuery.m; sourceTree = "<group>"; };
+		C58BBBC921EF2BCA00DF1D2F /* SAMKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychain.h; sourceTree = "<group>"; };
+		C58BBBCA21EF2BCA00DF1D2F /* SAMKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychainQuery.h; sourceTree = "<group>"; };
+		C58BBBCB21EF2BCA00DF1D2F /* SAMKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMKeychain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,11 +195,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C509FC171E5C49B100D48007 /* MKSubassembly */ = {
+		C509FC171E5C49B100D48007 /* Subassembly */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = MKSubassembly;
+			path = Subassembly;
 			sourceTree = "<group>";
 		};
 		C52DB2EA1E4C48EB009FBA5A = {
@@ -213,8 +225,8 @@
 				C58BBB4421EDBF4700DF1D2F /* MKConst.h */,
 				C52DB2F61E4C48EB009FBA5A /* MKKit.h */,
 				C547B4871E4D5BE6002CECB1 /* Category */,
-				C56D43841E52EB27007ADF35 /* MKHelper */,
-				C509FC171E5C49B100D48007 /* MKSubassembly */,
+				C56D43841E52EB27007ADF35 /* Utils */,
+				C509FC171E5C49B100D48007 /* Subassembly */,
 				C52DB3041E4C49B8009FBA5A /* Vendor */,
 			);
 			path = MKKit;
@@ -225,6 +237,7 @@
 			children = (
 				C58BBB6721EDC7D000DF1D2F /* Masonry */,
 				C58BBB4721EDC79000DF1D2F /* MJExtension */,
+				C58BBBC721EF2BCA00DF1D2F /* SAMKeychain */,
 				C58BBB8B21EDC87900DF1D2F /* Toast */,
 			);
 			path = Vendor;
@@ -284,37 +297,41 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		C56D43841E52EB27007ADF35 /* MKHelper */ = {
+		C56D43841E52EB27007ADF35 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C58BBBC421EF2AC300DF1D2F /* MKDeviceUtils.h */,
+				C58BBBC521EF2AC300DF1D2F /* MKDeviceUtils.m */,
+				C58BBBC121EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.h */,
+				C58BBBC221EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.m */,
 			);
-			path = MKHelper;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		C58BBB4721EDC79000DF1D2F /* MJExtension */ = {
 			isa = PBXGroup;
 			children = (
-				C58BBB4821EDC79000DF1D2F /* MJPropertyKey.h */,
-				C58BBB4921EDC79000DF1D2F /* NSObject+MJClass.h */,
-				C58BBB4A21EDC79000DF1D2F /* NSString+MJExtension.h */,
-				C58BBB4B21EDC79000DF1D2F /* MJPropertyType.m */,
-				C58BBB4C21EDC79000DF1D2F /* NSObject+MJProperty.h */,
-				C58BBB4D21EDC79000DF1D2F /* MJExtensionConst.h */,
-				C58BBB4E21EDC79000DF1D2F /* NSObject+MJKeyValue.m */,
-				C58BBB4F21EDC79000DF1D2F /* MJProperty.m */,
-				C58BBB5021EDC79000DF1D2F /* MJFoundation.h */,
-				C58BBB5121EDC79000DF1D2F /* NSObject+MJCoding.m */,
 				C58BBB5221EDC79000DF1D2F /* MJExtension.h */,
+				C58BBB4D21EDC79000DF1D2F /* MJExtensionConst.h */,
 				C58BBB5321EDC79000DF1D2F /* MJExtensionConst.m */,
-				C58BBB5421EDC79000DF1D2F /* NSObject+MJProperty.m */,
-				C58BBB5521EDC79000DF1D2F /* MJPropertyType.h */,
-				C58BBB5621EDC79000DF1D2F /* NSObject+MJClass.m */,
-				C58BBB5721EDC79000DF1D2F /* NSString+MJExtension.m */,
-				C58BBB5821EDC79000DF1D2F /* MJPropertyKey.m */,
-				C58BBB5921EDC79000DF1D2F /* MJProperty.h */,
-				C58BBB5A21EDC79000DF1D2F /* NSObject+MJKeyValue.h */,
-				C58BBB5B21EDC79000DF1D2F /* NSObject+MJCoding.h */,
+				C58BBB5021EDC79000DF1D2F /* MJFoundation.h */,
 				C58BBB5C21EDC79000DF1D2F /* MJFoundation.m */,
+				C58BBB5921EDC79000DF1D2F /* MJProperty.h */,
+				C58BBB4F21EDC79000DF1D2F /* MJProperty.m */,
+				C58BBB4821EDC79000DF1D2F /* MJPropertyKey.h */,
+				C58BBB5821EDC79000DF1D2F /* MJPropertyKey.m */,
+				C58BBB5521EDC79000DF1D2F /* MJPropertyType.h */,
+				C58BBB4B21EDC79000DF1D2F /* MJPropertyType.m */,
+				C58BBB4921EDC79000DF1D2F /* NSObject+MJClass.h */,
+				C58BBB5621EDC79000DF1D2F /* NSObject+MJClass.m */,
+				C58BBB5B21EDC79000DF1D2F /* NSObject+MJCoding.h */,
+				C58BBB5121EDC79000DF1D2F /* NSObject+MJCoding.m */,
+				C58BBB5A21EDC79000DF1D2F /* NSObject+MJKeyValue.h */,
+				C58BBB4E21EDC79000DF1D2F /* NSObject+MJKeyValue.m */,
+				C58BBB4C21EDC79000DF1D2F /* NSObject+MJProperty.h */,
+				C58BBB5421EDC79000DF1D2F /* NSObject+MJProperty.m */,
+				C58BBB4A21EDC79000DF1D2F /* NSString+MJExtension.h */,
+				C58BBB5721EDC79000DF1D2F /* NSString+MJExtension.m */,
 			);
 			path = MJExtension;
 			sourceTree = "<group>";
@@ -323,30 +340,30 @@
 			isa = PBXGroup;
 			children = (
 				C58BBB6821EDC7D000DF1D2F /* MASCompositeConstraint.h */,
-				C58BBB6921EDC7D000DF1D2F /* NSLayoutConstraint+MASDebugAdditions.m */,
+				C58BBB7621EDC7D000DF1D2F /* MASCompositeConstraint.m */,
+				C58BBB7421EDC7D000DF1D2F /* MASConstraint.h */,
+				C58BBB7D21EDC7D000DF1D2F /* MASConstraint.m */,
 				C58BBB6A21EDC7D000DF1D2F /* MASConstraint+Private.h */,
-				C58BBB6B21EDC7D000DF1D2F /* MASLayoutConstraint.h */,
-				C58BBB6C21EDC7D000DF1D2F /* NSArray+MASShorthandAdditions.h */,
 				C58BBB6D21EDC7D000DF1D2F /* MASConstraintMaker.h */,
-				C58BBB6E21EDC7D000DF1D2F /* View+MASAdditions.h */,
-				C58BBB6F21EDC7D000DF1D2F /* NSArray+MASAdditions.h */,
+				C58BBB7721EDC7D000DF1D2F /* MASConstraintMaker.m */,
+				C58BBB6B21EDC7D000DF1D2F /* MASLayoutConstraint.h */,
+				C58BBB7821EDC7D000DF1D2F /* MASLayoutConstraint.m */,
+				C58BBB7C21EDC7D000DF1D2F /* Masonry.h */,
 				C58BBB7021EDC7D000DF1D2F /* MASUtilities.h */,
 				C58BBB7121EDC7D000DF1D2F /* MASViewAttribute.h */,
-				C58BBB7221EDC7D000DF1D2F /* ViewController+MASAdditions.m */,
+				C58BBB8021EDC7D000DF1D2F /* MASViewAttribute.m */,
 				C58BBB7321EDC7D000DF1D2F /* MASViewConstraint.h */,
-				C58BBB7421EDC7D000DF1D2F /* MASConstraint.h */,
-				C58BBB7521EDC7D000DF1D2F /* NSLayoutConstraint+MASDebugAdditions.h */,
-				C58BBB7621EDC7D000DF1D2F /* MASCompositeConstraint.m */,
-				C58BBB7721EDC7D000DF1D2F /* MASConstraintMaker.m */,
-				C58BBB7821EDC7D000DF1D2F /* MASLayoutConstraint.m */,
+				C58BBB7F21EDC7D000DF1D2F /* MASViewConstraint.m */,
+				C58BBB6F21EDC7D000DF1D2F /* NSArray+MASAdditions.h */,
 				C58BBB7921EDC7D000DF1D2F /* NSArray+MASAdditions.m */,
+				C58BBB6C21EDC7D000DF1D2F /* NSArray+MASShorthandAdditions.h */,
+				C58BBB7521EDC7D000DF1D2F /* NSLayoutConstraint+MASDebugAdditions.h */,
+				C58BBB6921EDC7D000DF1D2F /* NSLayoutConstraint+MASDebugAdditions.m */,
+				C58BBB6E21EDC7D000DF1D2F /* View+MASAdditions.h */,
 				C58BBB7A21EDC7D000DF1D2F /* View+MASAdditions.m */,
 				C58BBB7B21EDC7D000DF1D2F /* View+MASShorthandAdditions.h */,
-				C58BBB7C21EDC7D000DF1D2F /* Masonry.h */,
-				C58BBB7D21EDC7D000DF1D2F /* MASConstraint.m */,
 				C58BBB7E21EDC7D000DF1D2F /* ViewController+MASAdditions.h */,
-				C58BBB7F21EDC7D000DF1D2F /* MASViewConstraint.m */,
-				C58BBB8021EDC7D000DF1D2F /* MASViewAttribute.m */,
+				C58BBB7221EDC7D000DF1D2F /* ViewController+MASAdditions.m */,
 			);
 			path = Masonry;
 			sourceTree = "<group>";
@@ -358,6 +375,17 @@
 				C58BBB8D21EDC87900DF1D2F /* UIView+Toast.m */,
 			);
 			path = Toast;
+			sourceTree = "<group>";
+		};
+		C58BBBC721EF2BCA00DF1D2F /* SAMKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				C58BBBC921EF2BCA00DF1D2F /* SAMKeychain.h */,
+				C58BBBCB21EF2BCA00DF1D2F /* SAMKeychain.m */,
+				C58BBBCA21EF2BCA00DF1D2F /* SAMKeychainQuery.h */,
+				C58BBBC821EF2BCA00DF1D2F /* SAMKeychainQuery.m */,
+			);
+			path = SAMKeychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,6 +448,7 @@
 				C58BBB8121EDC7D000DF1D2F /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				C58BBB6421EDC79000DF1D2F /* NSString+MJExtension.m in Sources */,
 				C58BBB8821EDC7D000DF1D2F /* MASConstraint.m in Sources */,
+				C58BBBCD21EF2BCA00DF1D2F /* SAMKeychain.m in Sources */,
 				C58BBB8921EDC7D000DF1D2F /* MASViewConstraint.m in Sources */,
 				C58BBBA521EF028400DF1D2F /* UIImage+MKAdd.m in Sources */,
 				C58BBBBA21EF1EB600DF1D2F /* UITableViewCell+MKAdd.m in Sources */,
@@ -436,6 +465,7 @@
 				C58BBB8521EDC7D000DF1D2F /* MASLayoutConstraint.m in Sources */,
 				C58BBB8421EDC7D000DF1D2F /* MASConstraintMaker.m in Sources */,
 				C58BBBBD21EF21B500DF1D2F /* UIView+MKAdd.m in Sources */,
+				C58BBBC321EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.m in Sources */,
 				C58BBBA221EEFFD800DF1D2F /* UIButton+MKHitRect.m in Sources */,
 				C58BBB9421EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m in Sources */,
 				C58BBB6121EDC79000DF1D2F /* MJExtensionConst.m in Sources */,
@@ -443,10 +473,12 @@
 				C58BBB5E21EDC79000DF1D2F /* NSObject+MJKeyValue.m in Sources */,
 				C58BBB9F21EDE6D200DF1D2F /* NSDate+MKAdd.m in Sources */,
 				C58BBBB421EF177C00DF1D2F /* UITabBar+MKAdd.m in Sources */,
+				C58BBBC621EF2AC300DF1D2F /* MKDeviceUtils.m in Sources */,
 				C58BBBB121EF14C400DF1D2F /* UINavigationController+MKAdd.m in Sources */,
 				C58BBBB721EF1BBC00DF1D2F /* UITextField+MKAdd.m in Sources */,
 				C58BBBC021EF221200DF1D2F /* UIView+MKFrameAdd.m in Sources */,
 				C58BBB9C21EDD9F800DF1D2F /* NSString+MKAdd.m in Sources */,
+				C58BBBCC21EF2BCA00DF1D2F /* SAMKeychainQuery.m in Sources */,
 				C58BBB8621EDC7D000DF1D2F /* NSArray+MASAdditions.m in Sources */,
 				C58BBB5F21EDC79000DF1D2F /* MJProperty.m in Sources */,
 				C58BBB8E21EDC87900DF1D2F /* UIView+Toast.m in Sources */,

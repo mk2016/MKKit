@@ -32,4 +32,5 @@
  * MJExtension  3.0.15.1        https://github.com/CoderMJLee/MJExtension
  * Masonry      1.1.0           https://github.com/SnapKit/Masonry
  * Toast        4.0.0           https://github.com/scalessec/Toast
+ * SAMKeychain  1.5.3           https://github.com/soffes/SAMKeychain
  */
