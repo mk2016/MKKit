@@ -43,7 +43,6 @@
     
     self.imageView.frame = CGRectMake(imageNew.x, imageNew.y ,imageRect.size.width, imageRect.size.height);
     
-    
     CGPoint titleNew;
     titleNew.x = (contentRect.size.width - titleRect.size.width)/2;
     titleNew.y = (contentRect.size.height + heightAll)/2 - titleRect.size.height;

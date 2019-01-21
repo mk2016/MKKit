@@ -29,6 +29,7 @@
 
 /**
  * 第三方库版本
+ * AFNetworking 3.2.1           https://github.com/AFNetworking/AFNetworking
  * MJExtension  3.0.15.1        https://github.com/CoderMJLee/MJExtension
  * Masonry      1.1.0           https://github.com/SnapKit/Masonry
  * Toast        4.0.0           https://github.com/scalessec/Toast

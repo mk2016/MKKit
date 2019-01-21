@@ -10,7 +10,6 @@
 
 @implementation MKRightImageButton
 
-
 - (void)layoutSubviews{
     
     [super layoutSubviews];

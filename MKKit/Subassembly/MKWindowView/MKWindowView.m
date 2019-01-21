@@ -9,21 +9,7 @@
 #import "MKWindowView.h"
 #import "UIView+MKAdd.h"
 
-@interface MKWindowView()
-@end
-
 @implementation MKWindowView
-
-
-
-- (instancetype)initWithBlock:(MKBlock)block{
-    if (self = [super initWithFrame:MK_SCREEN_BOUNDS]) {
-        self.block = block;
-        self.backgroundColor = MK_COLOR_RGBA(0, 0, 0, 0.3);
-        [self setupUI];
-    }
-    return self;
-}
 
 + (id)viewWithNibBlock:(MKBlock)block{
     MKWindowView *view = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self.class) owner:nil options:nil].firstObject;
@@ -32,6 +18,15 @@
     view.backgroundColor = MK_COLOR_RGBA(0, 0, 0, 0.3);
     [view setupUI];
     return view;
+}
+
+- (instancetype)initWithBlock:(MKBlock)block{
+    if (self = [super initWithFrame:MK_SCREEN_BOUNDS]) {
+        self.block = block;
+        self.backgroundColor = MK_COLOR_RGBA(0, 0, 0, 0.3);
+        [self setupUI];
+    }
+    return self;
 }
 
 - (void)setupUI{
@@ -49,12 +44,5 @@
 - (void)hide{
     [self mk_removeFromWindow];
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end
