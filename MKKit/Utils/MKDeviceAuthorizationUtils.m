@@ -17,6 +17,7 @@
 #import <Photos/Photos.h>
 #import <CoreTelephony/CTCellularData.h>
 
+#import "MKAlertView.h"
 
 @implementation MKDeviceAuthorizationUtils
 
@@ -346,11 +347,12 @@
             break;
     }
     NSString *msg = [NSString stringWithFormat:@"请在”设置-隐私-%@“选项中，允许 %@ 访问你的%@", str,appName, str];
-//    [MKAlertView alertWithTitle:@"提示" message:msg cancelTitle:@"取消" confirmTitle:@"设置" block:^(NSInteger buttonIndex) {
-//        if (buttonIndex == 1){
-//            [self openAppAuthorizationSetPage];
-//        }
-//    }];
+    MK_WEAK_SELF
+    [MKAlertView alertWithTitle:@"提示" message:msg cancelTitle:@"取消" confirmTitle:@"确定" onViewController:nil block:^(NSInteger buttonIndex) {
+        if (buttonIndex == 1){
+            [weakSelf openAppAuthorizationSetPage];
+        }
+    }];
 }
 
 
