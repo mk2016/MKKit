@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#ifndef MKKitMacro
+#define MKKitMacro
 
 /** LOG */
 #ifdef DEBUG
@@ -86,7 +88,7 @@ CGSizeEqualToSize(CGSizeMeke(1242, 2208), [[UIScreen mainScreen] currentMode].si
     #endif
 #endif
 
-/** 颜色 */
+/** color */
 #define MK_COLOR_RGB(r, g, b)        [UIColor colorWithRed:(r/255.0f) green:(g/255.0f) blue:(b/255.0f) alpha:1]
 #define MK_COLOR_RGBA(r, g, b, a)    [UIColor colorWithRed:(r/255.0f) green:(g/255.0f) blue:(b/255.0f) alpha:(a)]
 #define MK_COLOR_HEX(rgbValue)       [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0f \
@@ -177,10 +179,11 @@ do { \
     _Pragma("clang diagnostic pop") \
 } while (0)
 
+#endif
 
 
-#pragma mark - ***** 枚举 *****
-/** tableView 上下拉 刷新 */
+#pragma mark - ***** ENUM *****
+/** tableView pull refresh type */
 typedef enum {
     MKTableViewRefreshTypeNone      = 0,            /*!< 不添加刷新 */
     MKTableViewRefreshTypeHeader    = 1 << 1,       /*!< 头部 */

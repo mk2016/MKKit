@@ -224,7 +224,7 @@
                     break;
                 case kCTCellularDataRestrictedStateUnknown:
                     MK_BLOCK_EXEC(block, @(kCTCellularDataRestrictedStateUnknown));
-                    NSLog(@"MKCellularAuth=== kCTCellularDataRestrictedStateUnknown");
+                    ELog(@"MKCellularAuth=== kCTCellularDataRestrictedStateUnknown");
                     break;
                 default:
                     break;

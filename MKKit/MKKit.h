@@ -6,32 +6,22 @@
 //  Copyright © 2017年 mk. All rights reserved.
 //
 
-#ifndef MKKitMacro
-#defind MKKitMacro
-
 #import "MKConst.h"
 #import "MKCategoryHeads.h"
 
-#endif
-//#import "MKRouter/MKRouterHelper.h"
-//#import "MKImagesBrowser.h"
-//#import "MKActionSheet.h"
-//#import "MKCategoryHead.h"
-//
-//#import "MKAppInfoHelper.h"
-//#import "MKDeviceHelper.h"
-//#import "MKUIHelper.h"
-//
-//#import "Masonry.h"
-//#import "MJExtension.h"
-//
-//#define MKKitConstDefine    1
+#import "MKDeviceAuthorizationUtils.h"
+#import "MKDeviceUtils.h"
+#import "MKFileUtils.h"
+#import "MKUIUtils.h"
 
 /**
- * 第三方库版本
- * AFNetworking 3.2.1           https://github.com/AFNetworking/AFNetworking
- * MJExtension  3.0.15.1        https://github.com/CoderMJLee/MJExtension
- * Masonry      1.1.0           https://github.com/SnapKit/Masonry
- * Toast        4.0.0           https://github.com/scalessec/Toast
- * SAMKeychain  1.5.3           https://github.com/soffes/SAMKeychain
+ * Vendor           version         github
+ * ------------------------------------------------
+ * AFNetworking |   3.2.1       |   https://github.com/AFNetworking/AFNetworking
+ * HappyDNS     |   0.3.14      |   https://github.com/qiniu/happy-dns-objc
+ * MJExtension  |   3.0.15.1    |   https://github.com/CoderMJLee/MJExtension
+ * Masonry      |   1.1.0       |   https://github.com/SnapKit/Masonry
+ * SAMKeychain  |   1.5.3       |   https://github.com/soffes/SAMKeychain
+ * Toast        |   4.0.0       |   https://github.com/scalessec/Toast
+ * ------------------------------------------------
  */
