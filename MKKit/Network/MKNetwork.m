@@ -1,6 +1,6 @@
 //
 //  MKNetwork.m
-//  TQSAASPro
+//  MKKit
 //
 //  Created by xiaomk on 2018/12/19.
 //  Copyright © 2018 tqcar. All rights reserved.
@@ -8,9 +8,9 @@
 
 #import "MKNetwork.h"
 #import "AFNetworking.h"
-#import "MKAlertView.h"
 #import "MKConst.h"
 #import "MKCategoryHeads.h"
+#import "MKAlertView.h"
 #import "MKFileUtils.h"
 #import "MKDeviceUtils.h"
 
@@ -53,7 +53,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
         param = @{}.copy;
     }
     if (!s_queueNetwork) {
-        s_queueNetwork = dispatch_queue_create("com.tqcar.network", NULL); // 创建
+        s_queueNetwork = dispatch_queue_create("com.mkkit.network", NULL); // 创建
     }
     MK_WEAK_SELF
     dispatch_async(s_queueNetwork, ^{
@@ -75,12 +75,12 @@ static dispatch_queue_t s_queueNetwork = NULL;
                     if (file && [file isKindOfClass:[UIImage class]]) {
                         [weakSelf af_upLoadImageWithUrl:urlStr param:param image:file progress:progressBlock completion:responseBlock];
                     }else{
-                        ELog(@"请求参数file不是图片");
+                        ELog(@"MKNetwork error : source is not image");
                         MK_BLOCK_EXEC(responseBlock, nil);
                     }
                     break;
                 case MKRequestType_download:
-                    [self af_downLoadWithUrlString:urlStr progress:progressBlock completion:responseBlock];
+                    [self af_downloadWithUrlString:urlStr progress:progressBlock completion:responseBlock];
                     break;
                 case MKRequestType_postFileUrl:
                     break;
@@ -92,7 +92,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
 }
 
 #pragma mark - ***** 请求结果处理 ******
-/** 请求成功 */
+/** response success */
 + (void)responseSuccessWithUrl:(NSString *)urlString param:(NSDictionary *)param method:(NSString *)method httpResponse:(NSURLResponse *)httpResponse responseObject:(id)responseObject block:(MKResponseBlock)block{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     ELog(@"request URL %@ : %@", method, urlString);
@@ -123,7 +123,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
     MK_BLOCK_EXEC(block, resInfo);
 }
 
-/** 请求错误 */
+/** response error */
 + (void)responseFailureWithUrl:(NSString *)urlString param:(NSDictionary *)param method:(NSString *)method httpResponse:(NSURLResponse *)httpResponse error:(NSError *)error block:(MKResponseBlock)block{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     ELog(@"request URL %@ : %@", method, urlString);
@@ -143,11 +143,13 @@ static dispatch_queue_t s_queueNetwork = NULL;
 
 + (void)printError:(NSError *)error{
     ELog(@"===============================================");
-    ELog(@"error userInfo:  %@", error.userInfo);
     ELog(@"error localizedDescription:%@", error.localizedDescription);
     NSData *data = error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] ;
     if (data) {
         ELog(@"errorStr :%@", [[ NSString alloc ] initWithData:data encoding:NSUTF8StringEncoding]);
+    }
+    if ([MKNetwork sharedInstance].showErrorLog) {
+        ELog(@"error userInfo:  %@", error.userInfo);
     }
     ELog(@"end=============================================");
 }
@@ -241,7 +243,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
     }];
 }
 
-/** 上传图片 image*/
+/** upload image*/
 + (void)af_upLoadImageWithUrl:(NSString *)urlStr param:(NSDictionary *)param image:(UIImage *)image progress:(MKProgressBlock)progressBlock completion:(MKResponseBlock)responseBlock{
     MK_WEAK_SELF
     AFHTTPSessionManager *manager = [self createManager];
@@ -273,15 +275,15 @@ static dispatch_queue_t s_queueNetwork = NULL;
 }
 
 
-/** 下载 */
-+ (void)af_downLoadWithUrlString:(NSString *)urlStr progress:(MKProgressBlock)progressBlock completion:(MKResponseBlock)responseBlock{
+/** download */
++ (void)af_downloadWithUrlString:(NSString *)urlStr progress:(MKProgressBlock)progressBlock completion:(MKResponseBlock)responseBlock{
     
     AFHTTPSessionManager *manager = [self createManager];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
     //    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     //    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
-    //下载任务
+    //download task
     MK_WEAK_SELF
     NSURLSessionDownloadTask *task = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
         CGFloat proportion = 1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount;

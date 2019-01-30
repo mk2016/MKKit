@@ -1,6 +1,6 @@
 //
 //  MKNetwork.h
-//  TQSAASPro
+//  MKKit
 //
 //  Created by xiaomk on 2018/12/19.
 //  Copyright © 2018 tqcar. All rights reserved.
@@ -27,6 +27,7 @@ typedef void (^MKProgressBlock)(NSProgress *progress, CGFloat percent);
 @interface MKNetwork : NSObject
 @property (nonatomic, assign) BOOL analysisDNS;
 @property (nonatomic, assign) BOOL checkProxySetting;
+@property (nonatomic, assign) BOOL showErrorLog;
 
 + (instancetype)sharedInstance;
 
