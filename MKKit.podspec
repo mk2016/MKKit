@@ -2,8 +2,6 @@ Pod::Spec.new do |s|
   s.name          = "MKKit"
   s.version       = "0.0.1"
   s.summary       = "MK tool kit."
-  s.description   = <<-DESC
-                    DESC
   s.homepage      = "https://github.com/mk2016/MKKit"
   s.license       = "MIT"
   s.author             = { "MK Xiao" => "xiaomk7758@sina.com" }
@@ -11,4 +9,6 @@ Pod::Spec.new do |s|
   s.platform      = :ios, "8.0"
   s.source        = { :git => "", :tag => "#{s.version}" }
   s.source_files  = "MKKit/**/*.{h,m}"
+  s.requires_arc = true
+  s.dependency    "HappyDNS", '~> 0.3.14'
 end
