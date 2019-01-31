@@ -7,6 +7,7 @@
 //
 
 #import "NSMutableURLRequest+MKAdd.h"
+#import "HappyDNS.h"
 
 @implementation NSMutableURLRequest (MKAdd)
 

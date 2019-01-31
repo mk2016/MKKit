@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <AdSupport/AdSupport.h>
-#import "HappyDNS.h"
 
 @interface NSMutableURLRequest (MKAdd)
 
