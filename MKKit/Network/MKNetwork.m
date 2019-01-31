@@ -119,6 +119,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
     resInfo.httpCode = httpCode;
     resInfo.originData = responseObject;
     resInfo.content = content;
+    resInfo.headerFields = resp.allHeaderFields.copy;
     MK_BLOCK_EXEC(block, resInfo);
 }
 
@@ -137,6 +138,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
     MKResponseInfo *resInfo = [[MKResponseInfo alloc] init];
     resInfo.httpCode = httpCode;
     resInfo.error = error;
+    resInfo.headerFields = resp.allHeaderFields.copy;
     MK_BLOCK_EXEC(block, resInfo);
 }
 
@@ -373,6 +375,60 @@ static AFHTTPSessionManager *_afHttpSectionManager = nil;
     }
 }
 
+
+#pragma mark - ***** tools method ******
++ (NSString *)appendQueryToUrl:(NSString *)url byParam:(NSDictionary *)dic{
+    NSMutableArray *queryAry = @[].mutableCopy;
+    for (NSString *key in dic) {
+        id value = dic[key];
+        if (value == nil || [value isEqual:[NSNull null]]) {
+            continue;
+        }
+        NSString *query = [NSString stringWithFormat:@"%@=%@",key, value];
+        [queryAry addObject:query];
+    }
+    if (queryAry.count > 0) {
+        NSString *queryStr = [queryAry componentsJoinedByString:@"&"];
+        url = [self appendQueryToUrl:url byQuery:queryStr];
+    }
+    return url;
+}
+
++ (NSString *)appendQueryToUrl:(NSString *)url byQuery:(NSString *)query{
+    url = [self filtrateUrl:url];
+    NSString *urlQuery = [self getQueryWithUrl:url];
+    if (urlQuery && urlQuery.length > 0) {
+        url = [url stringByAppendingString:@"&"];
+    }else{
+        url = [url stringByAppendingString:@"?"];
+    }
+    url = [url stringByAppendingString:query];
+    return url;
+}
+
+//filtrate URL tail invalid string
++ (NSString *)filtrateUrl:(NSString *)url{
+    if (url && url.length > 1) {
+        NSString *lastStr = [url substringFromIndex:url.length-1];
+        if ([lastStr isEqualToString:@"?"] || [lastStr isEqualToString:@"&"] ) {
+            url = [url substringToIndex:(url.length-1)];
+            return [self filtrateUrl:url];
+        }
+    }
+    return url;
+}
+
+//get URL query
++ (NSString *)getQueryWithUrl:(NSString *)url{
+    NSString *urlQuery = [NSURL URLWithString:url].query;
+    if (urlQuery == nil) {
+        NSRange range = [url rangeOfString:@"?" options:NSLiteralSearch];
+        if (range.location != NSNotFound) {
+            urlQuery = [url substringFromIndex:range.location+range.length];
+        }
+    }
+    return urlQuery;
+}
 @end
 
 

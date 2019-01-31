@@ -23,7 +23,7 @@
         return;
     }
     MK_DISPATCH_MAIN_ASYNC_SAFE(^{
-        [[self getCurrentWindow] makeToast:message];
+        [[self getCurrentWindow] makeToast:message duration:3.0f position:CSToastPositionCenter style:nil];
     })
 }
 

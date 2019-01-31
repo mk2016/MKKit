@@ -11,7 +11,7 @@
 
 @class MKResponseInfo;
 
-typedef NS_ENUM(NSInteger, MKRequestType) {
+typedef NS_ENUM(NSUInteger, MKRequestType) {
     MKRequestType_post = 1,
     MKRequestType_get,
     MKRequestType_put,
@@ -44,6 +44,7 @@ typedef void (^MKProgressBlock)(NSProgress *progress, CGFloat percent);
                progress:(MKProgressBlock)progressBlock
              completion:(MKResponseBlock)responseBlock;
 
++ (NSString *)appendQueryToUrl:(NSString *)url byParam:(NSDictionary *)dic;
 @end
 
 
@@ -52,5 +53,6 @@ typedef void (^MKProgressBlock)(NSProgress *progress, CGFloat percent);
 @property (nonatomic, strong) id originData;
 @property (nonatomic, strong) id content;
 @property (nonatomic, strong) NSError *error;
+@property (nonatomic, copy) NSDictionary *headerFields;
 @end
 
