@@ -47,6 +47,9 @@
 		C55CED1221F1D8EC0049B1C7 /* MKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C55CED1021F1D8EC0049B1C7 /* MKAlertView.m */; };
 		C55CED1621F1DB1E0049B1C7 /* MKWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = C55CED1521F1DB1D0049B1C7 /* MKWindowView.m */; };
 		C57BE2F71E4D8CCA00177D4F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57BE2F61E4D8CCA00177D4F /* CoreFoundation.framework */; };
+		C582CA0A2202C4C000547417 /* MKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C582CA072202C4C000547417 /* MKNavigationController.m */; };
+		C582CA0B2202C4C000547417 /* MKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C582CA082202C4C000547417 /* MKViewController.m */; };
+		C582CA0C2202C4C000547417 /* MKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C582CA092202C4C000547417 /* MKTabBarController.m */; };
 		C58BBB9121EDCACC00DF1D2F /* UIView+MKLogAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9021EDCACC00DF1D2F /* UIView+MKLogAdd.m */; };
 		C58BBB9421EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9321EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m */; };
 		C58BBB9621EDCEEE00DF1D2F /* MKCategoryHeads.h in Sources */ = {isa = PBXBuildFile; fileRef = C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.h */; };
@@ -159,6 +162,12 @@
 		C55CED1421F1DB1D0049B1C7 /* MKWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWindowView.h; sourceTree = "<group>"; };
 		C55CED1521F1DB1D0049B1C7 /* MKWindowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWindowView.m; sourceTree = "<group>"; };
 		C57BE2F61E4D8CCA00177D4F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		C582CA042202C4C000547417 /* MKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKViewController.h; sourceTree = "<group>"; };
+		C582CA052202C4C000547417 /* MKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNavigationController.h; sourceTree = "<group>"; };
+		C582CA062202C4C000547417 /* MKTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTabBarController.h; sourceTree = "<group>"; };
+		C582CA072202C4C000547417 /* MKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNavigationController.m; sourceTree = "<group>"; };
+		C582CA082202C4C000547417 /* MKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKViewController.m; sourceTree = "<group>"; };
+		C582CA092202C4C000547417 /* MKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTabBarController.m; sourceTree = "<group>"; };
 		C58BBB4421EDBF4700DF1D2F /* MKConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKConst.h; sourceTree = "<group>"; };
 		C58BBB8F21EDCACC00DF1D2F /* UIView+MKLogAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MKLogAdd.h"; sourceTree = "<group>"; };
 		C58BBB9021EDCACC00DF1D2F /* UIView+MKLogAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKLogAdd.m"; sourceTree = "<group>"; };
@@ -349,6 +358,7 @@
 			children = (
 				C58BBB4421EDBF4700DF1D2F /* MKConst.h */,
 				C52DB2F61E4C48EB009FBA5A /* MKKit.h */,
+				C582CA032202C4C000547417 /* BaseClass */,
 				C547B4871E4D5BE6002CECB1 /* Category */,
 				C5080ECA21F6AF43007C2F39 /* Network */,
 				C509FC171E5C49B100D48007 /* Subassembly */,
@@ -457,6 +467,19 @@
 				C55CED0521F1CFFF0049B1C7 /* MKUIUtils.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		C582CA032202C4C000547417 /* BaseClass */ = {
+			isa = PBXGroup;
+			children = (
+				C582CA052202C4C000547417 /* MKNavigationController.h */,
+				C582CA072202C4C000547417 /* MKNavigationController.m */,
+				C582CA062202C4C000547417 /* MKTabBarController.h */,
+				C582CA092202C4C000547417 /* MKTabBarController.m */,
+				C582CA042202C4C000547417 /* MKViewController.h */,
+				C582CA082202C4C000547417 /* MKViewController.m */,
+			);
+			path = BaseClass;
 			sourceTree = "<group>";
 		};
 		DFEEBCC61843C8AE09856F25 /* Pods */ = {
@@ -579,6 +602,7 @@
 				C5080ED021F6AF77007C2F39 /* MKNetwork.m in Sources */,
 				C58BBB9121EDCACC00DF1D2F /* UIView+MKLogAdd.m in Sources */,
 				C5080E4321F59B89007C2F39 /* MKBlurView.m in Sources */,
+				C582CA0A2202C4C000547417 /* MKNavigationController.m in Sources */,
 				C58BBB9921EDD89B00DF1D2F /* NSObject+MKPropertyAdd.m in Sources */,
 				C58BBBA821EF0F1100DF1D2F /* UIImageView+MKTapAdd.m in Sources */,
 				C55CED0721F1CFFF0049B1C7 /* MKUIUtils.m in Sources */,
@@ -588,6 +612,7 @@
 				C5080E4D21F59C9C007C2F39 /* MKHyperlinkButton.m in Sources */,
 				C58BBBC321EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.m in Sources */,
 				C58BBBA221EEFFD800DF1D2F /* UIButton+MKHitRect.m in Sources */,
+				C582CA0C2202C4C000547417 /* MKTabBarController.m in Sources */,
 				C5080EB921F5BC0F007C2F39 /* UIButton+AFNetworking.m in Sources */,
 				C58BBB9421EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m in Sources */,
 				C5080EB821F5BC0F007C2F39 /* UIImageView+AFNetworking.m in Sources */,
@@ -604,6 +629,7 @@
 				C55CED1621F1DB1E0049B1C7 /* MKWindowView.m in Sources */,
 				C5080EC121F5BC0F007C2F39 /* AFURLRequestSerialization.m in Sources */,
 				C58BBBAB21EF12F300DF1D2F /* UILabel+MKAdd.m in Sources */,
+				C582CA0B2202C4C000547417 /* MKViewController.m in Sources */,
 				C5080ECF21F6AF77007C2F39 /* NSMutableURLRequest+MKAdd.m in Sources */,
 				C55CED0A21F1D6360049B1C7 /* MKImagePickerCtrlUtils.m in Sources */,
 				C5080EBB21F5BC0F007C2F39 /* UIWebView+AFNetworking.m in Sources */,
