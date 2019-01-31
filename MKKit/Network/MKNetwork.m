@@ -106,20 +106,19 @@ static dispatch_queue_t s_queueNetwork = NULL;
         responseObject = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
     }
     
-    id responseDic = nil;
-    if ([responseObject isKindOfClass:[NSString class]] && [responseObject length] > 0){
-        responseDic = [NSDictionary mk_dictionaryWithJson:responseObject];
-    }else if ([responseObject isKindOfClass:[NSDictionary class]]) {
-        responseDic = responseObject;
-    }else if ([responseObject isKindOfClass:[NSArray class]]){
-        responseDic = responseObject;
+    id content = nil;
+    if ([responseObject isKindOfClass:[NSDictionary class]] || [responseObject isKindOfClass:[NSArray class]]) {
+        content = responseObject;
+    }else{
+        content = [NSDictionary mk_dictionaryWithJson:responseObject];
     }
+    
 //    ELog(@"response success json: %@", [responseDic mk_jsonString]);
     
     MKResponseInfo *resInfo = [[MKResponseInfo alloc] init];
     resInfo.httpCode = httpCode;
     resInfo.originData = responseObject;
-    resInfo.content = responseDic;
+    resInfo.content = content;
     MK_BLOCK_EXEC(block, resInfo);
 }
 

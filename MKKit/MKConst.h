@@ -185,9 +185,9 @@ do { \
 #pragma mark - ***** ENUM *****
 /** tableView pull refresh type */
 typedef enum {
-    MKTableViewRefreshTypeNone      = 0,            /*!< 不添加刷新 */
-    MKTableViewRefreshTypeHeader    = 1 << 1,       /*!< 头部 */
-    MKTableViewRefreshTypeFooter    = 1 << 2,       /*!< 尾部 */
+    MKTableViewRefreshTypeNone      = 0,            /*!< None */
+    MKTableViewRefreshTypeHeader    = 1 << 1,       /*!< header */
+    MKTableViewRefreshTypeFooter    = 1 << 2,       /*!< footer */
     MKTableViewRefreshTypeAll       = ~0UL
 }MKTableViewRefreshType;
 

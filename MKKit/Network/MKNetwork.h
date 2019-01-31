@@ -50,7 +50,7 @@ typedef void (^MKProgressBlock)(NSProgress *progress, CGFloat percent);
 @interface MKResponseInfo : NSObject
 @property (nonatomic, assign) NSInteger httpCode;
 @property (nonatomic, strong) id originData;
-@property (nonatomic, copy) NSDictionary *content;
+@property (nonatomic, strong) id content;
 @property (nonatomic, strong) NSError *error;
 @end
 

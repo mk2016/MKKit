@@ -79,7 +79,7 @@
         jsonData = json;
     }
     
-    NSDictionary *dic = nil;
+    id dic = nil;
     if (jsonData){
         NSError *error;
         dic = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];   //NSJSONReadingMutableContainers
@@ -88,8 +88,11 @@
             ELog(@"json parsing fail : %@",error);
         }
     }
+    if (dic && [dic isKindOfClass:[NSArray class]]){
+        return dic;
+    }
     if (dic && [dic isKindOfClass:[NSDictionary class]]){
-        NSMutableDictionary *tempDic = dic.mutableCopy;
+        NSMutableDictionary *tempDic = ((NSDictionary*)dic).mutableCopy;
         NSArray *valueAry = [tempDic allKeys];
         for (NSString *key in valueAry) {
             if ([[tempDic objectForKey:key] isEqual:[NSNull null]]){
@@ -100,4 +103,5 @@
     }
     return nil;
 }
+
 @end
