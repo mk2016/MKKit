@@ -1,0 +1,32 @@
+PODS:
+  - HappyDNS (0.3.14)
+  - Masonry (1.1.0)
+  - MJExtension (3.0.15.1)
+  - SAMKeychain (1.5.3)
+  - Toast (4.0.0)
+
+DEPENDENCIES:
+  - HappyDNS (~> 0.3.14)
+  - Masonry (~> 1.1.0)
+  - MJExtension (~> 3.0.15.1)
+  - SAMKeychain (~> 1.5.3)
+  - Toast (~> 4.0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - HappyDNS
+    - Masonry
+    - MJExtension
+    - SAMKeychain
+    - Toast
+
+SPEC CHECKSUMS:
+  HappyDNS: dc6a164ee81979093123c241c6353bcf0218add6
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
+  SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+
+PODFILE CHECKSUM: a4913a9d5c5050da2a8d3fe7b987937e1cf1b1b7
+
+COCOAPODS: 1.5.3
