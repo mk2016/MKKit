@@ -17,8 +17,11 @@
 
 + (void)load{
     [super load];
+#pragma clang diagnostic push/
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     SEL originalSel = @selector(dataTaskWithHTTPMethod:URLString:parameters:uploadProgress:downloadProgress:success:failure:);
     SEL newSel = @selector(mk_dataTaskWithHTTPMethod:URLString:parameters:uploadProgress:downloadProgress:success:failure:);
+#pragma clang diagnostic pop
     
     Method originalMethod = class_getInstanceMethod(self, originalSel);
     Method newMethod = class_getInstanceMethod(self, newSel);
