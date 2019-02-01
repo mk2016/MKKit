@@ -96,11 +96,11 @@ static dispatch_queue_t s_queueNetwork = NULL;
 + (void)responseSuccessWithUrl:(NSString *)urlString param:(NSDictionary *)param method:(NSString *)method httpResponse:(NSURLResponse *)httpResponse responseObject:(id)responseObject block:(MKResponseBlock)block{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     ELog(@"request URL %@ : %@", method, urlString);
-//    ELog(@"request param : %@", [param mk_jsonString]);
+    ELog(@"request param : %@", [param mk_jsonString]);
     
     NSHTTPURLResponse *resp = (NSHTTPURLResponse *)httpResponse;
     NSInteger statusCode = [resp statusCode];
-    ELog(@"response http code : %@",@(statusCode));
+    ELog(@"response statusCode : %@",@(statusCode));
     
     if ([responseObject isKindOfClass:[NSData class]]) {
         responseObject = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -113,7 +113,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
         content = [NSDictionary mk_dictionaryWithJson:responseObject];
     }
     
-//    ELog(@"response success json: %@", [responseDic mk_jsonString]);
+    ELog(@"response success json: %@", [content mk_jsonString]);
     
     MKResponseInfo *resInfo = [[MKResponseInfo alloc] init];
     resInfo.statusCode = statusCode;
@@ -334,7 +334,7 @@ static AFHTTPSessionManager *_afHttpSectionManager = nil;
         securityPolicy.validatesDomainName = NO;
         _afHttpSectionManager.securityPolicy = securityPolicy;
     }
-    NSDictionary *dic = [self getRequestHeadKeyValue];
+    NSDictionary *dic = [self getRequestHeader];
     NSArray *keysAry = dic.allKeys;
     for (NSString *key in keysAry) {
         NSString *value = [dic objectForKey:key];
@@ -344,7 +344,7 @@ static AFHTTPSessionManager *_afHttpSectionManager = nil;
 }
 
 /** 获取 request head 设置 */
-+ (nonnull NSDictionary *)getRequestHeadKeyValue{
++ (nonnull NSDictionary *)getRequestHeader{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"application/json;charset=UTF-8"            forKey:@"Content-Type"];
     [dic setObject:[MKDeviceUtils appBundleShortVersion]        forKey:@"app_v"];       //客户端版本号
@@ -353,7 +353,6 @@ static AFHTTPSessionManager *_afHttpSectionManager = nil;
     [dic setObject:[MKDeviceUtils systemVersionString]          forKey:@"os_v"];        //系统版本
     [dic setObject:[MKDeviceUtils deviceType]                   forKey:@"os_name"];     //设备名称
     [dic setObject:@([NSDate mk_currentTimestamp]).stringValue  forKey:@"timestamp"];   //时间戳
-//    ELog(@"request.allHeaderFields : %@", [dic mk_jsonString]);
     return [dic mutableCopy];
 }
 

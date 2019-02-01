@@ -45,6 +45,8 @@ typedef void (^MKProgressBlock)(NSProgress *progress, CGFloat percent);
              completion:(MKResponseBlock)responseBlock;
 
 + (NSString *)appendQueryToUrl:(NSString *)url byParam:(NSDictionary *)dic;
+
++ (NSDictionary *)getRequestHeader;
 @end
 
 
