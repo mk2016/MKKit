@@ -99,8 +99,8 @@ static dispatch_queue_t s_queueNetwork = NULL;
 //    ELog(@"request param : %@", [param mk_jsonString]);
     
     NSHTTPURLResponse *resp = (NSHTTPURLResponse *)httpResponse;
-    NSInteger httpCode = [resp statusCode];
-    ELog(@"response http code : %@",@(httpCode));
+    NSInteger statusCode = [resp statusCode];
+    ELog(@"response http code : %@",@(statusCode));
     
     if ([responseObject isKindOfClass:[NSData class]]) {
         responseObject = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -116,7 +116,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
 //    ELog(@"response success json: %@", [responseDic mk_jsonString]);
     
     MKResponseInfo *resInfo = [[MKResponseInfo alloc] init];
-    resInfo.httpCode = httpCode;
+    resInfo.statusCode = statusCode;
     resInfo.originData = responseObject;
     resInfo.content = content;
     resInfo.headerFields = resp.allHeaderFields.copy;
@@ -132,11 +132,11 @@ static dispatch_queue_t s_queueNetwork = NULL;
     
     NSHTTPURLResponse *resp = (NSHTTPURLResponse *)httpResponse;
     //    ELog(@"response header : %@", resp.allHeaderFields);
-    NSInteger httpCode = [resp statusCode];
-    ELog(@"response statusCode:%@ || errorCode:%@",@(httpCode), @(error.code));
+    NSInteger statusCode = [resp statusCode];
+    ELog(@"response statusCode:%@ || errorCode:%@",@(statusCode), @(error.code));
     
     MKResponseInfo *resInfo = [[MKResponseInfo alloc] init];
-    resInfo.httpCode = httpCode;
+    resInfo.statusCode = statusCode;
     resInfo.error = error;
     resInfo.headerFields = resp.allHeaderFields.copy;
     MK_BLOCK_EXEC(block, resInfo);
