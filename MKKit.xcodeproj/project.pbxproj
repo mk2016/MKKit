@@ -27,6 +27,8 @@
 		C52DB3191E4C4C2C009FBA5A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52DB3181E4C4C2C009FBA5A /* QuartzCore.framework */; };
 		C52DB31B1E4C4C38009FBA5A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52DB31A1E4C4C38009FBA5A /* Accelerate.framework */; };
 		C52DB31D1E4C4C43009FBA5A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52DB31C1E4C4C43009FBA5A /* ImageIO.framework */; };
+		C53E077222115DF200FC09BB /* NSDictionary+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C53E077122115DF200FC09BB /* NSDictionary+MKAdd.m */; };
+		C53E077522115FBA00FC09BB /* MKDevicePermissionsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C53E077422115FBA00FC09BB /* MKDevicePermissionsUtils.m */; };
 		C55CED0421F1BE280049B1C7 /* MKFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C55CED0221F1BE280049B1C7 /* MKFileUtils.m */; };
 		C55CED0721F1CFFF0049B1C7 /* MKUIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C55CED0521F1CFFF0049B1C7 /* MKUIUtils.m */; };
 		C55CED0A21F1D6360049B1C7 /* MKImagePickerCtrlUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C55CED0821F1D6360049B1C7 /* MKImagePickerCtrlUtils.m */; };
@@ -58,7 +60,6 @@
 		C58BBBBA21EF1EB600DF1D2F /* UITableViewCell+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBB921EF1EB600DF1D2F /* UITableViewCell+MKAdd.m */; };
 		C58BBBBD21EF21B500DF1D2F /* UIView+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBBC21EF21B400DF1D2F /* UIView+MKAdd.m */; };
 		C58BBBC021EF221200DF1D2F /* UIView+MKFrameAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBBF21EF221200DF1D2F /* UIView+MKFrameAdd.m */; };
-		C58BBBC321EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBC221EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.m */; };
 		C58BBBC621EF2AC300DF1D2F /* MKDeviceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBC521EF2AC300DF1D2F /* MKDeviceUtils.m */; };
 		D0111DA5BB5A5F2A3E3C7CEC /* libPods-MKKitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D83E5EF7792483FD446C0A0 /* libPods-MKKitTests.a */; };
 		D9B8B20F64A94904A15506DD /* libPods-CommonPods-MKKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBECCBB78DF3C8573DCD0F3B /* libPods-CommonPods-MKKit.a */; };
@@ -123,6 +124,10 @@
 		C52DB3181E4C4C2C009FBA5A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C52DB31A1E4C4C38009FBA5A /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		C52DB31C1E4C4C43009FBA5A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		C53E077022115DF200FC09BB /* NSDictionary+MKAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+MKAdd.h"; sourceTree = "<group>"; };
+		C53E077122115DF200FC09BB /* NSDictionary+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MKAdd.m"; sourceTree = "<group>"; };
+		C53E077322115FBA00FC09BB /* MKDevicePermissionsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDevicePermissionsUtils.h; sourceTree = "<group>"; };
+		C53E077422115FBA00FC09BB /* MKDevicePermissionsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDevicePermissionsUtils.m; sourceTree = "<group>"; };
 		C55CED0221F1BE280049B1C7 /* MKFileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKFileUtils.m; sourceTree = "<group>"; };
 		C55CED0321F1BE280049B1C7 /* MKFileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKFileUtils.h; sourceTree = "<group>"; };
 		C55CED0521F1CFFF0049B1C7 /* MKUIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKUIUtils.m; sourceTree = "<group>"; };
@@ -183,8 +188,6 @@
 		C58BBBBC21EF21B400DF1D2F /* UIView+MKAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKAdd.m"; sourceTree = "<group>"; };
 		C58BBBBE21EF221200DF1D2F /* UIView+MKFrameAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MKFrameAdd.h"; sourceTree = "<group>"; };
 		C58BBBBF21EF221200DF1D2F /* UIView+MKFrameAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKFrameAdd.m"; sourceTree = "<group>"; };
-		C58BBBC121EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDeviceAuthorizationUtils.h; sourceTree = "<group>"; };
-		C58BBBC221EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDeviceAuthorizationUtils.m; sourceTree = "<group>"; };
 		C58BBBC421EF2AC300DF1D2F /* MKDeviceUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDeviceUtils.h; sourceTree = "<group>"; };
 		C58BBBC521EF2AC300DF1D2F /* MKDeviceUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDeviceUtils.m; sourceTree = "<group>"; };
 		CBECCBB78DF3C8573DCD0F3B /* libPods-CommonPods-MKKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CommonPods-MKKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -337,6 +340,8 @@
 				C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.h */,
 				C58BBB9D21EDE6D200DF1D2F /* NSDate+MKAdd.h */,
 				C58BBB9E21EDE6D200DF1D2F /* NSDate+MKAdd.m */,
+				C53E077022115DF200FC09BB /* NSDictionary+MKAdd.h */,
+				C53E077122115DF200FC09BB /* NSDictionary+MKAdd.m */,
 				C58BBB9221EDCE7F00DF1D2F /* NSObject+MKJsonAdd.h */,
 				C58BBB9321EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m */,
 				C58BBB9721EDD89B00DF1D2F /* NSObject+MKPropertyAdd.h */,
@@ -401,8 +406,8 @@
 		C56D43841E52EB27007ADF35 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				C58BBBC121EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.h */,
-				C58BBBC221EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.m */,
+				C53E077322115FBA00FC09BB /* MKDevicePermissionsUtils.h */,
+				C53E077422115FBA00FC09BB /* MKDevicePermissionsUtils.m */,
 				C58BBBC421EF2AC300DF1D2F /* MKDeviceUtils.h */,
 				C58BBBC521EF2AC300DF1D2F /* MKDeviceUtils.m */,
 				C55CED0321F1BE280049B1C7 /* MKFileUtils.h */,
@@ -635,7 +640,9 @@
 				C582CA4C2204227200547417 /* AFHTTPSessionManager+MKAdd.m in Sources */,
 				C58BBBBA21EF1EB600DF1D2F /* UITableViewCell+MKAdd.m in Sources */,
 				C5080E4B21F59C9C007C2F39 /* MKRightImageButton.m in Sources */,
+				C53E077222115DF200FC09BB /* NSDictionary+MKAdd.m in Sources */,
 				C5080E4C21F59C9C007C2F39 /* MKVButton.m in Sources */,
+				C53E077522115FBA00FC09BB /* MKDevicePermissionsUtils.m in Sources */,
 				C5080ED021F6AF77007C2F39 /* MKNetwork.m in Sources */,
 				C58BBB9121EDCACC00DF1D2F /* UIView+MKLogAdd.m in Sources */,
 				C5080E4321F59B89007C2F39 /* MKBlurView.m in Sources */,
@@ -646,7 +653,6 @@
 				C58BBBBD21EF21B500DF1D2F /* UIView+MKAdd.m in Sources */,
 				C582CA2B2202ED9C00547417 /* MKRouter.m in Sources */,
 				C5080E4D21F59C9C007C2F39 /* MKHyperlinkButton.m in Sources */,
-				C58BBBC321EF29AE00DF1D2F /* MKDeviceAuthorizationUtils.m in Sources */,
 				C58BBBA221EEFFD800DF1D2F /* UIButton+MKHitRect.m in Sources */,
 				C582CA0C2202C4C000547417 /* MKTabBarController.m in Sources */,
 				C58BBB9421EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m in Sources */,
