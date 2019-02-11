@@ -7,7 +7,7 @@
 //
 
 #import "MKImagePickerCtrlUtils.h"
-#import "MKDeviceAuthorizationUtils.h"
+#import "MKDevicePermissionsUtils.h"
 #import "MKUIUtils.h"
 
 @interface MKImagePickerCtrlUtils()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -34,13 +34,13 @@ MK_IMPL_SHAREDINSTANCE(MKImagePickerCtrlUtils);
         self.sourceType = MKImagePickerType_camera;
     }
     
-    MKAppAuthorizationType authType = MKAppAuthorizationType_camera;
+    MKAppPermissionsType authType = MKAppPermissionsType_camera;
     if (self.sourceType == MKImagePickerType_camera) {
         self.ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
-        authType = MKAppAuthorizationType_camera;
+        authType = MKAppPermissionsType_camera;
     }else if (self.sourceType == MKImagePickerType_photoLibrary ){
         self.ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        authType = MKAppAuthorizationType_assetsLib;
+        authType = MKAppPermissionsType_assetsLib;
     }
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
@@ -48,7 +48,7 @@ MK_IMPL_SHAREDINSTANCE(MKImagePickerCtrlUtils);
     }
     
     MK_WEAK_SELF
-    [MKDeviceAuthorizationUtils getAppAuthorizationWithType:authType block:^(BOOL bRet) {
+    [MKDevicePermissionsUtils getAppPermissionsWithType:authType block:^(BOOL bRet) {
         if (bRet) {
             double delayInSeconds = 0.1;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)(delayInSeconds * NSEC_PER_SEC)),

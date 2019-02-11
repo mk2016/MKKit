@@ -1,12 +1,12 @@
 //
-//  MKDeviceAuthorizationUtils.m
+//  MKDevicePermissionsUtils.m
 //  MKKit
 //
 //  Created by xiaomk on 16/5/15.
 //  Copyright © 2016年 xiaomk. All rights reserved.
 //
 
-#import "MKDeviceAuthorizationUtils.h"
+#import "MKDevicePermissionsUtils.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreLocation/CoreLocation.h>
 #import <AddressBook/AddressBook.h>
@@ -19,10 +19,10 @@
 
 #import "MKAlertView.h"
 
-@implementation MKDeviceAuthorizationUtils
+@implementation MKDevicePermissionsUtils
 
 #pragma mark - ***** assets lib ******
-+ (void)assetsLibAuthorizationWithBlock:(MKBoolBlock)block{
++ (void)assetsLibPermissionsWithBlock:(MKBoolBlock)block{
     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
     switch (status) {
         case PHAuthorizationStatusNotDetermined:{
@@ -45,7 +45,7 @@
 }
 
 #pragma mark - ***** camera ******
-+ (void)cameraAuthorizationWithBlock:(MKBoolBlock)block{
++ (void)cameraPermissionsWithBlock:(MKBoolBlock)block{
     AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     switch (status) {
         case AVAuthorizationStatusNotDetermined:{
@@ -68,7 +68,7 @@
 }
 
 #pragma mark - ***** contacts ******
-+ (void)contactsAuthorizationWithBlock:(MKBoolBlock)block{
++ (void)contactsPermissionsWithBlock:(MKBoolBlock)block{
     if (MK_iOS_IS_ABOVE(9.0)) {
         CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
         switch (status) {
@@ -116,8 +116,8 @@
 }
 
 #pragma mark - ***** location ******
-+ (void)locationAuthorizationWithBlock:(MKBoolBlock)block{
-    if ([CLLocationManager locationServicesEnabled]){   //check system location Authorization is open
++ (void)locationPermissionsWithBlock:(MKBoolBlock)block{
+    if ([CLLocationManager locationServicesEnabled]){   //check system location Permissions is open
         CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
         switch (status) {
             case kCLAuthorizationStatusNotDetermined:{
@@ -146,7 +146,7 @@
 }
 
 #pragma mark - ***** Event 、Reminder ******
-+ (void)getAuthorizationWithEntityType:(EKEntityType)type block:(MKBoolBlock)block{
++ (void)getPermissionsWithEntityType:(EKEntityType)type block:(MKBoolBlock)block{
     EKAuthorizationStatus authStatus = [EKEventStore authorizationStatusForEntityType:type];
     switch (authStatus) {
         case EKAuthorizationStatusNotDetermined:{
@@ -173,7 +173,7 @@
 
 
 #pragma mark - ***** bluetooth ******
-+ (void)bluetoothPeripheralAuthorizationWithBlock:(MKBoolBlock)block{
++ (void)bluetoothPeripheralPermissionsWithBlock:(MKBoolBlock)block{
     CBPeripheralManagerAuthorizationStatus authStatus = [CBPeripheralManager authorizationStatus];
     switch (authStatus) {
         case CBPeripheralManagerAuthorizationStatusNotDetermined:
@@ -192,7 +192,7 @@
 }
 
 #pragma mark - ***** record ******
-+ (void)recordAuthorizationWithBlock:(MKBoolBlock)block{
++ (void)recordPermissionsWithBlock:(MKBoolBlock)block{
     AVAudioSessionRecordPermission authStatus = [[AVAudioSession sharedInstance] recordPermission];
     switch (authStatus) {
         case AVAudioSessionRecordPermissionUndetermined:
@@ -209,7 +209,7 @@
 };
 
 #pragma mark - ***** cellular ******
-+ (void)cellularAuthorizationWithBlock:(MKBlock)block{
++ (void)cellularPermissionsWithBlock:(MKBlock)block{
     if (MK_iOS_IS_ABOVE(9.0)) {
         CTCellularData *cellularData = [[CTCellularData alloc] init];
         cellularData.cellularDataRestrictionDidUpdateNotifier = ^(CTCellularDataRestrictedState state) {
@@ -233,7 +233,7 @@
     }
 }
 
-+ (BOOL)getCellularAuthorization{
++ (BOOL)getCellularPermissions{
     if (MK_iOS_IS_ABOVE(9.0)) {
         return [[CTCellularData alloc] init].restrictedState == kCTCellularDataNotRestricted;
     }
@@ -241,7 +241,7 @@
 }
 
 #pragma mark - ***** notification ******
-+ (BOOL)getNotifycationAuthorization{
++ (BOOL)getNotifycationPermissions{
     return [[UIApplication sharedApplication] currentUserNotificationSettings].types != UIUserNotificationTypeNone;
 }
 
@@ -261,20 +261,20 @@
     return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
 }
 
-+ (void)openAppAuthorizationSetPage{
++ (void)openAppPermissionsSetPage{
     NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
     [[UIApplication sharedApplication] openURL:url];
 }
 
 #pragma mark - ***** author with type ******
-+ (void)getAppAuthorizationWithType:(MKAppAuthorizationType)type block:(MKBoolBlock)block{
-    [self getAppAuthorizationWithType:type showAlert:YES block:block];
++ (void)getAppPermissionsWithType:(MKAppPermissionsType)type block:(MKBoolBlock)block{
+    [self getAppPermissionsWithType:type showAlert:YES block:block];
 }
 
-+ (void)getAppAuthorizationWithType:(MKAppAuthorizationType)type showAlert:(BOOL)show block:(MKBoolBlock)block{
++ (void)getAppPermissionsWithType:(MKAppPermissionsType)type showAlert:(BOOL)show block:(MKBoolBlock)block{
     if (MK_IS_SIMULATOR) {
-        if (type == MKAppAuthorizationType_camera ||
-            type == MKAppAuthorizationType_contacts){
+        if (type == MKAppPermissionsType_camera ||
+            type == MKAppPermissionsType_contacts){
             MK_BLOCK_EXEC(block, NO);
             return;
         }
@@ -282,38 +282,38 @@
     MK_WEAK_SELF
     if (MK_iOS_IS_ABOVE(8.0)) {
         switch (type) {
-            case MKAppAuthorizationType_assetsLib:{
-                [self assetsLibAuthorizationWithBlock:^(BOOL bRet) {
+            case MKAppPermissionsType_assetsLib:{
+                [self assetsLibPermissionsWithBlock:^(BOOL bRet) {
                     MK_BLOCK_EXEC(block, bRet);
                     if (!bRet && show) {
-                        [weakSelf showAuthorizationSetAlertWithType:MKAppAuthorizationType_assetsLib];
+                        [weakSelf showPermissionsSetAlertWithType:MKAppPermissionsType_assetsLib];
                     }
                 }];
             }
                 break;
-            case MKAppAuthorizationType_camera:{
-                [self cameraAuthorizationWithBlock:^(BOOL bRet) {
+            case MKAppPermissionsType_camera:{
+                [self cameraPermissionsWithBlock:^(BOOL bRet) {
                     MK_BLOCK_EXEC(block, bRet);
                     if (!bRet && show) {
-                        [weakSelf showAuthorizationSetAlertWithType:MKAppAuthorizationType_camera];
+                        [weakSelf showPermissionsSetAlertWithType:MKAppPermissionsType_camera];
                     }
                 }];
             }
                 break;
-            case MKAppAuthorizationType_contacts:{
-                [self contactsAuthorizationWithBlock:^(BOOL bRet) {
+            case MKAppPermissionsType_contacts:{
+                [self contactsPermissionsWithBlock:^(BOOL bRet) {
                     MK_BLOCK_EXEC(block, bRet);
                     if (!bRet && show) {
-                        [weakSelf showAuthorizationSetAlertWithType:MKAppAuthorizationType_contacts];
+                        [weakSelf showPermissionsSetAlertWithType:MKAppPermissionsType_contacts];
                     }
                 }];
             }
                 break;
-            case MKAppAuthorizationType_location:{
-                [self locationAuthorizationWithBlock:^(BOOL bRet) {
+            case MKAppPermissionsType_location:{
+                [self locationPermissionsWithBlock:^(BOOL bRet) {
                     MK_BLOCK_EXEC(block, bRet);
                     if (!bRet && show) {
-                        [weakSelf showAuthorizationSetAlertWithType:MKAppAuthorizationType_location];
+                        [weakSelf showPermissionsSetAlertWithType:MKAppPermissionsType_location];
                     }
                 }];
             }
@@ -326,22 +326,22 @@
 
 
 #pragma mark - ***** other ******
-/** open app authorization set page */
-+ (void)showAuthorizationSetAlertWithType:(MKAppAuthorizationType)type{
+/** open app Permissions set page */
++ (void)showPermissionsSetAlertWithType:(MKAppPermissionsType)type{
     NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"];
     NSString *str = nil;
     
     switch (type) {
-        case MKAppAuthorizationType_assetsLib:
+        case MKAppPermissionsType_assetsLib:
             str = @"照片";
             break;
-        case MKAppAuthorizationType_camera:
+        case MKAppPermissionsType_camera:
             str = @"相机";
             break;
-        case MKAppAuthorizationType_contacts:
+        case MKAppPermissionsType_contacts:
             str = @"通讯录";
             break;
-        case MKAppAuthorizationType_location:
+        case MKAppPermissionsType_location:
             str = @"定位服务";
         default:
             break;
@@ -350,7 +350,7 @@
     MK_WEAK_SELF
     [MKAlertView alertWithTitle:@"提示" message:msg cancelTitle:@"取消" confirmTitle:@"确定" onViewController:nil block:^(NSInteger buttonIndex) {
         if (buttonIndex == 1){
-            [weakSelf openAppAuthorizationSetPage];
+            [weakSelf openAppPermissionsSetPage];
         }
     }];
 }

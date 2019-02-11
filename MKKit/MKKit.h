@@ -25,7 +25,7 @@
 #import "MKImagePickerCtrlUtils.h"
 #import "MKWindowView.h"
 
-#import "MKDeviceAuthorizationUtils.h"
+#import "MKDevicePermissionsUtils.h"
 #import "MKDeviceUtils.h"
 #import "MKFileUtils.h"
 #import "MKUIUtils.h"

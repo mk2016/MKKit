@@ -7,6 +7,7 @@
 //
 
 #import "MKViewController.h"
+#import "MKConst.h"
 
 @interface MKViewController ()
 
@@ -16,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (NSNumber *)gestureRecognizerShouldBegin{
@@ -46,6 +46,7 @@
 }
 
 - (void)dealloc{
+    DLog(@"dealloc ♻️");
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
