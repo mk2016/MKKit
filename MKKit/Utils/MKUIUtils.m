@@ -130,37 +130,9 @@
     }];
 }
 
-//+ (void)delayTask:(float)time onTimeEnd:(void(^)(void))block{
-//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC));
-//    dispatch_after(popTime, dispatch_get_main_queue(), block);
-//}
-
-///**
-// *  传入模型数组，根据key字段 获取 字母 首拼音
-// *  @param array model array
-// *  @return 排序好的 字母数组
-// */
-////传入数组，根据 key 字段 获取字母 首拼音， 返回排序好的字母数组
-//+ (NSArray *)getNoRepeatSortLetterArray:(NSArray *)array letterKey:(NSString *)letterKey{
-//    // 获取字母数组
-//    NSArray *tempArray = [array valueForKey:letterKey];
-//
-//    // 去重 转换为大写
-//    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] init];
-//    for (NSString *letter in tempArray) {
-//        if (letter && ![letter isEqual:[NSNull null]]) {
-//            [tempDic setObject:letter.uppercaseString forKey:letter.uppercaseString];
-//        }
-//    }
-//    // 排序
-//    NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:nil ascending:YES];
-//    NSArray *descArray = [NSArray arrayWithObject:desc];
-//    NSArray *sortArray = [tempDic.allValues sortedArrayUsingDescriptors:descArray];
-//    return sortArray;
-//}
-//
-//
-
-
++ (void)delayTask:(float)second onTimeEnd:(void(^)(void))block{
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(second * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), block);
+}
 
 @end

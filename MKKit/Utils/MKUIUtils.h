@@ -33,4 +33,5 @@
 /** exit app */
 + (void)exitApplication;
 
++ (void)delayTask:(float)second onTimeEnd:(void(^)(void))block;
 @end
