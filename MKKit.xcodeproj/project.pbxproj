@@ -29,6 +29,7 @@
 		C52DB31D1E4C4C43009FBA5A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52DB31C1E4C4C43009FBA5A /* ImageIO.framework */; };
 		C53E077222115DF200FC09BB /* NSDictionary+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C53E077122115DF200FC09BB /* NSDictionary+MKAdd.m */; };
 		C53E077522115FBA00FC09BB /* MKDevicePermissionsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C53E077422115FBA00FC09BB /* MKDevicePermissionsUtils.m */; };
+		C53E07AA2214106000FC09BB /* NSArray+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C53E07A92214106000FC09BB /* NSArray+MKAdd.m */; };
 		C55CED0421F1BE280049B1C7 /* MKFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C55CED0221F1BE280049B1C7 /* MKFileUtils.m */; };
 		C55CED0721F1CFFF0049B1C7 /* MKUIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C55CED0521F1CFFF0049B1C7 /* MKUIUtils.m */; };
 		C55CED0A21F1D6360049B1C7 /* MKImagePickerCtrlUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C55CED0821F1D6360049B1C7 /* MKImagePickerCtrlUtils.m */; };
@@ -128,6 +129,8 @@
 		C53E077122115DF200FC09BB /* NSDictionary+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+MKAdd.m"; sourceTree = "<group>"; };
 		C53E077322115FBA00FC09BB /* MKDevicePermissionsUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDevicePermissionsUtils.h; sourceTree = "<group>"; };
 		C53E077422115FBA00FC09BB /* MKDevicePermissionsUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDevicePermissionsUtils.m; sourceTree = "<group>"; };
+		C53E07A82214106000FC09BB /* NSArray+MKAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+MKAdd.h"; sourceTree = "<group>"; };
+		C53E07A92214106000FC09BB /* NSArray+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MKAdd.m"; sourceTree = "<group>"; };
 		C55CED0221F1BE280049B1C7 /* MKFileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKFileUtils.m; sourceTree = "<group>"; };
 		C55CED0321F1BE280049B1C7 /* MKFileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKFileUtils.h; sourceTree = "<group>"; };
 		C55CED0521F1CFFF0049B1C7 /* MKUIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKUIUtils.m; sourceTree = "<group>"; };
@@ -338,6 +341,8 @@
 			isa = PBXGroup;
 			children = (
 				C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.h */,
+				C53E07A82214106000FC09BB /* NSArray+MKAdd.h */,
+				C53E07A92214106000FC09BB /* NSArray+MKAdd.m */,
 				C58BBB9D21EDE6D200DF1D2F /* NSDate+MKAdd.h */,
 				C58BBB9E21EDE6D200DF1D2F /* NSDate+MKAdd.m */,
 				C53E077022115DF200FC09BB /* NSDictionary+MKAdd.h */,
@@ -670,6 +675,7 @@
 				C582CA0B2202C4C000547417 /* MKViewController.m in Sources */,
 				C5080ECF21F6AF77007C2F39 /* NSMutableURLRequest+MKAdd.m in Sources */,
 				C55CED0A21F1D6360049B1C7 /* MKImagePickerCtrlUtils.m in Sources */,
+				C53E07AA2214106000FC09BB /* NSArray+MKAdd.m in Sources */,
 				C58BBB9621EDCEEE00DF1D2F /* MKCategoryHeads.h in Sources */,
 				C55CED0421F1BE280049B1C7 /* MKFileUtils.m in Sources */,
 				C55CED1221F1D8EC0049B1C7 /* MKAlertView.m in Sources */,

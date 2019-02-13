@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "NSArray+MKAdd.h"
 #import "NSDate+MKAdd.h"
 #import "NSDictionary+MKAdd.h"
 #import "NSObject+MKJsonAdd.h"
