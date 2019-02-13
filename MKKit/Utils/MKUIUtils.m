@@ -13,7 +13,6 @@
 
 @implementation MKUIUtils
 
-
 + (id)getVCFromStoryboard:(NSString *)storyboard identify:(NSString *)identify{
     return [[UIStoryboard storyboardWithName:storyboard bundle:nil] instantiateViewControllerWithIdentifier:identify];
 }
@@ -25,6 +24,21 @@
     MK_DISPATCH_MAIN_ASYNC_SAFE(^{
         [[self getCurrentWindow] makeToast:message duration:3.0f position:CSToastPositionCenter style:nil];
     })
+}
+
+//set keyWindow's rootViewController by viewController
++ (void)setKeyWindowRootViewController:(UIViewController *)vc{
+    if (vc) {
+        MK_DISPATCH_MAIN_ASYNC_SAFE(^{
+            UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+            if (keyWindow.rootViewController) {
+                [keyWindow.rootViewController.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+                keyWindow.rootViewController = nil;
+            }
+            keyWindow.rootViewController = vc;
+            [keyWindow makeKeyAndVisible];
+        })
+    }
 }
 
 #pragma mark - ***** top View ******

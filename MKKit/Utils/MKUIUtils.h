@@ -14,6 +14,8 @@
 + (id)getVCFromStoryboard:(NSString *)storyboard identify:(NSString *)identify;
 + (void)showToast:(NSString *)message;
 
++ (void)setKeyWindowRootViewController:(UIViewController *)vc;
+
 #pragma mark - ***** top View ******
 + (UIView *)getTopView;
 

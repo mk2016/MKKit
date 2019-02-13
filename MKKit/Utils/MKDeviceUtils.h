@@ -18,7 +18,7 @@
 + (NSString *)appBundleShortVersion;
 + (NSString *)appBundleVersion;
 + (NSString *)appName;
-+ (int)appIntBundleVersion;
++ (int)appBundleIntVersion;
 
 #pragma mark - ***** device info ******
 + (float)systemVersion;
