@@ -1,6 +1,6 @@
 //
 //  MKRouter.h
-//  TQSAASPro
+//  MKKit
 //
 //  Created by xiaomk on 2018/12/24.
 //  Copyright © 2018 tqcar. All rights reserved.
@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "UIViewController+MKRouter.h"
 #import "MKConst.h"
+
+typedef id (^MKRouterBlock)(id params);
 
 typedef NS_ENUM (NSInteger, MKRouteType) {
     MKRouteType_none            = 0,

@@ -1,6 +1,6 @@
 //
 //  UIViewController+MKRouter.m
-//  TQSAASPro
+//  MKKit
 //
 //  Created by xiaomk on 2018/12/24.
 //  Copyright © 2018 tqcar. All rights reserved.
@@ -23,11 +23,11 @@ static char kAssociatedTransitionMode;
     return objc_getAssociatedObject(self, &kAssociatedParamsObjectKey);
 }
 
-- (void)setMk_routeBlock:(MKRouterBlock)mk_routeBlock{
+- (void)setMk_routeBlock:(MKRouteBlock)mk_routeBlock{
     objc_setAssociatedObject(self, &kAssociatedBlockKey, mk_routeBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (MKRouterBlock)mk_routeBlock{
+- (MKRouteBlock)mk_routeBlock{
     return objc_getAssociatedObject(self, &kAssociatedBlockKey);
 }
 

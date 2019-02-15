@@ -130,6 +130,11 @@
     }];
 }
 
++ (void)openAppStroeWithAppId:(NSString *)appId{
+    NSString *pkgUrl = [NSString stringWithFormat: @"itms-apps://itunes.apple.com/app/id%@",appId];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:pkgUrl]];
+}
+
 + (void)delayTask:(float)second onTimeEnd:(void(^)(void))block{
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(second * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), block);
