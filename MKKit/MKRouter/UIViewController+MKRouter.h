@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef id (^MKRouterBlock)(id params);
-
 typedef void (^MKRouteBlock)(id params);
 
 typedef enum : NSUInteger {
