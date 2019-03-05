@@ -1,5 +1,5 @@
 //
-//  MKUIUtils.h
+//  MKUtils.h
 //  MKKit
 //
 //  Created by xmk on 16/9/23.
@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface MKUIUtils : NSObject
+@interface MKUtils : NSObject
 
 + (id)getVCFromStoryboard:(NSString *)storyboard identify:(NSString *)identify;
+
 + (void)showToast:(NSString *)message;
 
 + (void)setKeyWindowRootViewController:(UIViewController *)vc;

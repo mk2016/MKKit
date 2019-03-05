@@ -29,7 +29,7 @@
 #import "MKDevicePermissionsUtils.h"
 #import "MKDeviceUtils.h"
 #import "MKFileUtils.h"
-#import "MKUIUtils.h"
+#import "MKUtils.h"
 
 /**
  * Vendor           version         github

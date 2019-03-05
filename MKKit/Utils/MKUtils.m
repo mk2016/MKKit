@@ -1,17 +1,17 @@
 //
-//  MKUIUtils.m
+//  MKUtils.m
 //  MKKit
 //
 //  Created by xmk on 16/9/23.
 //  Copyright © 2016年 mk. All rights reserved.
 //
 
-#import "MKUIUtils.h"
+#import "MKUtils.h"
 #import <MessageUI/MessageUI.h>
 #import "UIView+Toast.h"
 #import "MKConst.h"
 
-@implementation MKUIUtils
+@implementation MKUtils
 
 + (id)getVCFromStoryboard:(NSString *)storyboard identify:(NSString *)identify{
     return [[UIStoryboard storyboardWithName:storyboard bundle:nil] instantiateViewControllerWithIdentifier:identify];

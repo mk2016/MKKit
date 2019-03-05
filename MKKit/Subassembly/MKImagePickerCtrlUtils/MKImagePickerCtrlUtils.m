@@ -8,7 +8,7 @@
 
 #import "MKImagePickerCtrlUtils.h"
 #import "MKDevicePermissionsUtils.h"
-#import "MKUIUtils.h"
+#import "MKUtils.h"
 
 @interface MKImagePickerCtrlUtils()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, weak) UIViewController *vc;
@@ -27,7 +27,7 @@ MK_IMPL_SHAREDINSTANCE(MKImagePickerCtrlUtils);
     self.block = block;
     
     if (self.vc == nil) {
-        self.vc = [MKUIUtils topViewController];
+        self.vc = [MKUtils topViewController];
     }
     
     if (self.sourceType == MKImagePickerType_none) {
