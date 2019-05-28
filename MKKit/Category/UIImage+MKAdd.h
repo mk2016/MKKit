@@ -58,6 +58,12 @@
 /** scale image with size */
 - (UIImage *)mk_scaleToSize:(CGSize)size;
 
+/** fix image orientation */
+- (UIImage *)mk_fixOrientation;
+
+/** rotation image */
+- (UIImage *)mk_rotation:(UIImageOrientation)orientation;
+
 #pragma mark - ***** compress ******
 - (NSData *)mk_compressLessThan1M;
 - (NSData *)mk_compressLessThan500KB;

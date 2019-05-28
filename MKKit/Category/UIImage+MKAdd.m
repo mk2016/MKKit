@@ -220,6 +220,159 @@
     return scaledImage;
 }
 
+- (UIImage *)mk_fixOrientation{    
+    if (self.imageOrientation == UIImageOrientationUp){
+        return self;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
+    [self drawInRect:(CGRect){0, 0, self.size}];
+    UIImage *normalizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return normalizedImage;
+    
+//    if (self.imageOrientation == UIImageOrientationUp){
+//        return self;
+//    }
+//    CGAffineTransform transform = CGAffineTransformIdentity;
+//
+//    switch (self.imageOrientation) {
+//        case UIImageOrientationDown:
+//        case UIImageOrientationDownMirrored:
+//            transform = CGAffineTransformTranslate(transform, self.size.width, self.size.height);
+//            transform = CGAffineTransformRotate(transform, M_PI);
+//            break;
+//        case UIImageOrientationLeft:
+//        case UIImageOrientationLeftMirrored:
+//            transform = CGAffineTransformTranslate(transform, self.size.width, 0);
+//            transform = CGAffineTransformRotate(transform, M_PI_2);
+//            break;
+//        case UIImageOrientationRight:
+//        case UIImageOrientationRightMirrored:
+//            transform = CGAffineTransformTranslate(transform, 0, self.size.height);
+//            transform = CGAffineTransformRotate(transform, -M_PI_2);
+//            break;
+//        case UIImageOrientationUp:
+//        case UIImageOrientationUpMirrored:
+//            break;
+//        default:
+//            break;
+//    }
+//
+//    switch (self.imageOrientation) {
+//        case UIImageOrientationUpMirrored:
+//        case UIImageOrientationDownMirrored:
+//            transform = CGAffineTransformTranslate(transform, self.size.width, 0);
+//            transform = CGAffineTransformScale(transform, -1, 1);
+//            break;
+//
+//        case UIImageOrientationLeftMirrored:
+//        case UIImageOrientationRightMirrored:
+//            transform = CGAffineTransformTranslate(transform, self.size.height, 0);
+//            transform = CGAffineTransformScale(transform, -1, 1);
+//            break;
+//        case UIImageOrientationUp:
+//        case UIImageOrientationDown:
+//        case UIImageOrientationLeft:
+//        case UIImageOrientationRight:
+//            break;
+//    }
+//
+//    // Now we draw the underlying CGImage into a new context, applying the transform
+//    // calculated above.
+//    CGContextRef ctx = CGBitmapContextCreate(NULL, self.size.width, self.size.height,
+//                                             CGImageGetBitsPerComponent(self.CGImage), 0,
+//                                             CGImageGetColorSpace(self.CGImage),
+//                                             CGImageGetBitmapInfo(self.CGImage));
+//    CGContextConcatCTM(ctx, transform);
+//    switch (self.imageOrientation) {
+//        case UIImageOrientationLeft:
+//        case UIImageOrientationLeftMirrored:
+//        case UIImageOrientationRight:
+//        case UIImageOrientationRightMirrored:
+//            CGContextDrawImage(ctx, CGRectMake(0,0,self.size.height,self.size.width), self.CGImage);
+//            break;
+//        default:
+//            CGContextDrawImage(ctx, CGRectMake(0,0,self.size.width,self.size.height), self.CGImage);
+//            break;
+//    }
+//
+//    // And now we just create a new UIImage from the drawing context
+//    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
+//    UIImage *img = [UIImage imageWithCGImage:cgimg];
+//    CGContextRelease(ctx);
+//    CGImageRelease(cgimg);
+//    return img;
+}
+
+- (UIImage *)mk_rotation:(UIImageOrientation)orientation{
+    UIImage *newImage = [UIImage imageWithCGImage:self.CGImage scale:self.scale orientation:orientation];
+    return newImage;
+//    CGFloat angle;
+    
+//    if ( fmod(angle, 360) == 0 ){
+//        return self;
+//    }
+    
+    
+//    UIGraphicsBeginImageContext(self.size);
+//
+//
+//    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+//    CGFloat radian = angle/180*M_PI;
+//    CGAffineTransform transform = CGAffineTransformRotate(<#CGAffineTransform t#>, <#CGFloat angle#>)
+//
+//    long double rotate = 0.5;
+//
+//    float translateX = 0;
+//    float translateY = 0;
+//    float scaleX = 1.0;
+//    float scaleY = 1.0;
+//    CGRect rect;
+//
+//    switch (orientation) {
+//        case UIImageOrientationLeft:
+//            rotate = M_PI_2;
+//            rect = CGRectMake(0, 0, self.size.height, self.size.width);
+//            translateX = 0;
+//            translateY = -rect.size.width;
+//            scaleX = rect.size.height/rect.size.width;
+//            scaleY = rect.size.width/rect.size.height;
+//            break;
+//        case UIImageOrientationRight:
+//            rotate = 33 * M_PI_2;
+//            rect = CGRectMake(0, 0, self.size.height, self.size.width);
+//            translateX = -rect.size.height;
+//            translateY = 0;
+//            scaleX = rect.size.height/rect.size.width;
+//            scaleY = rect.size.width/rect.size.height;
+//            break;
+//        case UIImageOrientationDown:
+//            rotate = M_PI;
+//            rect = CGRectMake(0, 0, self.size.width, self.size.height);
+//            translateX = -rect.size.width;
+//            translateY = -rect.size.height;
+//            break;
+//        default:
+//            rotate = 0.0;
+//            rect = CGRectMake(0, 0, self.size.width, self.size.height);
+//            translateX = 0;
+//            translateY = 0;
+//            break;
+//    }
+//
+//    UIGraphicsBeginImageContext(rect.size);
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    //做CTM变换
+//    CGContextTranslateCTM(context, 0.0, rect.size.height);
+//    CGContextScaleCTM(context, 1.0, -1.0);
+//    CGContextRotateCTM(context, rotate);
+//    CGContextTranslateCTM(context, translateX, translateY);
+//    CGContextDrawImage(context, CGRectMake(0, 0, rect.size.width, rect.size.height), self.CGImage);
+//    UIImage *newPic = UIGraphicsGetImageFromCurrentImageContext();
+//    return newPic;
+}
+
 #pragma mark - ***** compress ******
 - (NSData *)mk_compressLessThan1M{
     return [self mk_compressLessThan:1000.f];
