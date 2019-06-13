@@ -14,17 +14,17 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - HappyDNS (0.3.14)
+  - HappyDNS (0.3.15)
   - Masonry (1.1.0)
-  - MJExtension (3.0.15.1)
+  - MJExtension (3.0.17)
   - SAMKeychain (1.5.3)
   - Toast (4.0.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
-  - HappyDNS (~> 0.3.14)
+  - HappyDNS (~> 0.3.15)
   - Masonry (~> 1.1.0)
-  - MJExtension (~> 3.0.15.1)
+  - MJExtension (~> 3.0.17)
   - SAMKeychain (~> 1.5.3)
   - Toast (~> 4.0.0)
 
@@ -39,12 +39,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  HappyDNS: dc6a164ee81979093123c241c6353bcf0218add6
+  HappyDNS: 00c15e651a347206e58a20503a32a5564589b56a
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
+  MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
 
-PODFILE CHECKSUM: 205434203e2a2880af0a311a470b1909aac9412f
+PODFILE CHECKSUM: 7d8838aa0baa68c6a460e4866c42ae32bfdf627f
 
 COCOAPODS: 1.5.3
