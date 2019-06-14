@@ -10,10 +10,10 @@ Pod::Spec.new do |s|
   s.source        = { :git => "", :tag => "#{s.version}" }
   s.source_files  = "MKKit/**/*.{h,m}"
   s.requires_arc  = true
-  s.dependency    "HappyDNS", '~> 0.3.14'
-  s.dependency    "MJExtension", '~> 3.0.15.1'
+  s.dependency    "AFNetworking", '~> 3.2.1'
+  s.dependency    "HappyDNS", '~> 0.3.15'
+  s.dependency    "MJExtension", '~> 3.0.17'
   s.dependency    "Masonry", '~> 1.1.0'
   s.dependency    "SAMKeychain", '~> 1.5.3'
   s.dependency    "Toast", '~> 4.0.0'
-  s.dependency    "AFNetworking", '~> 3.2.1'
 end

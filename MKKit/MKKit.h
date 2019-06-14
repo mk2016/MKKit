@@ -35,8 +35,8 @@
  * Vendor           version         github
  * ------------------------------------------------
  * AFNetworking |   3.2.1       |   https://github.com/AFNetworking/AFNetworking
- * HappyDNS     |   0.3.14      |   https://github.com/qiniu/happy-dns-objc
- * MJExtension  |   3.0.15.1    |   https://github.com/CoderMJLee/MJExtension
+ * HappyDNS     |   0.3.15      |   https://github.com/qiniu/happy-dns-objc
+ * MJExtension  |   3.0.17      |   https://github.com/CoderMJLee/MJExtension
  * Masonry      |   1.1.0       |   https://github.com/SnapKit/Masonry
  * SAMKeychain  |   1.5.3       |   https://github.com/soffes/SAMKeychain
  * Toast        |   4.0.0       |   https://github.com/scalessec/Toast
