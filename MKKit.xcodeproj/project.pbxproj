@@ -466,7 +466,6 @@
 				C52DB2EF1E4C48EB009FBA5A /* Sources */,
 				C52DB2F01E4C48EB009FBA5A /* Frameworks */,
 				C52DB2F11E4C48EB009FBA5A /* CopyFiles */,
-				C3D684D47DC1BE53C1DB9CDA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -485,7 +484,6 @@
 				C582CA4D220425A600547417 /* Sources */,
 				C582CA4E220425A600547417 /* Frameworks */,
 				C582CA4F220425A600547417 /* Resources */,
-				734453269D9A4E3D7B72F69B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -547,24 +545,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		734453269D9A4E3D7B72F69B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CommonPods-MKKitTests/Pods-CommonPods-MKKitTests-resources.sh",
-				"${PODS_ROOT}/SAMKeychain/Support/SAMKeychain.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SAMKeychain.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommonPods-MKKitTests/Pods-CommonPods-MKKitTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B9731DD24F66415FE3C2FA8F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -581,24 +561,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C3D684D47DC1BE53C1DB9CDA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CommonPods-MKKit/Pods-CommonPods-MKKit-resources.sh",
-				"${PODS_ROOT}/SAMKeychain/Support/SAMKeychain.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SAMKeychain.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommonPods-MKKit/Pods-CommonPods-MKKit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FCF572CDA1CED05B6AB65516 /* [CP] Check Pods Manifest.lock */ = {
