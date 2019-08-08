@@ -21,15 +21,15 @@
     if ([message isEqual:[NSNull null]] || message == nil || message.length == 0){
         return;
     }
-    MK_DISPATCH_MAIN_ASYNC_SAFE(^{
+    mk_dispatch_sync_on_main_queue(^{
         [[self getCurrentWindow] makeToast:message duration:3.0f position:CSToastPositionCenter style:nil];
-    })
+    });
 }
 
 //set keyWindow's rootViewController by viewController
 + (void)setKeyWindowRootViewController:(UIViewController *)vc{
     if (vc) {
-        MK_DISPATCH_MAIN_ASYNC_SAFE(^{
+        mk_dispatch_sync_on_main_queue(^{
             UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
             if (keyWindow.rootViewController) {
                 [keyWindow.rootViewController.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -37,7 +37,7 @@
             }
             keyWindow.rootViewController = vc;
             [keyWindow makeKeyAndVisible];
-        })
+        });
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <pthread.h>
 
 #ifndef MKKitMacro
 #define MKKitMacro
@@ -124,19 +125,21 @@ static type *sharedInstance = nil;\
 }
 
 /** thread */
-#define MK_DISPATCH_MAIN_SYNC_SAFE(block)\
-    if ([NSThread isMainThread]) {\
-        block();\
-    } else {\
-        dispatch_sync(dispatch_get_main_queue(), block);\
+static inline void mk_dispatch_async_on_main_queue(void (^block)(void)) {
+    if (pthread_main_np()) {
+        block();
+    } else {
+        dispatch_async(dispatch_get_main_queue(), block);
     }
+}
 
-#define MK_DISPATCH_MAIN_ASYNC_SAFE(block)\
-    if ([NSThread isMainThread]) {\
-        block();\
-    } else {\
-        dispatch_async(dispatch_get_main_queue(), block);\
+static inline void mk_dispatch_sync_on_main_queue(void (^block)(void)) {
+    if (pthread_main_np()) {
+        block();
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), block);
     }
+}
 
 /** reference */
 #define MK_WEAK_SELF          __weak typeof(self) weakSelf = self;
