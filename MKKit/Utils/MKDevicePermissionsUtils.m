@@ -128,6 +128,7 @@
                     [location requestAlwaysAuthorization];
                 }
             }
+                break;
             case kCLAuthorizationStatusAuthorizedAlways:
             case kCLAuthorizationStatusAuthorizedWhenInUse:
                 MK_BLOCK_EXEC(block, YES);
