@@ -10,6 +10,8 @@
 
 @interface UINavigationController (MKAdd)
 
+- (BOOL)mk_canPopToViewContrller:(NSString *)vcName;
+
 /** pop to an appointed viewController */
 - (BOOL)mk_popToViewControllerWithName:(NSString *)vcName animated:(BOOL)animated;
 

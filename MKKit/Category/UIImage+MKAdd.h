@@ -35,6 +35,9 @@
                            margin:(CGFloat)margin
                              logo:(NSString *)logoImageName
                         logoWidth:(CGFloat)logoWidth;
+
+- (NSString *)mk_detectorQRCode;
+
 //CIImage -> UIImage
 + (UIImage *)mk_imageWithCIImage:(CIImage *)ciImage size:(CGSize)size;
 

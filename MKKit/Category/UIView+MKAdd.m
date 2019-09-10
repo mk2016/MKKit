@@ -21,10 +21,11 @@
 }
 
 - (void)mk_setToCircle{
-    [self mk_setCornerWith:UIRectCornerAllCorners radii:CGSizeMake(self.frame.size.width/2, 0)];
+    [self mk_setCornerWith:UIRectCornerAllCorners radii:CGSizeMake(CGRectGetWidth(self.frame)/2, CGRectGetHeight(self.frame)/2)];
 }
 
 - (void)mk_setCornerWith:(UIRectCorner)corners radii:(CGSize)size{
+    [self layoutIfNeeded];
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corners cornerRadii:size];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.frame = self.bounds;

@@ -24,11 +24,13 @@
 #import "MKRightImageButton.h"
 #import "MKVButton.h"
 #import "MKImagePickerCtrlUtils.h"
+#import "MKOverView.h"
 #import "MKWindowView.h"
 
 #import "MKDevicePermissionsUtils.h"
 #import "MKDeviceUtils.h"
 #import "MKFileUtils.h"
+#import "MKScanerSessionManager.h"
 #import "MKUtils.h"
 
 /**

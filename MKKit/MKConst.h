@@ -76,7 +76,6 @@ CGSizeEqualToSize(CGSizeMeke(1242, 2208), [[UIScreen mainScreen] currentMode].si
 #define MK_ONE_PIXEL_HEIGHT             (1.f/[UIScreen mainScreen].scale)
 #define IPHONEX_HEAD_MARGIN             (MK_IS_IPHONE_XX ? 24 : 0)
 
-
 #ifndef MK_iOS_IS_ABOVE
     #define MK_iOS_IS_ABOVE(s) [[[UIDevice currentDevice] systemVersion] floatValue] > s
 #endif

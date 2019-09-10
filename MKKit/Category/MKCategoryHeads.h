@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "AVCaptureDevice+MKAdd.h"
 #import "NSArray+MKAdd.h"
 #import "NSDate+MKAdd.h"
 #import "NSDictionary+MKAdd.h"

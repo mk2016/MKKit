@@ -9,6 +9,8 @@
 #import "MKImagePickerCtrlUtils.h"
 #import "MKDevicePermissionsUtils.h"
 #import "MKUtils.h"
+#import <CoreServices/CoreServices.h>
+#import "UIImage+MKAdd.h"
 
 @interface MKImagePickerCtrlUtils()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, weak) UIViewController *vc;
@@ -22,18 +24,27 @@
 MK_IMPL_SHAREDINSTANCE(MKImagePickerCtrlUtils);
 
 - (void)showWithSourceType:(MKImagePickerType)sourceType onViewController:(UIViewController *)vc block:(MKIPCBlock)block{
+    [self showWithSourceType:sourceType
+               allowsEditing:NO
+            onViewController:vc
+                       block:block];
+}
+
+- (void)showWithSourceType:(MKImagePickerType)sourceType
+             allowsEditing:(BOOL)allowsEditing
+          onViewController:(UIViewController *)vc
+                     block:(MKIPCBlock)block{
+    
     self.vc = vc;
-    self.sourceType = sourceType;
+    self.sourceType = sourceType?:MKImagePickerType_camera;
     self.block = block;
     
     if (self.vc == nil) {
         self.vc = [MKUtils topViewController];
     }
     
-    if (self.sourceType == MKImagePickerType_none) {
-        self.sourceType = MKImagePickerType_camera;
-    }
-    
+    self.ipc.allowsEditing = allowsEditing;
+
     MKAppPermissionsType authType = MKAppPermissionsType_camera;
     if (self.sourceType == MKImagePickerType_camera) {
         self.ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -53,8 +64,8 @@ MK_IMPL_SHAREDINSTANCE(MKImagePickerCtrlUtils);
             double delayInSeconds = 0.1;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)(delayInSeconds * NSEC_PER_SEC)),
                            dispatch_get_main_queue(), ^{
-                [vc presentViewController:weakSelf.ipc animated:YES completion:nil];
-            });
+                               [vc presentViewController:weakSelf.ipc animated:YES completion:nil];
+                           });
         }else{
             MK_BLOCK_EXEC(block, nil);
         }
@@ -64,7 +75,21 @@ MK_IMPL_SHAREDINSTANCE(MKImagePickerCtrlUtils);
 #pragma mark - ***** delegate ******
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     [self.vc dismissViewControllerAnimated:YES completion:nil];
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *image = nil;
+    if (picker.allowsEditing) {
+        image = [info objectForKey:UIImagePickerControllerEditedImage];
+        if (@available(iOS 11, *)) {
+            if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {
+                UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+                UIImage *oImage = [originalImage mk_fixOrientation];
+                CGRect crop = [[info objectForKey:UIImagePickerControllerCropRect] CGRectValue];
+                crop.origin.y = crop.origin.y + 132;
+                image = [oImage mk_cropWith:crop];
+            }
+        }
+    }else{
+        image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    }
     MK_BLOCK_EXEC(self.block, image);
 }
 
@@ -77,10 +102,9 @@ MK_IMPL_SHAREDINSTANCE(MKImagePickerCtrlUtils);
 - (UIImagePickerController *)ipc{
     if (!_ipc) {
         _ipc = [[UIImagePickerController alloc] init];
-        _ipc.delegate = self;
-        _ipc.allowsEditing = YES;
         _ipc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         _ipc.navigationBar.translucent = NO;
+        _ipc.delegate = self;
     }
     return _ipc;
 }
