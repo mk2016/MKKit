@@ -10,6 +10,8 @@
 
 @interface UITextField (MKAdd)
 
+- (void)mk_verifyPhoneNum;
+
 /**
  * TextField input money max integer length limit
  */

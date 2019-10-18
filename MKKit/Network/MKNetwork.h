@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "AFNetworking.h"
 
 @class MKResponseInfo;
+
+@protocol MKNetworkDelegate <NSObject>
+
+- (void)settingManager:(AFHTTPSessionManager *)manager;
+- (NSDictionary *)getRequestHeader;
+@end
 
 typedef NS_ENUM(NSUInteger, MKRequestType) {
     MKRequestType_post = 1,
@@ -28,6 +35,7 @@ typedef void (^MKProgressBlock)(NSProgress *progress, CGFloat percent);
 @property (nonatomic, assign) BOOL analysisDNS;
 @property (nonatomic, assign) BOOL checkProxySetting;
 @property (nonatomic, assign) BOOL showErrorLog;
+@property (nonatomic, weak) id<MKNetworkDelegate>delegate;
 
 + (instancetype)sharedInstance;
 

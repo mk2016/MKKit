@@ -11,6 +11,9 @@
 
 @interface MKUtils : NSObject
 
++ (void)toastManagerInit;
+
+
 + (id)getVCFromStoryboard:(NSString *)storyboard identify:(NSString *)identify;
 
 + (void)showToast:(NSString *)message;

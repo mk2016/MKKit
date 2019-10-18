@@ -7,7 +7,6 @@
 //
 
 #import "MKNetwork.h"
-#import "AFNetworking.h"
 #import "MKConst.h"
 #import "MKCategoryHeads.h"
 #import "MKAlertView.h"
@@ -39,7 +38,9 @@ static dispatch_queue_t s_queueNetwork = NULL;
 + (void)sendRequestWith:(NSString *)urlString type:(MKRequestType)requestType param:(NSDictionary *)param file:(id)file progress:(MKProgressBlock)progressBlock completion:(MKResponseBlock)responseBlock{
     if ([MKNetwork sharedInstance].checkProxySetting) {
         if ([MKNetwork checkProxySetting]) {
-            [MKAlertView alertWithTitle:@"提示" message:@"请先关闭代理，保证网络安全" cancelTitle:@"确定" confirmTitle:nil onViewController:nil block:nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MKAlertView alertWithTitle:@"提示" message:@"请先关闭代理，保证网络安全" cancelTitle:@"确定" confirmTitle:nil onViewController:nil block:nil];
+            });
             MK_BLOCK_EXEC(responseBlock, nil);
             return;
         }
@@ -94,7 +95,9 @@ static dispatch_queue_t s_queueNetwork = NULL;
 #pragma mark - ***** 请求结果处理 ******
 /** response success */
 + (void)responseSuccessWithUrl:(NSString *)urlString param:(NSDictionary *)param method:(NSString *)method httpResponse:(NSURLResponse *)httpResponse responseObject:(id)responseObject block:(MKResponseBlock)block{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    });
     ELog(@"request URL %@ : %@", method, urlString);
     ELog(@"request param : %@", [param mk_jsonString]);
     
@@ -125,7 +128,9 @@ static dispatch_queue_t s_queueNetwork = NULL;
 
 /** response error */
 + (void)responseFailureWithUrl:(NSString *)urlString param:(NSDictionary *)param method:(NSString *)method httpResponse:(NSURLResponse *)httpResponse error:(NSError *)error block:(MKResponseBlock)block{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    });
     ELog(@"request URL %@ : %@", method, urlString);
 //    ELog(@"request param : %@", [param mk_jsonString]);
     [self printError:error];
@@ -253,7 +258,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
         //        NSData *data = UIImageJPEGRepresentation(image, 1.0);
         ELog(@"image Leng : %lu", (unsigned long)data.length);
         NSString *imageName = [NSString stringWithFormat:@"%@.jpg",@([NSDate mk_currentTimestamp])];
-        [formData appendPartWithFileData:data name:@"image" fileName:imageName mimeType:@"image/jpeg"];
+        [formData appendPartWithFileData:data name:@"img" fileName:imageName mimeType:@"image/jpeg"];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         CGFloat proportion = 1.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount;
         ELog(@"======= upload proportion : %f" ,proportion);
@@ -323,18 +328,27 @@ static AFHTTPSessionManager *_afHttpSectionManager = nil;
 + (AFHTTPSessionManager *)createManager{
     if (!_afHttpSectionManager) {
         _afHttpSectionManager = [AFHTTPSessionManager manager];
-        _afHttpSectionManager.requestSerializer = [AFJSONRequestSerializer serializer];
-        _afHttpSectionManager.requestSerializer.timeoutInterval = 15.f;
-//        _afHttpSectionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        _afHttpSectionManager.responseSerializer = [AFJSONResponseSerializer serializer];
-        _afHttpSectionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/html",@"text/plain", nil];
-        ((AFJSONResponseSerializer *)_afHttpSectionManager.responseSerializer).removesKeysWithNullValues = YES;
-        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-        securityPolicy.allowInvalidCertificates = YES;
-        securityPolicy.validatesDomainName = NO;
-        _afHttpSectionManager.securityPolicy = securityPolicy;
+        if ([MKNetwork sharedInstance].delegate && [[MKNetwork sharedInstance].delegate respondsToSelector:@selector(settingManager:)]) {
+            [[MKNetwork sharedInstance].delegate settingManager:_afHttpSectionManager];
+        }else{
+            _afHttpSectionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+//            _afHttpSectionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+            _afHttpSectionManager.requestSerializer.timeoutInterval = 15.f;
+
+            _afHttpSectionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+//            _afHttpSectionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+            _afHttpSectionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/html",@"text/plain", nil];
+            ((AFJSONResponseSerializer *)_afHttpSectionManager.responseSerializer).removesKeysWithNullValues = YES;
+            AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+            securityPolicy.allowInvalidCertificates = YES;
+            securityPolicy.validatesDomainName = NO;
+            _afHttpSectionManager.securityPolicy = securityPolicy;
+        }
     }
     NSDictionary *dic = [self getRequestHeader];
+    if ([MKNetwork sharedInstance].delegate && [[MKNetwork sharedInstance].delegate respondsToSelector:@selector(getRequestHeader)]) {
+        dic = [[MKNetwork sharedInstance].delegate getRequestHeader];
+    }
     NSArray *keysAry = dic.allKeys;
     for (NSString *key in keysAry) {
         NSString *value = [dic objectForKey:key];
@@ -355,7 +369,6 @@ static AFHTTPSessionManager *_afHttpSectionManager = nil;
     [dic setObject:@([NSDate mk_currentTimestamp]).stringValue  forKey:@"timestamp"];   //时间戳
     return [dic mutableCopy];
 }
-
 
 + (BOOL)checkProxySetting{
     NSDictionary *proxySettings = (__bridge NSDictionary *)(CFNetworkCopySystemProxySettings());

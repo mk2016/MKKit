@@ -10,6 +10,15 @@
 
 @implementation UITextField (MKAdd)
 
+- (void)mk_verifyPhoneNum{
+    NSString *oStr = self.text;
+    NSString *filterStr = [oStr stringByReplacingOccurrencesOfString:@"[^0-9]" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, [oStr length])];
+    if (filterStr.length > 11) {
+        filterStr = [filterStr substringToIndex:11];
+    }
+    self.text = filterStr;
+}
+
 - (void)mk_constraintMoneyByIntegerLimit:(NSInteger)length{
     if (self.text.length > 1) {
         NSString *frist = [self.text substringToIndex:1];

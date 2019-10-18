@@ -13,6 +13,11 @@
 
 @implementation MKUtils
 
++ (void)toastManagerInit{
+    [CSToastManager setTapToDismissEnabled:NO];
+    [CSToastManager setQueueEnabled:NO];
+}
+
 + (id)getVCFromStoryboard:(NSString *)storyboard identify:(NSString *)identify{
     return [[UIStoryboard storyboardWithName:storyboard bundle:nil] instantiateViewControllerWithIdentifier:identify];
 }
@@ -21,15 +26,17 @@
     if ([message isEqual:[NSNull null]] || message == nil || message.length == 0){
         return;
     }
-    mk_dispatch_sync_on_main_queue(^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         [[self getCurrentWindow] makeToast:message duration:3.0f position:CSToastPositionCenter style:nil];
     });
 }
 
+
+
 //set keyWindow's rootViewController by viewController
 + (void)setKeyWindowRootViewController:(UIViewController *)vc{
     if (vc) {
-        mk_dispatch_sync_on_main_queue(^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
             if (keyWindow.rootViewController) {
                 [keyWindow.rootViewController.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];

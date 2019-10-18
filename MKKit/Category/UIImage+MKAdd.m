@@ -118,6 +118,21 @@
     return qrImage;
 }
 
+- (NSString *)mk_detectorQRCode{
+    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode
+                                              context:nil
+                                              options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
+    if (detector) {
+        NSArray *features = [detector featuresInImage:[CIImage imageWithCGImage:self.CGImage]];
+        if (features && features.count > 0) {
+            CIQRCodeFeature *feature = [features objectAtIndex:0];
+            NSString *qrcode = feature.messageString;
+            return qrcode;
+        }
+    }
+    return nil;
+}
+
 //CIImage -> UIImage
 + (UIImage *)mk_imageWithCIImage:(CIImage *)ciImage size:(CGSize)size{
     if (ciImage == nil) {

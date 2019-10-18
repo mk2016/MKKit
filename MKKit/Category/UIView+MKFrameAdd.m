@@ -83,4 +83,20 @@
     center.y = y;
     self.center = center;
 }
+
+- (CGPoint)topLeft{
+    return CGPointMake(self.x, self.y);
+}
+
+- (CGPoint)topRight{
+    return CGPointMake(self.x+self.width, self.y);
+}
+
+- (CGPoint)bottomRight{
+    return CGPointMake(self.x+self.width, self.y+self.height);
+}
+
+- (CGPoint)bottomLeft{
+    return CGPointMake(self.x, self.y+self.height);
+}
 @end

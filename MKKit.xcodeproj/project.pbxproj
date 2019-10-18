@@ -35,6 +35,9 @@
 		C55CED1121F1D8EC0049B1C7 /* UIAlertController+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C55CED0E21F1D8EC0049B1C7 /* UIAlertController+MKAdd.m */; };
 		C55CED1221F1D8EC0049B1C7 /* MKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C55CED1021F1D8EC0049B1C7 /* MKAlertView.m */; };
 		C55CED1621F1DB1E0049B1C7 /* MKWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = C55CED1521F1DB1D0049B1C7 /* MKWindowView.m */; };
+		C5778D7123278782002D7B59 /* AVCaptureDevice+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C5778D6F23278782002D7B59 /* AVCaptureDevice+MKAdd.m */; };
+		C5778D75232788AB002D7B59 /* MKOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5778D74232788AB002D7B59 /* MKOverView.m */; };
+		C5778D78232789BD002D7B59 /* MKScanerSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5778D76232789BD002D7B59 /* MKScanerSessionManager.m */; };
 		C57BE2F71E4D8CCA00177D4F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57BE2F61E4D8CCA00177D4F /* CoreFoundation.framework */; };
 		C582CA0A2202C4C000547417 /* MKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C582CA072202C4C000547417 /* MKNavigationController.m */; };
 		C582CA0B2202C4C000547417 /* MKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C582CA082202C4C000547417 /* MKViewController.m */; };
@@ -136,6 +139,12 @@
 		C55CED1021F1D8EC0049B1C7 /* MKAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAlertView.m; sourceTree = "<group>"; };
 		C55CED1421F1DB1D0049B1C7 /* MKWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWindowView.h; sourceTree = "<group>"; };
 		C55CED1521F1DB1D0049B1C7 /* MKWindowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWindowView.m; sourceTree = "<group>"; };
+		C5778D6F23278782002D7B59 /* AVCaptureDevice+MKAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVCaptureDevice+MKAdd.m"; sourceTree = "<group>"; };
+		C5778D7023278782002D7B59 /* AVCaptureDevice+MKAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVCaptureDevice+MKAdd.h"; sourceTree = "<group>"; };
+		C5778D73232788AB002D7B59 /* MKOverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKOverView.h; sourceTree = "<group>"; };
+		C5778D74232788AB002D7B59 /* MKOverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKOverView.m; sourceTree = "<group>"; };
+		C5778D76232789BD002D7B59 /* MKScanerSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKScanerSessionManager.m; sourceTree = "<group>"; };
+		C5778D77232789BD002D7B59 /* MKScanerSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKScanerSessionManager.h; sourceTree = "<group>"; };
 		C57BE2F61E4D8CCA00177D4F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		C582CA042202C4C000547417 /* MKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKViewController.h; sourceTree = "<group>"; };
 		C582CA052202C4C000547417 /* MKNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNavigationController.h; sourceTree = "<group>"; };
@@ -264,6 +273,7 @@
 				C5080E4021F59B89007C2F39 /* MKBlurView */,
 				C5080E4421F59C9C007C2F39 /* MKButton */,
 				C55CED0B21F1D8E00049B1C7 /* MKImagePickerCtrlUtils */,
+				C5778D72232788AB002D7B59 /* MKView */,
 				C55CED1321F1DB1D0049B1C7 /* MKWindowView */,
 			);
 			path = Subassembly;
@@ -328,6 +338,8 @@
 		C547B4871E4D5BE6002CECB1 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				C5778D7023278782002D7B59 /* AVCaptureDevice+MKAdd.h */,
+				C5778D6F23278782002D7B59 /* AVCaptureDevice+MKAdd.m */,
 				C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.h */,
 				C53E07A82214106000FC09BB /* NSArray+MKAdd.h */,
 				C53E07A92214106000FC09BB /* NSArray+MKAdd.m */,
@@ -405,10 +417,21 @@
 				C58BBBC521EF2AC300DF1D2F /* MKDeviceUtils.m */,
 				C55CED0321F1BE280049B1C7 /* MKFileUtils.h */,
 				C55CED0221F1BE280049B1C7 /* MKFileUtils.m */,
+				C5778D77232789BD002D7B59 /* MKScanerSessionManager.h */,
+				C5778D76232789BD002D7B59 /* MKScanerSessionManager.m */,
 				C55CED0621F1CFFF0049B1C7 /* MKUtils.h */,
 				C55CED0521F1CFFF0049B1C7 /* MKUtils.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		C5778D72232788AB002D7B59 /* MKView */ = {
+			isa = PBXGroup;
+			children = (
+				C5778D73232788AB002D7B59 /* MKOverView.h */,
+				C5778D74232788AB002D7B59 /* MKOverView.m */,
+			);
+			path = MKView;
 			sourceTree = "<group>";
 		};
 		C582CA032202C4C000547417 /* BaseClass */ = {
@@ -630,6 +653,8 @@
 				C582CA4C2204227200547417 /* AFHTTPSessionManager+MKAdd.m in Sources */,
 				C58BBBBA21EF1EB600DF1D2F /* UITableViewCell+MKAdd.m in Sources */,
 				C5080E4B21F59C9C007C2F39 /* MKRightImageButton.m in Sources */,
+				C5778D7123278782002D7B59 /* AVCaptureDevice+MKAdd.m in Sources */,
+				C5778D78232789BD002D7B59 /* MKScanerSessionManager.m in Sources */,
 				C53E077222115DF200FC09BB /* NSDictionary+MKAdd.m in Sources */,
 				C5080E4C21F59C9C007C2F39 /* MKVButton.m in Sources */,
 				C53E077522115FBA00FC09BB /* MKDevicePermissionsUtils.m in Sources */,
@@ -647,6 +672,7 @@
 				C582CA0C2202C4C000547417 /* MKTabBarController.m in Sources */,
 				C58BBB9421EDCE7F00DF1D2F /* NSObject+MKJsonAdd.m in Sources */,
 				C58BBB9F21EDE6D200DF1D2F /* NSDate+MKAdd.m in Sources */,
+				C5778D75232788AB002D7B59 /* MKOverView.m in Sources */,
 				C58BBBB421EF177C00DF1D2F /* UITabBar+MKAdd.m in Sources */,
 				C58BBBC621EF2AC300DF1D2F /* MKDeviceUtils.m in Sources */,
 				C58BBBB121EF14C400DF1D2F /* UINavigationController+MKAdd.m in Sources */,
