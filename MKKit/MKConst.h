@@ -94,7 +94,9 @@ CGSizeEqualToSize(CGSizeMeke(1242, 2208), [[UIScreen mainScreen] currentMode].si
 #define MK_COLOR_HEX(rgbValue)       [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0f \
                                                             green:((float)((rgbValue & 0xFF00) >> 8))/255.0f \
                                                             blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0f]
-
+#define MK_COLOR_HEXA(rgbValue, a)   [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0f \
+                                                            green:((float)((rgbValue & 0xFF00) >> 8))/255.0f \
+                                                            blue:((float)(rgbValue & 0xFF))/255.0 alpha:(a)]
 /** Font */
 #define MK_FONT_SYS(a)          [UIFont systemFontOfSize:a]
 #define MK_FONT_BOLD(a)         [UIFont boldSystemFontOfSize:a]
