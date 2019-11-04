@@ -612,7 +612,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CommonPods-MKKitTests/Pods-CommonPods-MKKitTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CommonPods-MKKitTests/Pods-CommonPods-MKKitTests-resources.sh",
 				"${PODS_ROOT}/SAMKeychain/Support/SAMKeychain.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -621,7 +621,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CommonPods-MKKitTests/Pods-CommonPods-MKKitTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CommonPods-MKKitTests/Pods-CommonPods-MKKitTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FCF572CDA1CED05B6AB65516 /* [CP] Check Pods Manifest.lock */ = {

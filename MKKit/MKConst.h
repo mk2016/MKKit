@@ -64,20 +64,19 @@ CGSizeEqualToSize(CGSizeMake(750, 1334),  [[UIScreen mainScreen] currentMode].si
 #define MK_IS_IPHONE_6Plus  ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
 CGSizeEqualToSize(CGSizeMeke(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
 
+#define MK_SCREEN_TOP_MARGIN            (MK_IS_IPHONE_XX ? 24 : 0)
+#define MK_SCREEN_TOP_HEIGHT            (MK_IS_IPHONE_XX ? 44 : 0)
 #define MK_SCREEN_STATUSBAR_HEIGHT      (MK_IS_IPHONE_XX ? 44 : 20)
-#define MK_SCREEN_IPHONEX_IGNORE_HEIGHT (MK_IS_IPHONE_XX ? 24+34 : 0)
-#define MK_SCREEN_IPHONEX_NAVGATION     (MK_IS_IPHONE_XX ? 88 : 64)
-#define MK_SCREEN_IPHONEX_TOP           (MK_IS_IPHONE_XX ? 44 : 0)
-#define MK_SCREEN_IPHONEX_BOTTOM        (MK_IS_IPHONE_XX ? 34 : 0)
-#define MK_SCREEN_SAFE_HEIGHT           (MK_SCREEN_HEIGHT - MK_SCREEN_IPHONEX_TOP - MK_SCREEN_IPHONEX_BOTTOM)
-#define MK_SCREEN_MAIN_HEIGHT           (MK_SCREEN_HEIGHT - MK_SCREEN_IPHONEX_NAVGATION - MK_SCREEN_IPHONEX_BOTTOM)
+#define MK_SCREEN_NAVGATION_HEIGHT      (MK_IS_IPHONE_XX ? 88 : 64)
+#define MK_SCREEN_BOTTOM_HEIGHT         (MK_IS_IPHONE_XX ? 34 : 0)
+#define MK_SCREEN_SAFE_HEIGHT           (MK_SCREEN_HEIGHT - MK_SCREEN_TOP_HEIGHT - MK_SCREEN_BOTTOM_HEIGHT)
+#define MK_SCREEN_MAIN_HEIGHT           (MK_SCREEN_HEIGHT - MK_SCREEN_NAVGATION_HEIGHT - MK_SCREEN_BOTTOM_HEIGHT)
 //#define MK_SCREEN_SAFE_FRAME            CGRectMake(0, MK_SCREEN_IPHONEX_NAVGATION, MK_SCREEN_WIDTH, MK_SCREEN_MAIN_HEIGHT)
 
 #define MK_ONE_PIXEL_HEIGHT             (1.f/[UIScreen mainScreen].scale)
-#define IPHONEX_HEAD_MARGIN             (MK_IS_IPHONE_XX ? 24 : 0)
 
 #ifndef MK_iOS_IS_ABOVE
-    #define MK_iOS_IS_ABOVE(s) [[[UIDevice currentDevice] systemVersion] floatValue] > s
+    #define MK_iOS_IS_ABOVE(s) [[[UIDevice currentDevice] systemVersion] floatValue] >= s
 #endif
 
 #ifndef MK_IS_SIMULATOR
@@ -101,9 +100,9 @@ CGSizeEqualToSize(CGSizeMeke(1242, 2208), [[UIScreen mainScreen] currentMode].si
 #define MK_FONT_SYS(a)          [UIFont systemFontOfSize:a]
 #define MK_FONT_BOLD(a)         [UIFont boldSystemFontOfSize:a]
 
-#define MK_FONT_PFSC_Regular(a) [MKDeviceUtils systemIs9Later]?[UIFont fontWithName:@"PingFangSC-Regular" size:a]:[UIFont systemFontOfSize:a]
-#define MK_FONT_PFSC_Light(a)   [MKDeviceUtils systemIs9Later]?[UIFont fontWithName:@"PingFangSC-Light" size:a]:[UIFont systemFontOfSize:a]
-#define MK_FONT_PFSC_Medium(a)  [MKDeviceUtils systemIs9Later]?[UIFont fontWithName:@"PingFangSC-Medium" size:a]:[UIFont boldSystemFontOfSize:a]
+#define MK_FONT_PFSC_Regular(a) MK_iOS_IS_ABOVE(9.0) ? [UIFont fontWithName:@"PingFangSC-Regular" size:a]:[UIFont systemFontOfSize:a]
+#define MK_FONT_PFSC_Light(a)   MK_iOS_IS_ABOVE(9.0) ? [UIFont fontWithName:@"PingFangSC-Light" size:a]:[UIFont systemFontOfSize:a]
+#define MK_FONT_PFSC_Medium(a)  MK_iOS_IS_ABOVE(9.0) ? [UIFont fontWithName:@"PingFangSC-Medium" size:a]:[UIFont boldSystemFontOfSize:a]
 
 /** singleton */
 #define MK_INSTANCETYPE + (instancetype)sharedInstance;
@@ -150,9 +149,10 @@ static inline void mk_dispatch_sync_on_main_queue(void (^block)(void)) {
 
 /** block */
 #define MK_BLOCK_EXEC(block, ...) if (block) { block(__VA_ARGS__); };
+
 typedef void (^MKBlock)(id result);
-typedef void (^MKBoolBlock)(BOOL bRet);
 typedef void (^MKVoidBlock)(void);
+typedef void (^MKBoolBlock)(BOOL bRet);
 typedef void (^MKIntegerBlock)(NSInteger index);
 typedef void (^MKArrayBlock)(NSArray *array);
 
