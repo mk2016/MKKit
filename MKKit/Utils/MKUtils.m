@@ -139,7 +139,6 @@
 
 + (void)openAppStroeWithAppId:(NSString *)appId{
     NSString *pkgUrl = [NSString stringWithFormat: @"https://apps.apple.com/cn/app/id%@",appId];
-//    NSString *pkgUrl = [NSString stringWithFormat: @"itms-apps://itunes.apple.com/app/id%@",appId];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:pkgUrl]];
 }
 

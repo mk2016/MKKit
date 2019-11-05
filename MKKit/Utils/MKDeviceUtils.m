@@ -113,8 +113,8 @@
                               @"iPhone1,2": @"iPhone 3G",
                               @"iPhone2,1": @"iPhone 3GS",
                               @"iPhone3,1": @"iPhone 4",
-                              @"iPhone3,2": @"iPhone 4",
-                              @"iPhone3,3": @"Verizon iPhone 4",
+                              @"iPhone3,2": @"iPhone 4 GSM Rev A",
+                              @"iPhone3,3": @"iPhone 4 CDMA",
                               @"iPhone4,1": @"iPhone 4S",
                               @"iPhone4,2": @"iPhone 4S",
                               @"iPhone4,3": @"iPhone 4S",
@@ -128,7 +128,8 @@
                               @"iPhone7,2": @"iPhone 6",
                               @"iPhone8,1": @"iPhone 6S",
                               @"iPhone8,2": @"iPhone 6S Plus",
-                              @"iPhone8,4": @"iPhone SE",
+                              @"iPhone8,3": @"iPhone SE (GSM+CDMA)",
+                              @"iPhone8,4": @"iPhone SE (GSM)",
                               @"iPhone9,1": @"iPhone 7",
                               @"iPhone9,2": @"iPhone 7 Plus",
                               @"iPhone9,3": @"iPhone 7",
@@ -140,12 +141,17 @@
                               @"iPhone10,5": @"iPhone 8 Plus ((Global/A1897))",
                               @"iPhone10,6": @"iPhone X (Global/A1901)",
                               @"iPhone11,2": @"iPhone XS",
-                              @"iPhone11,4": @"iPhone XS Max",
+                              @"iPhone11,4": @"iPhone XS Max China",
                               @"iPhone11,6": @"iPhone XS Max",
                               @"iPhone11,8": @"iPhone XR",
+                              @"iPhone12,1": @"iPhone 11",
+                              @"iPhone12,3": @"iPhone 11 Pro",
+                              @"iPhone12,5": @"iPhone 11 Pro Max",
 
                               //iPad
                               @"iPad1,1": @"iPad",
+                              @"iPad1,2": @"iPad 3G",
+                              
                               @"iPad2,1": @"iPad 2 (WiFi)",
                               @"iPad2,2": @"iPad 2 (GSM)",
                               @"iPad2,3": @"iPad 2 (CDMA)",
@@ -188,7 +194,21 @@
                               @"iPad7,2": @"iPad Pro 12.9-inch 2nd gen (Cellular)",
                               @"iPad7,3": @"iPad Pro 10.5-inch (WiFi)",
                               @"iPad7,4": @"iPad Pro 10.5-inch (Cellular)",
-                              
+                              @"iPad7,5": @"iPad 6th Gen (WiFi)",
+                              @"iPad7,6": @"iPad 6th Gen (WiFi+Cellular)",
+
+                              @"iPad8,1": @"iPad Pro 3rd Gen (11 inch, WiFi)",
+                              @"iPad8,2": @"iPad Pro 3rd Gen (11 inch, 1TB, WiFi)",
+                              @"iPad8,3": @"iPad Pro 3rd Gen (11 inch, WiFi+Cellular)",
+                              @"iPad8,4": @"iPad Pro 3rd Gen (11 inch, 1TB, WiFi+Cellular)",
+                              @"iPad8,5": @"iPad Pro 3rd Gen (12.9 inch, WiFi)",
+                              @"iPad8,6": @"iPad Pro 3rd Gen (12.9 inch, 1TB, WiFi)",
+                              @"iPad8,7": @"iPad Pro 3rd Gen (12.9 inch, WiFi+Cellular)",
+                              @"iPad8,8": @"iPad Pro 3rd Gen (12.9 inch, 1TB, WiFi+Cellular)",
+                              @"iPad11,1": @"iPad mini 5th Gen (WiFi)",
+                              @"iPad11,2": @"iPad mini 5th Gen",
+                              @"iPad11,3": @"iPad Air 3rd Gen (WiFi)",
+                              @"iPad11,4": @"iPad Air 3rd Gen",
                               
                               //watch
                               @"Watch1,1" : @"Apple Watch 38mm",
@@ -196,7 +216,15 @@
                               @"Watch2,3" : @"Apple Watch Series 2 38mm",
                               @"Watch2,4" : @"Apple Watch Series 2 42mm",
                               @"Watch2,6" : @"Apple Watch Series 1 38mm",
-                              @"Watch1,7" : @"Apple Watch Series 1 42mm",
+                              @"Watch2,7" : @"Apple Watch Series 1 42mm",
+                              @"Watch3,1" : @"Apple Watch Series 3 38mm case (GPS+Cellular)",
+                              @"Watch3,2" : @"Apple Watch Series 3 42mm case (GPS+Cellular)",
+                              @"Watch3,3" : @"Apple Watch Series 3 38mm case (GPS)",
+                              @"Watch3,4" : @"Apple Watch Series 3 42mm case (GPS)",
+                              @"Watch4,1" : @"Apple Watch Series 4 40mm case (GPS)",
+                              @"Watch4,2" : @"Apple Watch Series 4 44mm case (GPS)",
+                              @"Watch4,3" : @"Apple Watch Series 4 40mm case (GPS+Cellular)",
+                              @"Watch4,4" : @"Apple Watch Series 4 44mm case (GPS+Cellular)",
                               
                               //apple TV
                               @"AppleTV2,1" : @"Apple TV 2",
@@ -205,13 +233,14 @@
                               @"AppleTV5,3" : @"Apple TV 4",
                               
                               //iPod
-                              @"iPod1,1": @"iPod Touch 1G",
-                              @"iPod2,1": @"iPod Touch 2G",
-                              @"iPod3,1": @"iPod Touch 3G",
-                              @"iPod4,1": @"iPod Touch 4G",
-                              @"iPod5,1": @"iPod Touch 5G",
-                              @"iPod7,1": @"iPod Touch 6G",
-                              
+                              @"iPod1,1": @"1st Gen iPod",
+                              @"iPod2,1": @"2nd Gen iPod",
+                              @"iPod3,1": @"3rd Gen iPod",
+                              @"iPod4,1": @"4th Gen iPod",
+                              @"iPod5,1": @"5th Gen iPod",
+                              @"iPod7,1": @"6th Gen iPod",
+                              @"iPod9,1": @"7th Gen iPod",
+
                               //Simulator
                               @"i386"   : @"iPhone Simulator",
                               @"x86_64" : @"iPhone Simulator",

@@ -20,7 +20,7 @@
     objc_setAssociatedObject(self, @selector(mk_tapPreview), @(mk_tapPreview), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self setUserInteractionEnabled:mk_tapPreview];
     if (mk_tapPreview) {
-        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(mk_tapGesture:)];
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mk_tapGesture:)];
         [self addGestureRecognizer:gesture];
     }
 }
@@ -43,7 +43,7 @@ static CGRect s_oldframe;
     backgroundView.backgroundColor = [UIColor blackColor];
     backgroundView.alpha = 0;
     
-    UIImageView *imageV =[[UIImageView alloc] initWithFrame:s_oldframe];
+    UIImageView *imageV = [[UIImageView alloc] initWithFrame:s_oldframe];
     imageV.image = image;
     imageV.tag = 1102;
     [backgroundView addSubview:imageV];
