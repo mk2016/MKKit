@@ -19,6 +19,24 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)setShadowWithOffset:(CGSize)offset radius:(CGFloat)radius color:(UIColor *)color opacity:(CGFloat)opacity {
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathAddRect(path, NULL, self.tabBar.bounds);
+    self.tabBar.layer.shadowPath = path;
+    CGPathCloseSubpath(path);
+    CGPathRelease(path);
+    
+    self.tabBar.layer.shadowColor = color.CGColor;
+    self.tabBar.layer.shadowOffset = offset;
+    self.tabBar.layer.shadowRadius = radius;
+    self.tabBar.layer.shadowOpacity = opacity;
+    
+    [[UITabBar appearance] setShadowImage:[UIImage new]];
+    [[UITabBar appearance] setBackgroundImage:[UIImage new]];
+    self.tabBar.clipsToBounds = NO;
+}
+
+
 - (BOOL)shouldAutorotate{
     return self.selectedViewController.shouldAutorotate;
 }
