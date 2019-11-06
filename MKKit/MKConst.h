@@ -64,13 +64,20 @@ CGSizeEqualToSize(CGSizeMake(750, 1334),  [[UIScreen mainScreen] currentMode].si
 #define MK_IS_IPHONE_6Plus  ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
 CGSizeEqualToSize(CGSizeMeke(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
 
-#define MK_SCREEN_TOP_MARGIN            (MK_IS_IPHONE_XX ? 24 : 0)
-#define MK_SCREEN_TOP_HEIGHT            (MK_IS_IPHONE_XX ? 44 : 0)
-#define MK_SCREEN_STATUSBAR_HEIGHT      (MK_IS_IPHONE_XX ? 44 : 20)
-#define MK_SCREEN_NAVGATION_HEIGHT      (MK_IS_IPHONE_XX ? 88 : 64)
-#define MK_SCREEN_BOTTOM_HEIGHT         (MK_IS_IPHONE_XX ? 34 : 0)
-#define MK_SCREEN_SAFE_HEIGHT           (MK_SCREEN_HEIGHT - MK_SCREEN_TOP_HEIGHT - MK_SCREEN_BOTTOM_HEIGHT)
-#define MK_SCREEN_MAIN_HEIGHT           (MK_SCREEN_HEIGHT - MK_SCREEN_NAVGATION_HEIGHT - MK_SCREEN_BOTTOM_HEIGHT)
+#define MK_STATUS_BAR_HEIGHT             (MK_IS_IPHONE_XX ? 44 : 20)
+#define MK_NAVGATION_BAR_HEIGHT          44
+#define MK_NAVGATION_VIEW_HEIGHT        (MK_IS_IPHONE_XX ? 88 : 64)
+#define MK_TOP_DIFF_HEIGHT              (MK_IS_IPHONE_XX ? 24 : 0)
+#define MK_TABBAR_HEIGHT                (MK_IS_IPHONE_XX ? 49 : 34)
+
+#define MK_SCREEN_SAVE_TOP_HEIGHT       (MK_IS_IPHONE_XX ? 44 : 0)
+#define MK_SCREEN_SAVE_BOTTOM_HEIGHT    (MK_IS_IPHONE_XX ? 34 : 0)
+
+#define MK_SCREEN_SAFE_HEIGHT           (MK_SCREEN_HEIGHT - MK_SCREEN_SAVE_TOP_HEIGHT - MK_SCREEN_SAVE_BOTTOM_HEIGHT)
+#define MK_SCREEN_MAIN_HEIGHT           (MK_SCREEN_HEIGHT - MK_NAVGATION_VIEW_HEIGHT - MK_SCREEN_SAVE_BOTTOM_HEIGHT)
+
+
+
 //#define MK_SCREEN_SAFE_FRAME            CGRectMake(0, MK_SCREEN_IPHONEX_NAVGATION, MK_SCREEN_WIDTH, MK_SCREEN_MAIN_HEIGHT)
 
 #define MK_ONE_PIXEL_HEIGHT             (1.f/[UIScreen mainScreen].scale)
