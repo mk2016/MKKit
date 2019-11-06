@@ -53,4 +53,9 @@ typedef enum {
 - (void)mk_showOnWindow;
 - (void)mk_removeFromWindow;
 
+- (void)mk_showOnWindowWithAnimations:(void (^)(void))animations
+                           completion:(void (^ __nullable)(BOOL finished))completion;
+
+- (void)mk_removeFromWindowWithAnimations:(void (^)(void))animations
+                               completion:(void (^ __nullable)(BOOL finished))completion;
 @end

@@ -139,4 +139,21 @@
         [self removeFromSuperview];
     }];
 }
+
+- (void)mk_showOnWindowWithAnimations:(void (^)(void))animations
+                           completion:(void (^ __nullable)(BOOL finished))completion{
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:self];
+    [UIView animateWithDuration:0.3 animations:animations completion:completion];
+}
+
+- (void)mk_removeFromWindowWithAnimations:(void (^)(void))animations
+                               completion:(void (^ __nullable)(BOOL finished))completion{
+    [UIView animateWithDuration:0.3 animations:animations completion:^(BOOL finished) {
+        if (completion) {
+            completion(finished);
+        }
+        [self removeFromSuperview];
+    }];
+}
 @end
