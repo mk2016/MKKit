@@ -68,7 +68,7 @@ CGSizeEqualToSize(CGSizeMeke(1242, 2208), [[UIScreen mainScreen] currentMode].si
 #define MK_NAVGATION_BAR_HEIGHT          44
 #define MK_NAVGATION_VIEW_HEIGHT        (MK_IS_IPHONE_XX ? 88 : 64)
 #define MK_TOP_DIFF_HEIGHT              (MK_IS_IPHONE_XX ? 24 : 0)
-#define MK_TABBAR_HEIGHT                (MK_IS_IPHONE_XX ? 49 : 34)
+#define MK_TABBAR_HEIGHT                (MK_IS_IPHONE_XX ? 49+34 : 49)
 
 #define MK_SCREEN_SAVE_TOP_HEIGHT       (MK_IS_IPHONE_XX ? 44 : 0)
 #define MK_SCREEN_SAVE_BOTTOM_HEIGHT    (MK_IS_IPHONE_XX ? 34 : 0)
