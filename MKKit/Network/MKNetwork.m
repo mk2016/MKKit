@@ -26,16 +26,14 @@ static MKNetwork *sharedInstance = nil;
 
 static dispatch_queue_t s_queueNetwork = NULL;
 
-+ (void)sendRequestWith:(NSString *)urlString type:(MKRequestType)requestType param:(NSDictionary *)param file:(id)file completion:(MKResponseBlock)responseBlock{
-    [self sendRequestWith:urlString
-                     type:requestType
-                    param:param
-                     file:file
-                 progress:nil
-               completion:responseBlock];
-}
-
-+ (void)sendRequestWith:(NSString *)urlString type:(MKRequestType)requestType param:(NSDictionary *)param file:(id)file progress:(MKProgressBlock)progressBlock completion:(MKResponseBlock)responseBlock{
++ (void)sendRequestWith:(NSString *)urlString
+                   type:(MKRequestType)requestType
+                  param:(NSDictionary *)param
+                   file:(id)file fileName:(NSString *)fileName
+  constructingBodyBlock:(MKAFMultipartFormDataBlock)bodyBlock
+               progress:(MKProgressBlock)progressBlock
+             completion:(MKResponseBlock)responseBlock{
+    
     if ([MKNetwork sharedInstance].checkProxySetting) {
         if ([MKNetwork checkProxySetting]) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -74,11 +72,14 @@ static dispatch_queue_t s_queueNetwork = NULL;
                     break;
                 case MKRequestType_postImage:
                     if (file && [file isKindOfClass:[UIImage class]]) {
-                        [weakSelf af_upLoadImageWithUrl:urlStr param:param image:file progress:progressBlock completion:responseBlock];
+                        [weakSelf af_upLoadImageWithUrl:urlStr param:param image:file imageName:fileName constructingBodyBlock:bodyBlock progress:progressBlock completion:responseBlock];
                     }else{
                         ELog(@"MKNetwork error : source is not image");
                         MK_BLOCK_EXEC(responseBlock, nil);
                     }
+                    break;
+                case MKRequestType_postForm:
+                    [self af_postFormWithUrlString:urlStr param:param formName:fileName completion:responseBlock];
                     break;
                 case MKRequestType_download:
                     [self af_downloadWithUrlString:urlStr progress:progressBlock completion:responseBlock];
@@ -168,7 +169,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
 /** GET */
 + (void)af_getRequestWihtUrlString:(NSString *)urlStr param:(NSDictionary *)param completion:(MKResponseBlock)responseBlock{
     MK_WEAK_SELF
-    AFHTTPSessionManager *manager = [self createManager];
+    AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_get];
     [manager GET:urlStr parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [weakSelf responseSuccessWithUrl:urlStr
                                    param:param
@@ -189,7 +190,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
 /** POST */
 + (void)af_postRequestWithUrlString:(NSString *)urlStr param:(NSDictionary *)param completion:(MKResponseBlock)responseBlock{
     MK_WEAK_SELF
-    AFHTTPSessionManager *manager = [self createManager];
+    AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_post];
     [manager POST:urlStr parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [weakSelf responseSuccessWithUrl:urlStr
                                    param:param
@@ -206,11 +207,33 @@ static dispatch_queue_t s_queueNetwork = NULL;
                                    block:responseBlock];
     }];
 }
+//POST FORM
++ (void)af_postFormWithUrlString:(NSString *)urlStr param:(NSDictionary *)param formName:(NSString *)formName completion:(MKResponseBlock)responseBlock{
+    MK_WEAK_SELF
+    AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_postForm];
+    [manager POST:urlStr parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFormData:[[param mk_jsonString] dataUsingEncoding:NSUTF8StringEncoding] name:formName];
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [weakSelf responseSuccessWithUrl:urlStr
+                                   param:param
+                                  method:@"POST_FORM"
+                            httpResponse:task.response
+                          responseObject:responseObject
+                                   block:responseBlock];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [weakSelf responseFailureWithUrl:urlStr
+                                   param:param
+                                  method:@"POST_FORM"
+                            httpResponse:task.response
+                                   error:error
+                                   block:responseBlock];
+    }];
+}
 
 /** PUT */
 + (void)af_putRequestWithUrlString:(NSString *)urlStr param:(NSDictionary *)param completion:(MKResponseBlock)responseBlock{
     MK_WEAK_SELF
-    AFHTTPSessionManager *manager = [self createManager];
+    AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_put];
     [manager PUT:urlStr parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [weakSelf responseSuccessWithUrl:urlStr
                                    param:param
@@ -231,7 +254,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
 /** DELETE */
 + (void)af_deleteRequestWithUrlString:(NSString *)urlStr param:(NSDictionary *)param completion:(MKResponseBlock)responseBlock{
     MK_WEAK_SELF
-    AFHTTPSessionManager *manager = [self createManager];
+    AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_delete];
     [manager DELETE:urlStr parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [weakSelf responseSuccessWithUrl:urlStr
                                    param:param
@@ -250,15 +273,21 @@ static dispatch_queue_t s_queueNetwork = NULL;
 }
 
 /** upload image*/
-+ (void)af_upLoadImageWithUrl:(NSString *)urlStr param:(NSDictionary *)param image:(UIImage *)image progress:(MKProgressBlock)progressBlock completion:(MKResponseBlock)responseBlock{
++ (void)af_upLoadImageWithUrl:(NSString *)urlStr param:(NSDictionary *)param image:(UIImage *)image imageName:(NSString *)imageName
+        constructingBodyBlock:(MKAFMultipartFormDataBlock)bodyBlock
+                     progress:(MKProgressBlock)progressBlock
+                   completion:(MKResponseBlock)responseBlock{
     MK_WEAK_SELF
-    AFHTTPSessionManager *manager = [self createManager];
+    AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_postImage];;
     [manager POST:urlStr parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        NSData *data = [image mk_compressLessThan1M];
-        //        NSData *data = UIImageJPEGRepresentation(image, 1.0);
-        ELog(@"image Leng : %lu", (unsigned long)data.length);
-        NSString *imageName = [NSString stringWithFormat:@"%@.jpg",@([NSDate mk_currentTimestamp])];
-        [formData appendPartWithFileData:data name:@"img" fileName:imageName mimeType:@"image/jpeg"];
+        if (bodyBlock) {
+            MK_BLOCK_EXEC(bodyBlock,formData);
+        }else{
+            NSData *data = [image mk_compressLessThan1M];
+            ELog(@"image Leng : %lu", (unsigned long)data.length);
+            NSString *fileName = [NSString stringWithFormat:@"%@.jpg",@([NSDate mk_currentTimestamp])];
+            [formData appendPartWithFileData:data name:imageName fileName:fileName mimeType:@"image/jpeg"];
+        }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         CGFloat proportion = 1.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount;
         ELog(@"======= upload proportion : %f" ,proportion);
@@ -284,7 +313,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
 /** download */
 + (void)af_downloadWithUrlString:(NSString *)urlStr progress:(MKProgressBlock)progressBlock completion:(MKResponseBlock)responseBlock{
     
-    AFHTTPSessionManager *manager = [self createManager];
+    AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_download];;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
     //    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     //    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -325,15 +354,21 @@ static dispatch_queue_t s_queueNetwork = NULL;
 
 static AFHTTPSessionManager *_afHttpSectionManager = nil;
 /** create manager */
-+ (AFHTTPSessionManager *)createManager{
++ (AFHTTPSessionManager *)createManagerWith:(MKRequestType)type{
     if (!_afHttpSectionManager) {
         _afHttpSectionManager = [AFHTTPSessionManager manager];
-        if ([MKNetwork sharedInstance].delegate && [[MKNetwork sharedInstance].delegate respondsToSelector:@selector(settingManager:)]) {
-            [[MKNetwork sharedInstance].delegate settingManager:_afHttpSectionManager];
+        if ([MKNetwork sharedInstance].delegate &&
+            ([[MKNetwork sharedInstance].delegate respondsToSelector:@selector(settingManager:)] ||
+             [[MKNetwork sharedInstance].delegate respondsToSelector:@selector(settingManager:byType:)])) {
+                if ([[MKNetwork sharedInstance].delegate respondsToSelector:@selector(settingManager:)]) {
+                    [[MKNetwork sharedInstance].delegate settingManager:_afHttpSectionManager];
+                }else if ([[MKNetwork sharedInstance].delegate respondsToSelector:@selector(settingManager:byType:)]){
+                    [[MKNetwork sharedInstance].delegate settingManager:_afHttpSectionManager byType:type];
+                }
         }else{
             _afHttpSectionManager.requestSerializer = [AFJSONRequestSerializer serializer];
 //            _afHttpSectionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
-            _afHttpSectionManager.requestSerializer.timeoutInterval = 15.f;
+            _afHttpSectionManager.requestSerializer.timeoutInterval = 30.f;
 
             _afHttpSectionManager.responseSerializer = [AFJSONResponseSerializer serializer];
 //            _afHttpSectionManager.responseSerializer = [AFHTTPResponseSerializer serializer];

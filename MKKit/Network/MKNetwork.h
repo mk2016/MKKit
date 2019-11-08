@@ -12,24 +12,27 @@
 
 @class MKResponseInfo;
 
-@protocol MKNetworkDelegate <NSObject>
-
-- (void)settingManager:(AFHTTPSessionManager *)manager;
-- (NSDictionary *)getRequestHeader;
-@end
-
 typedef NS_ENUM(NSUInteger, MKRequestType) {
     MKRequestType_post = 1,
     MKRequestType_get,
     MKRequestType_put,
     MKRequestType_delete,
     MKRequestType_postImage,
+    MKRequestType_postForm,
     MKRequestType_postFileUrl,
     MKRequestType_download,
 };
 
+@protocol MKNetworkDelegate <NSObject>
+@optional
+- (void)settingManager:(AFHTTPSessionManager *)manager;
+- (void)settingManager:(AFHTTPSessionManager *)manager byType:(MKRequestType)type;
+- (NSDictionary *)getRequestHeader;
+@end
+
 typedef void (^MKResponseBlock)(MKResponseInfo *response);
 typedef void (^MKProgressBlock)(NSProgress *progress, CGFloat percent);
+typedef void (^MKAFMultipartFormDataBlock)(id <AFMultipartFormData> formData);
 
 @interface MKNetwork : NSObject
 @property (nonatomic, assign) BOOL analysisDNS;
@@ -43,12 +46,8 @@ typedef void (^MKProgressBlock)(NSProgress *progress, CGFloat percent);
                    type:(MKRequestType)requestType
                   param:(NSDictionary *)param
                    file:(id)file
-             completion:(MKResponseBlock)responseBlock;
-
-+ (void)sendRequestWith:(NSString *)urlString
-                   type:(MKRequestType)requestType
-                  param:(NSDictionary *)param
-                   file:(id)file
+               fileName:(NSString *)fileName
+  constructingBodyBlock:(MKAFMultipartFormDataBlock)bodyBlock
                progress:(MKProgressBlock)progressBlock
              completion:(MKResponseBlock)responseBlock;
 
