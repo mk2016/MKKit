@@ -31,8 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self setCustomNavigationBarLineHidden:NO];
-
     UIImage *img = [UIImage mk_imageWithColor:[UIColor whiteColor]];
     [self.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
 
@@ -43,7 +41,7 @@
 
 - (void)setCustomNavigationBarLineHidden:(BOOL)hidden{
     if (hidden && _bottomeLineLayer) {
-        [self.bottomeLineLayer removeFromSuperlayer];
+        [_bottomeLineLayer removeFromSuperlayer];
     }else{
         [self.navigationBar.layer addSublayer:self.bottomeLineLayer];
     }

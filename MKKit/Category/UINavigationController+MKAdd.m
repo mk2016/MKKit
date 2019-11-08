@@ -60,10 +60,23 @@
         }
     }
 }
+
 /** global hidden navigationBar bottom line */
 + (void)mk_hiddenBottomLine{
     if ([UINavigationBar instancesRespondToSelector:@selector(setShadowImage:)]){
         [[UINavigationBar appearance] setShadowImage:[UIImage mk_imageWithColor:[UIColor clearColor]]];
+    }
+}
+
+- (void)mk_setBottomShadowHidden:(BOOL)hidden{
+    if (hidden) {
+        self.navigationBar.layer.shadowColor = [UIColor whiteColor].CGColor;
+        self.navigationBar.layer.shadowOffset = CGSizeMake(0, 0);
+        self.navigationBar.layer.shadowOpacity = 1.0;
+    }else{
+        self.navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.navigationBar.layer.shadowOffset = CGSizeMake(0, 2);
+        self.navigationBar.layer.shadowOpacity = 0.2;
     }
 }
 @end

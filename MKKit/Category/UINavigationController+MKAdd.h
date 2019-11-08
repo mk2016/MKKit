@@ -21,4 +21,6 @@
 /** global hidden navigationBar bottom line */
 + (void)mk_hiddenBottomLine;
 
+/** set bottom shadow */
+- (void)mk_setBottomShadowHidden:(BOOL)hidden;
 @end
