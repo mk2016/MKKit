@@ -196,12 +196,18 @@ do { \
 #pragma mark - ***** ENUM *****
 /** tableView pull refresh type */
 typedef enum {
-    MKTableViewRefreshTypeNone      = 0,            /*!< None */
-    MKTableViewRefreshTypeHeader    = 1 << 1,       /*!< header */
-    MKTableViewRefreshTypeFooter    = 1 << 2,       /*!< footer */
-    MKTableViewRefreshTypeAll       = ~0UL
-}MKTableViewRefreshType;
+    MKScrollerViewRefreshTypeNone      = 0,            /*!< None */
+    MKScrollerViewRefreshTypeHeader    = 1 << 1,       /*!< header */
+    MKScrollerViewRefreshTypeFooter    = 1 << 2,       /*!< footer */
+    MKScrollerViewRefreshTypeAll       = ~0UL
+}MKScrollerViewRefreshType;
 
+typedef NS_ENUM(NSInteger, MKVCState) {
+    MKVCStateNoData     =  1,   /*!< 无数据 */
+    MKVCStateNoNetwork,         /*!< 无网络 */
+    MKVCStateNoNextPage,        /*!< 有数据无下一页 */
+    MKVCStateHaveNextPage,      /*!< 有数据有下一页 */
+};
 
 /** inline function */
 static inline NSUInteger hexStringToInt(NSString *str) {
