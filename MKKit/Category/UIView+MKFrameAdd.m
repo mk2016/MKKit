@@ -84,6 +84,22 @@
     self.center = center;
 }
 
+- (CGFloat)top{
+    return self.y;
+}
+
+- (CGFloat)left{
+    return self.x;
+}
+
+- (CGFloat)bottom{
+    return self.y + self.height;
+}
+
+- (CGFloat)right{
+    return self.x + self.width;
+}
+
 - (CGPoint)topLeft{
     return CGPointMake(self.x, self.y);
 }

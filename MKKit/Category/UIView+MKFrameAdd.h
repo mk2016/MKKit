@@ -32,6 +32,11 @@
 - (void)setCenterX:(CGFloat)x;
 - (void)setCenterY:(CGFloat)y;
 
+- (CGFloat)top;
+- (CGFloat)left;
+- (CGFloat)bottom;
+- (CGFloat)right;
+
 - (CGPoint)topLeft;
 - (CGPoint)topRight;
 - (CGPoint)bottomRight;
