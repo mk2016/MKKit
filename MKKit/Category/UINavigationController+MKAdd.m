@@ -75,7 +75,7 @@
         self.navigationBar.layer.shadowOpacity = 1.0;
     }else{
         self.navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.navigationBar.layer.shadowOffset = CGSizeMake(0, 2);
+        self.navigationBar.layer.shadowOffset = CGSizeMake(0, 1);
         self.navigationBar.layer.shadowOpacity = 0.2;
     }
 }
