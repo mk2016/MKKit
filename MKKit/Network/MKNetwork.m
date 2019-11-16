@@ -170,7 +170,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
 + (void)af_getRequestWihtUrlString:(NSString *)urlStr param:(NSDictionary *)param completion:(MKResponseBlock)responseBlock{
     MK_WEAK_SELF
     AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_get];
-    [manager GET:urlStr parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:urlStr parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [weakSelf responseSuccessWithUrl:urlStr
                                    param:param
                                   method:@"GET"
@@ -355,30 +355,25 @@ static dispatch_queue_t s_queueNetwork = NULL;
 static AFHTTPSessionManager *_afHttpSectionManager = nil;
 /** create manager */
 + (AFHTTPSessionManager *)createManagerWith:(MKRequestType)type{
+    if ([MKNetwork sharedInstance].delegate && [[MKNetwork sharedInstance].delegate makeManagerWithType:type]){
+        return [[MKNetwork sharedInstance].delegate makeManagerWithType:type];
+    }
+
     if (!_afHttpSectionManager) {
         _afHttpSectionManager = [AFHTTPSessionManager manager];
-        if ([MKNetwork sharedInstance].delegate &&
-            ([[MKNetwork sharedInstance].delegate respondsToSelector:@selector(settingManager:)] ||
-             [[MKNetwork sharedInstance].delegate respondsToSelector:@selector(settingManager:byType:)])) {
-                if ([[MKNetwork sharedInstance].delegate respondsToSelector:@selector(settingManager:)]) {
-                    [[MKNetwork sharedInstance].delegate settingManager:_afHttpSectionManager];
-                }else if ([[MKNetwork sharedInstance].delegate respondsToSelector:@selector(settingManager:byType:)]){
-                    [[MKNetwork sharedInstance].delegate settingManager:_afHttpSectionManager byType:type];
-                }
-        }else{
-            _afHttpSectionManager.requestSerializer = [AFJSONRequestSerializer serializer];
-//            _afHttpSectionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
-            _afHttpSectionManager.requestSerializer.timeoutInterval = 30.f;
-
-            _afHttpSectionManager.responseSerializer = [AFJSONResponseSerializer serializer];
-//            _afHttpSectionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
-            _afHttpSectionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/html",@"text/plain", nil];
-            ((AFJSONResponseSerializer *)_afHttpSectionManager.responseSerializer).removesKeysWithNullValues = YES;
-            AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-            securityPolicy.allowInvalidCertificates = YES;
-            securityPolicy.validatesDomainName = NO;
-            _afHttpSectionManager.securityPolicy = securityPolicy;
-        }
+        
+        _afHttpSectionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+//      _afHttpSectionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        _afHttpSectionManager.requestSerializer.timeoutInterval = 30.f;
+        
+        _afHttpSectionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+//      _afHttpSectionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        _afHttpSectionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/html",@"text/plain", nil];
+        ((AFJSONResponseSerializer *)_afHttpSectionManager.responseSerializer).removesKeysWithNullValues = YES;
+        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+        securityPolicy.allowInvalidCertificates = YES;
+        securityPolicy.validatesDomainName = NO;
+        _afHttpSectionManager.securityPolicy = securityPolicy;   
     }
     NSDictionary *dic = [self getRequestHeader];
     if ([MKNetwork sharedInstance].delegate && [[MKNetwork sharedInstance].delegate respondsToSelector:@selector(getRequestHeader)]) {

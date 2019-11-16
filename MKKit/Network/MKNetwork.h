@@ -25,8 +25,7 @@ typedef NS_ENUM(NSUInteger, MKRequestType) {
 
 @protocol MKNetworkDelegate <NSObject>
 @optional
-- (void)settingManager:(AFHTTPSessionManager *)manager;
-- (void)settingManager:(AFHTTPSessionManager *)manager byType:(MKRequestType)type;
+- (AFHTTPSessionManager * __nullable)makeManagerWithType:(MKRequestType)type;
 - (NSDictionary *)getRequestHeader;
 @end
 
