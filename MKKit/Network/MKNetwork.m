@@ -133,7 +133,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     });
     ELog(@"request URL %@ : %@", method, urlString);
-//    ELog(@"request param : %@", [param mk_jsonString]);
+    ELog(@"request param : %@", [param mk_jsonString]);
     [self printError:error];
     
     NSHTTPURLResponse *resp = (NSHTTPURLResponse *)httpResponse;
