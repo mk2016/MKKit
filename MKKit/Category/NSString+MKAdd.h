@@ -12,6 +12,7 @@
 @interface NSString (MKAdd)
 /** get string content size */
 - (CGSize)mk_contentSizeWithFont:(UIFont *)font width:(CGFloat)width;
+- (CGSize)mk_contentSizeWithFont:(UIFont *)font width:(CGFloat)width lineSpacing:(CGFloat)lineSpacing;
 
 #pragma mark - ***** URL Encode Decode *****
 /** string URLEncode */

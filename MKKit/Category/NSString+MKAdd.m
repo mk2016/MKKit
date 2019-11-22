@@ -19,6 +19,18 @@
     return size;
 }
 
+- (CGSize)mk_contentSizeWithFont:(UIFont *)font width:(CGFloat)width lineSpacing:(CGFloat)lineSpacing{
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = lineSpacing;
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    NSDictionary *attributes = @{NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle};
+    CGSize size = [self boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                     options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine
+                                  attributes:attributes
+                                     context:nil].size;
+    return size;
+}
+
 #pragma mark - ***** URL Encode Decode *****
 
 /** string URLEncode */
