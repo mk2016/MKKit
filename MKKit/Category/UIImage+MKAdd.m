@@ -133,6 +133,16 @@
     return nil;
 }
 
+/** view -> image */
++ (UIImage *)mk_imageWithView:(UIView *)view{
+    UIImage *imageRet = [[UIImage alloc] init];
+    UIGraphicsBeginImageContextWithOptions(view.frame.size, YES, [UIScreen mainScreen].scale);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    imageRet = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();    
+    return imageRet;
+}
+
 //CIImage -> UIImage
 + (UIImage *)mk_imageWithCIImage:(CIImage *)ciImage size:(CGSize)size{
     if (ciImage == nil) {

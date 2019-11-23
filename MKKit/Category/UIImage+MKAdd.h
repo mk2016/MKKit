@@ -38,6 +38,9 @@
 
 - (NSString *)mk_detectorQRCode;
 
+/** view -> image */
++ (UIImage *)mk_imageWithView:(UIView *)view;
+
 //CIImage -> UIImage
 + (UIImage *)mk_imageWithCIImage:(CIImage *)ciImage size:(CGSize)size;
 
