@@ -40,4 +40,7 @@
 + (void)openAppStroeWithAppId:(NSString *)appId;
 
 + (void)delayTask:(float)second onTimeEnd:(void(^)(void))block;
+
+/** 版本比对  -1:v1<v2, 0:v1=v2, 1:v1>v2  */
++ (int)compareVersionWith:(NSString *)v1 and:(NSString *)v2;
 @end

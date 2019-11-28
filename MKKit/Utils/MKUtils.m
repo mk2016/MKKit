@@ -147,4 +147,24 @@
     dispatch_after(popTime, dispatch_get_main_queue(), block);
 }
 
+/** v1<v2 return -1   v1=v2 return 0  v1>v2 return 1 */
++ (int)compareVersionWith:(NSString *)v1 and:(NSString *)v2{
+    if ([v1 isEqualToString:v2]) {
+        return 0;
+    }
+    NSArray *v1Ary = [v1 componentsSeparatedByString:@"."];
+    NSArray *v2Ary = [v2 componentsSeparatedByString:@"."];
+    NSInteger minLength = MIN(v1Ary.count, v2Ary.count);
+    for (int i = 0 ; i < minLength; i++) {
+        NSString *v1Num = v1Ary[i];
+        NSString *v2Num = v2Ary[i];
+        if (v1Num.integerValue > v2Num.integerValue ) {
+            return 1;
+        }else if (v1Num.integerValue < v2Num.integerValue){
+            return -1;
+        }
+    }
+    
+    return 0;
+}
 @end

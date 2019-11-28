@@ -17,6 +17,7 @@
 		C5080EC921F5BC9B007C2F39 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5080EC821F5BC9B007C2F39 /* SystemConfiguration.framework */; };
 		C5080ECF21F6AF77007C2F39 /* NSMutableURLRequest+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C5080ECB21F6AF77007C2F39 /* NSMutableURLRequest+MKAdd.m */; };
 		C5080ED021F6AF77007C2F39 /* MKNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = C5080ECE21F6AF77007C2F39 /* MKNetwork.m */; };
+		C50F9A24238FCBDB00A33155 /* MKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C50F9A22238FCBDB00A33155 /* MKTextView.m */; };
 		C52DB2F91E4C48EB009FBA5A /* MKKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C52DB2F61E4C48EB009FBA5A /* MKKit.h */; };
 		C52DB30F1E4C4BF3009FBA5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52DB30E1E4C4BF3009FBA5A /* UIKit.framework */; };
 		C52DB3111E4C4C02009FBA5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52DB3101E4C4C02009FBA5A /* Foundation.framework */; };
@@ -111,6 +112,8 @@
 		C5080ECC21F6AF77007C2F39 /* NSMutableURLRequest+MKAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+MKAdd.h"; sourceTree = "<group>"; };
 		C5080ECD21F6AF77007C2F39 /* MKNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKNetwork.h; sourceTree = "<group>"; };
 		C5080ECE21F6AF77007C2F39 /* MKNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetwork.m; sourceTree = "<group>"; };
+		C50F9A22238FCBDB00A33155 /* MKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTextView.m; sourceTree = "<group>"; };
+		C50F9A23238FCBDB00A33155 /* MKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTextView.h; sourceTree = "<group>"; };
 		C52DB2F31E4C48EB009FBA5A /* libMKKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMKKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C52DB2F61E4C48EB009FBA5A /* MKKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKKit.h; sourceTree = "<group>"; };
 		C52DB30E1E4C4BF3009FBA5A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -273,10 +276,20 @@
 				C5080E4021F59B89007C2F39 /* MKBlurView */,
 				C5080E4421F59C9C007C2F39 /* MKButton */,
 				C55CED0B21F1D8E00049B1C7 /* MKImagePickerCtrlUtils */,
+				C50F9A21238FCBDB00A33155 /* MKTextView */,
 				C5778D72232788AB002D7B59 /* MKView */,
 				C55CED1321F1DB1D0049B1C7 /* MKWindowView */,
 			);
 			path = Subassembly;
+			sourceTree = "<group>";
+		};
+		C50F9A21238FCBDB00A33155 /* MKTextView */ = {
+			isa = PBXGroup;
+			children = (
+				C50F9A23238FCBDB00A33155 /* MKTextView.h */,
+				C50F9A22238FCBDB00A33155 /* MKTextView.m */,
+			);
+			path = MKTextView;
 			sourceTree = "<group>";
 		};
 		C52DB2EA1E4C48EB009FBA5A = {
@@ -660,6 +673,7 @@
 				C53E077522115FBA00FC09BB /* MKDevicePermissionsUtils.m in Sources */,
 				C5080ED021F6AF77007C2F39 /* MKNetwork.m in Sources */,
 				C58BBB9121EDCACC00DF1D2F /* UIView+MKLogAdd.m in Sources */,
+				C50F9A24238FCBDB00A33155 /* MKTextView.m in Sources */,
 				C5080E4321F59B89007C2F39 /* MKBlurView.m in Sources */,
 				C582CA0A2202C4C000547417 /* MKNavigationController.m in Sources */,
 				C58BBB9921EDD89B00DF1D2F /* NSObject+MKPropertyAdd.m in Sources */,
