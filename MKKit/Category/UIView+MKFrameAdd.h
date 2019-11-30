@@ -9,36 +9,25 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (MKFrameAdd)
-- (CGFloat)x;
-- (CGFloat)y;
 
-- (CGFloat)width;
-- (CGFloat)height;
+@property (nonatomic) CGPoint origin;
+@property (nonatomic) CGSize size;
 
-- (CGSize)size;
-- (CGPoint)origin;
+@property (nonatomic) CGFloat x;
+@property (nonatomic) CGFloat y;
+@property (nonatomic) CGFloat width;
+@property (nonatomic) CGFloat height;
 
-- (CGFloat)centerX;
-- (CGFloat)centerY;
+@property (nonatomic) CGFloat centerX;
+@property (nonatomic) CGFloat centerY;
 
-- (void)setX:(CGFloat)x;
-- (void)setY:(CGFloat)y;
+@property (nonatomic) CGFloat top;
+@property (nonatomic) CGFloat left;
+@property (nonatomic) CGFloat bottom;
+@property (nonatomic) CGFloat right;
 
-- (void)setWidth:(CGFloat)width;
-- (void)setHeight:(CGFloat)height;
-
-- (void)setSize:(CGSize)size;
-
-- (void)setCenterX:(CGFloat)x;
-- (void)setCenterY:(CGFloat)y;
-
-- (CGFloat)top;
-- (CGFloat)left;
-- (CGFloat)bottom;
-- (CGFloat)right;
-
-- (CGPoint)topLeft;
-- (CGPoint)topRight;
-- (CGPoint)bottomRight;
-- (CGPoint)bottomLeft;
+@property (nonatomic) CGPoint topLeft;
+@property (nonatomic) CGPoint topRight;
+@property (nonatomic) CGPoint bottomLeft;
+@property (nonatomic) CGPoint bottomRight;
 @end
