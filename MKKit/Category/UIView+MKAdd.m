@@ -43,12 +43,15 @@
 }
 
 - (void)mk_addShadowWithColor:(UIColor *)color size:(CGSize)size{
-    self.layer.shadowColor = color.CGColor;
-    self.layer.shadowOffset = size;
-    self.layer.shadowOpacity = 0.5;
-    self.layer.shadowRadius = 1;
+    [self mk_addShadowWithColor:color size:size opacity:0.5 radius:2.f];
 }
 
+- (void)mk_addShadowWithColor:(UIColor *)color size:(CGSize)size opacity:(CGFloat)opacity radius:(CGFloat)radius{
+    self.layer.shadowColor = color.CGColor;
+    self.layer.shadowOffset = size;
+    self.layer.shadowOpacity = opacity;
+    self.layer.shadowRadius = radius;
+}
 
 #pragma mark - ***** Border ******
 - (void)mk_setBorderColor:(UIColor *)color{
