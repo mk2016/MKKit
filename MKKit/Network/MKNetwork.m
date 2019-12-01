@@ -355,7 +355,8 @@ static dispatch_queue_t s_queueNetwork = NULL;
 static AFHTTPSessionManager *_afHttpSectionManager = nil;
 /** create manager */
 + (AFHTTPSessionManager *)createManagerWith:(MKRequestType)type{
-    if ([MKNetwork sharedInstance].delegate && [[MKNetwork sharedInstance].delegate makeManagerWithType:type]){
+    if ([MKNetwork sharedInstance].delegate &&
+        [[MKNetwork sharedInstance].delegate respondsToSelector:@selector(makeManagerWithType:)]){
         return [[MKNetwork sharedInstance].delegate makeManagerWithType:type];
     }
 
