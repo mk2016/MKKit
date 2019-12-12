@@ -58,14 +58,19 @@ CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].siz
 #define MK_IS_IPHONE_XX     MK_IS_IPHONE_X_XS || MK_IS_IPHONE_XSMAX || MK_IS_IPHONE_XR
 
 #define MK_IS_IPHONE_5      ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
-CGSizeEqualToSize(CGSizeMake(640, 1136),  [[UIScreen mainScreen] currentMode].size) : NO)
-#define MK_IS_IPHONE_6      ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
-CGSizeEqualToSize(CGSizeMake(750, 1334),  [[UIScreen mainScreen] currentMode].size) : NO)
-#define MK_IS_IPHONE_6Plus  ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
-CGSizeEqualToSize(CGSizeMeke(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+                            CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) || \
+                            CGSizeEqualToSize(CGSizeMake(1136, 640), [[UIScreen mainScreen] currentMode].size) : NO)
 
-#define MK_STATUS_BAR_HEIGHT             (MK_IS_IPHONE_XX ? 44 : 20)
-#define MK_NAVGATION_BAR_HEIGHT          44
+#define MK_IS_IPHONE_6      ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
+                            CGSizeEqualToSize(CGSizeMake(750, 1334),  [[UIScreen mainScreen] currentMode].size) || \
+                            CGSizeEqualToSize(CGSizeMake(1334, 750),  [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define MK_IS_IPHONE_6Plus  ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
+                            CGSizeEqualToSize(CGSizeMeke(1242, 2208), [[UIScreen mainScreen] currentMode].size) || \
+                            CGSizeEqualToSize(CGSizeMeke(2208, 1242), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define MK_STATUS_BAR_HEIGHT            (MK_IS_IPHONE_XX ? 44 : 20)
+#define MK_NAVGATION_BAR_HEIGHT         44
 #define MK_NAVGATION_VIEW_HEIGHT        (MK_IS_IPHONE_XX ? 88 : 64)
 #define MK_TOP_DIFF_HEIGHT              (MK_IS_IPHONE_XX ? 24 : 0)
 #define MK_TABBAR_HEIGHT                (MK_IS_IPHONE_XX ? 49+34 : 49)
