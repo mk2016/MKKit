@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MKNavigationController : UINavigationController
+- (void)setNavigationBarColor:(UIColor *)color;
 - (void)setCustomNavigationBarLineHidden:(BOOL)hidden;
 
 @end

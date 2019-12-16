@@ -31,12 +31,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UIImage *img = [UIImage mk_imageWithColor:[UIColor whiteColor]];
-    [self.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
-
     self.interactivePopGestureRecognizer.delegate = self;
     [self setNeedsStatusBarAppearanceUpdate];
     
+}
+
+- (void)setNavigationBarColor:(UIColor *)color{
+    UIImage *img = [UIImage mk_imageWithColor:color];
+    [self.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)setCustomNavigationBarLineHidden:(BOOL)hidden{
