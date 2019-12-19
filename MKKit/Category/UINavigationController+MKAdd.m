@@ -79,4 +79,9 @@
         self.navigationBar.layer.shadowOpacity = 0.2;
     }
 }
+
+- (void)mk_setBarColor:(UIColor *)color{
+    UIImage *img = [UIImage mk_imageWithColor:color];
+    [self.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
+}
 @end

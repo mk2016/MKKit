@@ -23,4 +23,6 @@
 
 /** set bottom shadow */
 - (void)mk_setBottomShadowHidden:(BOOL)hidden;
+
+- (void)mk_setBarColor:(UIColor *)color;
 @end
