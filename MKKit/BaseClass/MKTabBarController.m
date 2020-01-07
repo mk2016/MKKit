@@ -7,6 +7,7 @@
 //
 
 #import "MKTabBarController.h"
+#import "UIImage+MKAdd.h"
 
 @interface MKTabBarController ()
 
@@ -30,12 +31,22 @@
     self.tabBar.layer.shadowOffset = offset;
     self.tabBar.layer.shadowRadius = radius;
     self.tabBar.layer.shadowOpacity = opacity;
-    
-    [[UITabBar appearance] setShadowImage:[UIImage new]];
-    [[UITabBar appearance] setBackgroundImage:[UIImage new]];
     self.tabBar.clipsToBounds = NO;
+    
+    [self hideBlackLine];
 }
 
+- (void)hideBlackLine{
+    if (@available(iOS 13.0, *)) {
+          UITabBarAppearance *tabbar = self.tabBar.standardAppearance;
+          tabbar.backgroundImage = [UIImage mk_imageWithColor:UIColor.clearColor];
+          tabbar.shadowImage = [UIImage mk_imageWithColor:UIColor.clearColor];
+          self.tabBar.standardAppearance = tabbar;
+      }else{
+          [UITabBar appearance].shadowImage = [UIImage new];
+          [UITabBar appearance].backgroundImage = [UIImage new];
+      }
+}
 
 - (BOOL)shouldAutorotate{
     return self.selectedViewController.shouldAutorotate;
