@@ -10,24 +10,24 @@
 
 @interface UIView (MKFrameAdd)
 
-@property (nonatomic) CGPoint origin;
-@property (nonatomic) CGSize size;
+@property (nonatomic) CGPoint mk_origin;
+@property (nonatomic) CGSize  mk_size;
 
-@property (nonatomic) CGFloat x;
-@property (nonatomic) CGFloat y;
-@property (nonatomic) CGFloat width;
-@property (nonatomic) CGFloat height;
+@property (nonatomic) CGFloat mk_x;
+@property (nonatomic) CGFloat mk_y;
+@property (nonatomic) CGFloat mk_width;
+@property (nonatomic) CGFloat mk_height;
 
-@property (nonatomic) CGFloat centerX;
-@property (nonatomic) CGFloat centerY;
+@property (nonatomic) CGFloat mk_centerX;
+@property (nonatomic) CGFloat mk_centerY;
 
-@property (nonatomic) CGFloat top;
-@property (nonatomic) CGFloat left;
-@property (nonatomic) CGFloat bottom;
-@property (nonatomic) CGFloat right;
+@property (nonatomic) CGFloat mk_top;
+@property (nonatomic) CGFloat mk_left;
+@property (nonatomic) CGFloat mk_bottom;
+@property (nonatomic) CGFloat mk_right;
 
-@property (nonatomic) CGPoint topLeft;
-@property (nonatomic) CGPoint topRight;
-@property (nonatomic) CGPoint bottomLeft;
-@property (nonatomic) CGPoint bottomRight;
+@property (nonatomic) CGPoint mk_topLeft;
+@property (nonatomic) CGPoint mk_topRight;
+@property (nonatomic) CGPoint mk_bottomLeft;
+@property (nonatomic) CGPoint mk_bottomRight;
 @end
