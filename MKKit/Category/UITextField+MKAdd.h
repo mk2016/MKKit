@@ -10,6 +10,9 @@
 
 @interface UITextField (MKAdd)
 
+
+- (void)mk_setPlaceholder:(NSString *)text color:(UIColor *)color;
+    
 - (void)mk_verifyPhoneNum;
 
 /**

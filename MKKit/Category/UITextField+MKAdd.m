@@ -10,6 +10,15 @@
 
 @implementation UITextField (MKAdd)
 
+
+- (void)mk_setPlaceholder:(NSString *)text color:(UIColor *)color{
+    if(@available(iOS 13.0, *)) {
+        self.attributedPlaceholder = [[NSAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName : color}];
+    }else{
+        [self setValue:color forKeyPath:@"_placeholderLabel.textColor"];
+    }
+}
+
 - (void)mk_verifyPhoneNum{
     NSString *oStr = self.text;
     NSString *filterStr = [oStr stringByReplacingOccurrencesOfString:@"[^0-9]" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, [oStr length])];
