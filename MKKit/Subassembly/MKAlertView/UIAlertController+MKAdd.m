@@ -113,17 +113,16 @@
         return nil;
     }
     UIAlertController *alertController = [self alertControllerWithTitle:title message:message preferredStyle:style];
-    alertController.title = title;
-    alertController.message = message;
     if (!config) {
         config = [[MKAlertCtrlConfig alloc] init];
     }
     
     [alertController mk_setupUIWith:buttonTitles config:config block:block];
-    [alertController.view setNeedsLayout];
-    [alertController.view layoutIfNeeded];
+    if(!@available(iOS 13.0, *)) {
+        [alertController.view setNeedsLayout];
+        [alertController.view layoutIfNeeded];
+    }
     return alertController;
-
 }
 
 
