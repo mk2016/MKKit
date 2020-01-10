@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <pthread.h>
+#import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 #ifndef MKKitMacro
 #define MKKitMacro
@@ -166,6 +168,7 @@ typedef void (^MKBlock)(id result);
 typedef void (^MKVoidBlock)(void);
 typedef void (^MKBoolBlock)(BOOL bRet);
 typedef void (^MKIntegerBlock)(NSInteger index);
+typedef void (^MKFloatBlock)(CGFloat value);
 typedef void (^MKArrayBlock)(NSArray *array);
 
 
