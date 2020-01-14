@@ -63,6 +63,7 @@
     }else{
         self.labPlaceholder.alpha = 0;
     }
+    self.labPlaceholder.textColor = self.placeholderColor;
     [self layoutIfNeeded];
 }
 

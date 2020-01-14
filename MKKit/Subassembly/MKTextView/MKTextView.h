@@ -11,8 +11,8 @@
 typedef void(^MKTextViewDidChangeBlock)(UITextView *textView);
 
 @interface MKTextView : UITextView
-@property (nonatomic, copy) NSString *placeholder;
 @property (nonatomic, strong) UIColor *placeholderColor;
+@property (nonatomic, copy) NSString *placeholder;
 @property (nonatomic, assign) NSInteger maxLenth;
 @property (nonatomic, copy) MKTextViewDidChangeBlock didChangeBlock;
 @end

@@ -167,6 +167,7 @@ static inline void mk_dispatch_sync_on_main_queue(void (^block)(void)) {
 typedef void (^MKBlock)(id result);
 typedef void (^MKVoidBlock)(void);
 typedef void (^MKBoolBlock)(BOOL bRet);
+typedef void (^MKStringBlock)(NSString *text);
 typedef void (^MKIntegerBlock)(NSInteger index);
 typedef void (^MKFloatBlock)(CGFloat value);
 typedef void (^MKArrayBlock)(NSArray *array);
