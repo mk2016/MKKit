@@ -21,7 +21,7 @@
 }
 
 - (void)mk_setToCircle{
-    [self mk_setCornerWith:UIRectCornerAllCorners radii:CGSizeMake(CGRectGetWidth(self.frame)/2, CGRectGetHeight(self.frame)/2)];
+    [self mk_setCornerValue:CGRectGetWidth(self.frame)/2];
 }
 
 - (void)mk_setCornerWith:(UIRectCorner)corners radii:(CGSize)size{
