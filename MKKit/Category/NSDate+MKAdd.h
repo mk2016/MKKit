@@ -64,6 +64,8 @@
 /** utc -> yyyy-MM-dd HH:mm:ss */
 - (NSString *)mk_UTCToFormatFull;
 
+- (NSString *)mk_timestepToFormat:(NSString *)format;
+    
 /** utc -> format */
 - (NSString *)mk_UTCToFormat:(NSString *)format;
 

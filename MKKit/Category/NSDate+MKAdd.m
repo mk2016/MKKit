@@ -125,6 +125,16 @@
     return [self mk_UTCToFormat:@"yyyy-MM-dd HH:mm:ss"];
 }
 
+- (NSString *)mk_timestepToFormat:(NSString *)format{
+    if (self) {
+        NSDate *date = [NSDate mk_dataWithTimestamp:self];
+        if (date) {
+            return [date mk_dateToStringWithFormat:format];
+        }
+    }
+    return @"";
+}
+
 /** utc -> format */
 - (NSString *)mk_UTCToFormat:(NSString *)format{
     NSDate *date = [NSDate mk_dateWithUTC:self];
