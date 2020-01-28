@@ -26,7 +26,7 @@
 
 - (void)mk_setCornerWith:(UIRectCorner)corners radii:(CGSize)size{
     [self layoutIfNeeded];
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)) byRoundingCorners:corners cornerRadii:size];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corners cornerRadii:size];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.frame = self.bounds;
     maskLayer.path = maskPath.CGPath;
