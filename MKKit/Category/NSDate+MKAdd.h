@@ -39,6 +39,8 @@
 /** current date -> format  */
 + (NSString *)mk_currentDateStringWithFormat:(NSString *)format;
 
++ (NSString *)mk_currentDateWithFullFormat;
+
 /** NSDate -> format */
 - (NSString *)mk_dateToStringWithFormat:(NSString *)format;
 

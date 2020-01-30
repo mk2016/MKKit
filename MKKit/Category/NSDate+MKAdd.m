@@ -72,7 +72,9 @@
     return [[NSDate date] mk_dateToStringWithFormat:format];
 }
 
-
++ (NSString *)mk_currentDateWithFullFormat{
+    return [[NSDate date] mk_dateToStringWithFormatFull];
+}
 
 /** NSDate -> format */
 - (NSString *)mk_dateToStringWithFormat:(NSString *)format{
