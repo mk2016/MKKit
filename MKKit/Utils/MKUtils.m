@@ -129,9 +129,10 @@
 
 + (void)exitApplication{
     UIWindow *window = [UIApplication sharedApplication].delegate.window;
-    [UIView animateWithDuration:1.0f animations:^{
-        window.alpha = 0;
-        window.frame = CGRectMake(0, window.bounds.size.width, 0, 0);
+    [UIView animateWithDuration:0.3f animations:^{
+        CGAffineTransform curent =  window.transform;
+        CGAffineTransform scale = CGAffineTransformScale(curent, 0.01,0.01);
+        [window setTransform:scale];
     } completion:^(BOOL finished) {
         exit(0);
     }];
