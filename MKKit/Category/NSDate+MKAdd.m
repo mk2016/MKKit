@@ -33,7 +33,7 @@
 /** NSDate -> millisecond */
 - (NSTimeInterval)mk_dateToMillisecond{
     NSTimeInterval interval = [self timeIntervalSince1970];
-    return interval*1000;
+    return (long long)(interval*1000);
 }
 
 /** NSDate -> microsecond , length : 16 */
