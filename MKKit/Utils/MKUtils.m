@@ -127,6 +127,10 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 
++ (void)openOuterUrl:(NSString *)urlStr{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+}
+
 + (void)exitApplication{
     UIWindow *window = [UIApplication sharedApplication].delegate.window;
     [UIView animateWithDuration:0.3f animations:^{

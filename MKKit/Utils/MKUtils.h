@@ -34,6 +34,7 @@
 + (UIViewController *)topViewControllerWith:(UIViewController *)base ignored:(NSArray<Class> *)clazzAry;
 
 + (void)callTelephone:(NSString *)phone;
++ (void)openOuterUrl:(NSString *)urlStr;
 /** exit app */
 + (void)exitApplication;
 
