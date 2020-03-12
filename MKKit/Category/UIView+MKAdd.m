@@ -39,19 +39,31 @@
 
 #pragma mark - ***** shadow ******
 - (void)mk_addShadowWithColor:(UIColor *)color{
-    [self mk_addShadowWithColor:color size:CGSizeMake(0, 0)];
+    [self mk_addShadowWithColor:color offset:CGSizeMake(0, 0)];
 }
 
-- (void)mk_addShadowWithColor:(UIColor *)color size:(CGSize)size{
-    [self mk_addShadowWithColor:color size:size opacity:0.5 radius:2.f];
+- (void)mk_addShadowWithColor:(UIColor *)color offset:(CGSize)offset{
+    [self mk_addShadowWithColor:color offset:offset opacity:0.5 radius:2.f];
 }
 
-- (void)mk_addShadowWithColor:(UIColor *)color size:(CGSize)size opacity:(CGFloat)opacity radius:(CGFloat)radius{
+- (void)mk_addShadowWithColor:(UIColor *)color offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius{
+    self.layer.masksToBounds = NO;
     self.layer.shadowColor = color.CGColor;
-    self.layer.shadowOffset = size;
+    self.layer.shadowOffset = offset;
     self.layer.shadowOpacity = opacity;
     self.layer.shadowRadius = radius;
 }
+
+- (void)mk_addShadowWithCorner:(CGFloat)cornerRadius color:(UIColor *)color offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius{
+    self.layer.masksToBounds = NO;
+    self.layer.cornerRadius = cornerRadius;
+    self.layer.shadowColor = color.CGColor;
+    self.layer.shadowOffset = offset;
+    self.layer.shadowOpacity = opacity;
+    self.layer.shadowRadius = radius;
+}
+    
+    
 
 #pragma mark - ***** Border ******
 - (void)mk_setBorderColor:(UIColor *)color{

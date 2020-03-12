@@ -29,8 +29,9 @@ typedef enum {
 
 #pragma mark - ***** shadow ******
 - (void)mk_addShadowWithColor:(UIColor *)color;
-- (void)mk_addShadowWithColor:(UIColor *)color size:(CGSize)size;
-- (void)mk_addShadowWithColor:(UIColor *)color size:(CGSize)size opacity:(CGFloat)opacity radius:(CGFloat)radius;
+- (void)mk_addShadowWithColor:(UIColor *)color offset:(CGSize)offset;
+- (void)mk_addShadowWithColor:(UIColor *)color offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius;
+- (void)mk_addShadowWithCorner:(CGFloat)cornerRadius color:(UIColor *)color offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius;
 
 #pragma mark - ***** Border ******
 - (void)mk_setBorderColor:(UIColor *)color;
