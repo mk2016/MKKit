@@ -35,6 +35,8 @@
 
 + (void)callTelephone:(NSString *)phone;
 + (void)openOuterUrl:(NSString *)urlStr;
++ (void)openOuterUrl:(NSString *)urlStr completionHandler:(void (^ __nullable)(BOOL success))completion;
+
 /** exit app */
 + (void)exitApplication;
 
