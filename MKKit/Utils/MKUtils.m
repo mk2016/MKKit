@@ -134,12 +134,12 @@
 
 + (void)openOuterUrl:(NSString *)urlStr completionHandler:(void (^ __nullable)(BOOL success))completion{
     if(@available(iOS 10.0, *)) {
-        BOOL open = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
-        MK_BLOCK_EXEC(completion,open);
-    }else{
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:@{} completionHandler:^(BOOL success) {
             MK_BLOCK_EXEC(completion,success);
         }];
+    }else{
+        BOOL open = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+        MK_BLOCK_EXEC(completion,open);
     }
 }
 
