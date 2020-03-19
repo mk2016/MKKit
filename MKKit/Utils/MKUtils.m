@@ -10,6 +10,7 @@
 #import <MessageUI/MessageUI.h>
 #import "UIView+Toast.h"
 #import "MKConst.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @implementation MKUtils
 
@@ -182,5 +183,17 @@
     }
     
     return 0;
+}
+
++ (void)playShortVoiceWithUrl:(NSURL *)fileUrl{
+    SystemSoundID soundID;
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)(fileUrl), &soundID);
+    AudioServicesAddSystemSoundCompletion(soundID,NULL,NULL,MKSoundCompleteCallBack,NULL);
+    AudioServicesPlaySystemSound(soundID);
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+}
+
+void MKSoundCompleteCallBack(SystemSoundID soundID, void *clientData){
+    ELog(@"播放完成");
 }
 @end
