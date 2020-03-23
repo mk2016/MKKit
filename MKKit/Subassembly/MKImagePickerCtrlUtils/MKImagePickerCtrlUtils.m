@@ -17,6 +17,7 @@
 @property (nonatomic, assign) MKImagePickerType sourceType;
 @property (nonatomic, copy) MKIPCBlock block;
 @property (nonatomic, strong) UIImagePickerController *ipc;
+@property (nonatomic, assign) NSInteger curBehavior;
 @end
 
 @implementation MKImagePickerCtrlUtils
@@ -35,6 +36,12 @@ MK_IMPL_SHAREDINSTANCE(MKImagePickerCtrlUtils);
           onViewController:(UIViewController *)vc
                      block:(MKIPCBlock)block{
     
+    if (@available(iOS 11.0, *)) {
+        self.curBehavior = [UIScrollView appearance].contentInsetAdjustmentBehavior;
+        if (self.curBehavior == UIScrollViewContentInsetAdjustmentNever) {
+            [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentAutomatic];
+        }
+    }
     self.vc = vc;
     self.sourceType = sourceType?:MKImagePickerType_camera;
     self.block = block;
@@ -67,7 +74,7 @@ MK_IMPL_SHAREDINSTANCE(MKImagePickerCtrlUtils);
                                [vc presentViewController:weakSelf.ipc animated:YES completion:nil];
                            });
         }else{
-            MK_BLOCK_EXEC(block, nil);
+            [weakSelf callbackWith:nil];
         }
     }];
 }
@@ -90,12 +97,21 @@ MK_IMPL_SHAREDINSTANCE(MKImagePickerCtrlUtils);
     }else{
         image = [info objectForKey:UIImagePickerControllerOriginalImage];
     }
-    MK_BLOCK_EXEC(self.block, image);
+    [self callbackWith:image];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [self.vc dismissViewControllerAnimated:YES completion:nil];
-    MK_BLOCK_EXEC(self.block, nil);
+    [self callbackWith:nil];
+}
+
+- (void)callbackWith:(UIImage *)image{
+    if (@available(iOS 11.0, *)) {
+        if (self.curBehavior == UIScrollViewContentInsetAdjustmentNever) {
+            [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+        }
+    }
+    MK_BLOCK_EXEC(self.block,image);
 }
 
 #pragma mark - ***** lazy ******
@@ -105,6 +121,9 @@ MK_IMPL_SHAREDINSTANCE(MKImagePickerCtrlUtils);
         _ipc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         _ipc.navigationBar.translucent = NO;
         _ipc.delegate = self;
+        if (@available(iOS 13.0, *)) {
+            _ipc.modalPresentationStyle = UIModalPresentationFullScreen;
+        }
     }
     return _ipc;
 }
