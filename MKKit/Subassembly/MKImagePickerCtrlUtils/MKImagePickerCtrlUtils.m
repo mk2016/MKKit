@@ -35,7 +35,6 @@ MK_IMPL_SHAREDINSTANCE(MKImagePickerCtrlUtils);
              allowsEditing:(BOOL)allowsEditing
           onViewController:(UIViewController *)vc
                      block:(MKIPCBlock)block{
-    
     if (@available(iOS 11.0, *)) {
         self.curBehavior = [UIScrollView appearance].contentInsetAdjustmentBehavior;
         if (self.curBehavior == UIScrollViewContentInsetAdjustmentNever) {
@@ -85,7 +84,9 @@ MK_IMPL_SHAREDINSTANCE(MKImagePickerCtrlUtils);
     UIImage *image = nil;
     if (picker.allowsEditing) {
         image = [info objectForKey:UIImagePickerControllerEditedImage];
-        if (@available(iOS 11, *)) {
+        if (@available(iOS 13, *)) {
+            //do nothing
+        }else if (@available(iOS 11, *)) {
             if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {
                 UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
                 UIImage *oImage = [originalImage mk_fixOrientation];
