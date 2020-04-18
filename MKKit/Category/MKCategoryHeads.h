@@ -12,6 +12,7 @@
 #import "NSArray+MKAdd.h"
 #import "NSDate+MKAdd.h"
 #import "NSDictionary+MKAdd.h"
+#import "NSNumber+MKAdd.h"
 #import "NSObject+MKJsonAdd.h"
 #import "NSObject+MKPropertyAdd.h"
 #import "NSString+MKAdd.h"
