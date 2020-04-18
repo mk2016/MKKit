@@ -22,7 +22,7 @@
     
     UINavigationBar *navBar = [UINavigationBar appearance];
     [navBar setTitleTextAttributes:@{
-                                     NSFontAttributeName : [UIFont systemFontOfSize:18],
+                                     NSFontAttributeName : [UIFont boldSystemFontOfSize:18],
                                      NSForegroundColorAttributeName : [UIColor blackColor],
                                      }];
     
