@@ -30,16 +30,11 @@
 /** UTC -> NSDate */
 + (NSDate *)mk_dateWithUTC:(NSString *)utc;
 
-/** NSDate -> UTC */
-- (NSString *)mk_dateToUTCFormat;
-
 /** timestamp -> yyyy-MM-dd HH:mm:ss */
 + (NSString *)mk_formatFullWithTimestamp:(long long)timestamp;
 
-/** current date -> format  */
-+ (NSString *)mk_currentDateStringWithFormat:(NSString *)format;
-
-+ (NSString *)mk_currentDateWithFullFormat;
+/** NSDate -> UTC */
+- (NSString *)mk_dateToUTCFormat;
 
 /** NSDate -> format */
 - (NSString *)mk_dateToStringWithFormat:(NSString *)format;

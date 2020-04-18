@@ -53,27 +53,18 @@
     return [dateFormatter dateFromString:utc];
 }
 
-/** NSDate -> UTC */
-- (NSString *)mk_dateToUTCFormat{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
-    return [dateFormatter stringFromDate:self];
-}
-
 /** timestamp -> yyyy-MM-dd HH:mm:ss */
 + (NSString *)mk_formatFullWithTimestamp:(long long)timestamp{
     NSDate *date = [NSDate mk_dataWithTimestamp:timestamp];
     return [date mk_dateToStringWithFormatFull];
 }
 
-/** current date -> format  */
-+ (NSString *)mk_currentDateStringWithFormat:(NSString *)format{
-    return [[NSDate date] mk_dateToStringWithFormat:format];
-}
-
-+ (NSString *)mk_currentDateWithFullFormat{
-    return [[NSDate date] mk_dateToStringWithFormatFull];
+/** NSDate -> UTC */
+- (NSString *)mk_dateToUTCFormat{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    return [dateFormatter stringFromDate:self];
 }
 
 /** NSDate -> format */
@@ -127,9 +118,10 @@
     return [self mk_UTCToFormat:@"yyyy-MM-dd HH:mm:ss"];
 }
 
+/** timestep string -> Format string */
 - (NSString *)mk_timestepToFormat:(NSString *)format{
     if (self) {
-        NSDate *date = [NSDate mk_dataWithTimestamp:self];
+        NSDate *date = [NSDate mk_dataWithTimestamp:self.longLongValue];
         if (date) {
             return [date mk_dateToStringWithFormat:format];
         }
