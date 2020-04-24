@@ -7,8 +7,9 @@
 //
 
 #import "MKCacheUtils.h"
+#import "MKFileUtils.h"
 
-static const NSString * kCGCacheFilePlistSuffix = @"_mk.plist";
+static const NSString * kMKCacheFilePlistSuffix = @"_mk.plist";
 
 @implementation MKCacheUtils
 
@@ -35,7 +36,7 @@ static const NSString * kCGCacheFilePlistSuffix = @"_mk.plist";
     
     NSString *filePath;
     if (isPlist) {
-        filePath = [folderPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@",fileName,kCGCacheFilePlistSuffix]];
+        filePath = [folderPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@",fileName,kMKCacheFilePlistSuffix]];
     }else{
         filePath = [folderPath stringByAppendingPathComponent:fileName];
     }

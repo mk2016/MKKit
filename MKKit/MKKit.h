@@ -28,6 +28,7 @@
 #import "MKOverView.h"
 #import "MKWindowView.h"
 
+#import "MKCacheUtils.h"
 #import "MKDevicePermissionsUtils.h"
 #import "MKDeviceUtils.h"
 #import "MKFileUtils.h"
