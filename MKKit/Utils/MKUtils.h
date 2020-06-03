@@ -40,7 +40,7 @@
 /** exit app */
 + (void)exitApplication;
 
-+ (void)openAppStroeWithAppId:(NSString *)appId;
++ (void)openAppStoreWithAppId:(NSString *)appId;
 
 + (void)delayTask:(float)second onTimeEnd:(void(^)(void))block;
 

@@ -154,7 +154,7 @@
     }];
 }
 
-+ (void)openAppStroeWithAppId:(NSString *)appId{
++ (void)openAppStoreWithAppId:(NSString *)appId{
     NSString *pkgUrl = [NSString stringWithFormat: @"https://apps.apple.com/cn/app/id%@",appId];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:pkgUrl]];
 }
