@@ -25,6 +25,7 @@ typedef void(^MKAuthCodeViewBlock)(NSString *text);
 @property (nonatomic, assign) CGFloat padding;      //边距
 @property (nonatomic, assign) CGFloat space;        //间隔
 @property (nonatomic, assign) NSInteger style;      //space | grille
+@property (nonatomic, assign) BOOL encrypt;
 
 - (void)setupUIWithBlock:(MKAuthCodeViewBlock)block;
 - (void)startInput;

@@ -179,7 +179,11 @@
     for (NSInteger i = 0; i < self.maxLenght; i++) {
         UILabel *label = self.labelArr[i];
         if ( i < codeText.length){
-            label.text = [codeText substringWithRange:NSMakeRange(i, 1)];
+            if (self.encrypt) {
+                label.text = @"*";
+            }else{
+                label.text = [codeText substringWithRange:NSMakeRange(i, 1)];
+            }
             [self refreshGridWith:i selected:NO];
         }else{
             label.text = @"";
