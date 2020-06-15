@@ -196,4 +196,10 @@
 void MKSoundCompleteCallBack(SystemSoundID soundID, void *clientData){
     ELog(@"播放完成");
 }
+
++ (void)setPasteboard:(NSString *)str{
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = str;
+}
 @end
+

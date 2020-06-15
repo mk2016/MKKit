@@ -13,7 +13,6 @@
 
 + (void)toastManagerInit;
 
-
 + (id)getVCFromStoryboard:(NSString *)storyboard identify:(NSString *)identify;
 
 + (void)showToast:(NSString *)message;
@@ -48,4 +47,6 @@
 + (int)compareVersionWith:(NSString *)v1 and:(NSString *)v2;
 
 + (void)playShortVoiceWithUrl:(NSURL *)fileUrl;
+
++ (void)setPasteboard:(NSString *)str;
 @end
