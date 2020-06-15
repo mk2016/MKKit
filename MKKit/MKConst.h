@@ -171,6 +171,7 @@ typedef void (^MKStringBlock)(NSString *text);
 typedef void (^MKIntegerBlock)(NSInteger index);
 typedef void (^MKFloatBlock)(CGFloat value);
 typedef void (^MKArrayBlock)(NSArray *array);
+typedef void (^MKRectBlock)(CGRect rect);
 
 
 /** adjust table separator ,after ios8 */
