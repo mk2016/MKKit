@@ -21,6 +21,7 @@
 #import "UIImageView+MKTapAdd.h"
 #import "UILabel+MKAdd.h"
 #import "UINavigationController+MKAdd.h"
+#import "UISegmentedControl+MKAdd.h"
 #import "UITabBar+MKAdd.h"
 #import "UITableViewCell+MKAdd.h"
 #import "UITextField+MKAdd.h"
