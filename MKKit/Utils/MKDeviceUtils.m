@@ -83,7 +83,8 @@
 }
 
 + (BOOL)isiOS11Later{
-    return [self systemVersion] >= 11.0;
+//    return [self systemVersion] >= 11.0;
+    return @available(iOS 11.0, *);
 }
 
 + (NSString *)devicePlatform{
