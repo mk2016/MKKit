@@ -10,7 +10,7 @@
 #import "MKViewController.h"
 #import "UIImage+MKAdd.h"
 
-@interface MKNavigationController ()<UIGestureRecognizerDelegate>
+@interface MKNavigationController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) CALayer *bottomeLineLayer;
 @end
 
@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.delegate = self;
     self.interactivePopGestureRecognizer.delegate = self;
     [self setNeedsStatusBarAppearanceUpdate];
     
@@ -49,7 +50,6 @@
     }
 }
 
-
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if (self.childViewControllers.count) {
         viewController.hidesBottomBarWhenPushed = YES;
@@ -58,6 +58,18 @@
     [super pushViewController:viewController animated:animated];
 }
 
+#pragma mark - ***** UINavigationControllerDelegate ******
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        if (self.viewControllers.count > 1) {
+            self.interactivePopGestureRecognizer.enabled = YES;
+        }else{
+            self.interactivePopGestureRecognizer.enabled = NO;
+        }
+    }
+}
+
+#pragma mark - ***** UIGestureRecognizerDelegate ******
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     BOOL ok = YES;
     if ([self.topViewController respondsToSelector:@selector(gestureRecognizerShouldBegin)]) {
