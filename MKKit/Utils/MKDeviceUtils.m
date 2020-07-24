@@ -32,6 +32,10 @@
 }
 
 #pragma mark - ***** app info ******
++ (NSString *)appBundleIdentifier{
+    return [[NSBundle mainBundle] bundleIdentifier];
+}
+
 + (NSString *)appBundleShortVersion{
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 }

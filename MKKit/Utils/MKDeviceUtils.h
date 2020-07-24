@@ -15,6 +15,7 @@
 + (NSString *)getUUID;
 
 #pragma mark - ***** app info ******
++ (NSString *)appBundleIdentifier;
 + (NSString *)appBundleShortVersion;
 + (NSString *)appBundleVersion;
 + (NSString *)appName;
