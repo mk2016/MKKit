@@ -2,8 +2,8 @@
 //  MKTextView.m
 //  TQMapAbility
 //
-//  Created by xmk on 2017/5/22.
-//  Copyright © 2017年 taoqi. All rights reserved.
+//  Created by xiaomk on 2017/5/22.
+//  Copyright © 2017 mk. All rights reserved.
 //
 
 #import "MKTextView.h"

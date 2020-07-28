@@ -1,6 +1,6 @@
 //
 //  MKAuthCodeView.m
-//  STIMProject
+//  MKKit
 //
 //  Created by xiaomk on 2019/6/19.
 //  Copyright © 2019 mk. All rights reserved.

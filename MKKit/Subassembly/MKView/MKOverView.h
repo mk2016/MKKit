@@ -1,9 +1,9 @@
 //
 //  MKOverView.h
-//  Taoqicar
+//  MKKit
 //
 //  Created by xiaomk on 2019/6/6.
-//  Copyright © 2019 taoqicar. All rights reserved.
+//  Copyright © 2019 mk. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

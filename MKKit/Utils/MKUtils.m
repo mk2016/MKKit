@@ -2,8 +2,8 @@
 //  MKUtils.m
 //  MKKit
 //
-//  Created by xmk on 16/9/23.
-//  Copyright © 2016年 mk. All rights reserved.
+//  Created by xiaomk on 2016/9/23.
+//  Copyright © 2016 mk. All rights reserved.
 //
 
 #import "MKUtils.h"
@@ -165,9 +165,9 @@
 }
 
 /** v1<v2 return -1   v1=v2 return 0  v1>v2 return 1 */
-+ (int)compareVersionWith:(NSString *)v1 and:(NSString *)v2{
++ (MKComparisonResult)compareVersionWith:(NSString *)v1 and:(NSString *)v2{
     if ([v1 isEqualToString:v2]) {
-        return 0;
+        return MKComparisonResultEqual;
     }
     NSArray *v1Ary = [v1 componentsSeparatedByString:@"."];
     NSArray *v2Ary = [v2 componentsSeparatedByString:@"."];
@@ -176,13 +176,13 @@
         NSString *v1Num = v1Ary[i];
         NSString *v2Num = v2Ary[i];
         if (v1Num.integerValue > v2Num.integerValue ) {
-            return 1;
+            return MKComparisonResultMore;
         }else if (v1Num.integerValue < v2Num.integerValue){
-            return -1;
+            return MKComparisonResultLess;
         }
     }
     
-    return 0;
+    return MKComparisonResultEqual;
 }
 
 + (void)playShortVoiceWithUrl:(NSURL *)fileUrl{

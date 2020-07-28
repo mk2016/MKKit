@@ -2,8 +2,8 @@
 //  MKImagePickerCtrlUtils.h
 //  MKKit
 //
-//  Created by xiaomk on 16/5/28.
-//  Copyright © 2016年 tianchuang. All rights reserved.
+//  Created by xiaomk on 2016/5/28.
+//  Copyright © 2016 mk. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

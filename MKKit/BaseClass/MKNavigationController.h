@@ -2,8 +2,8 @@
 //  MKNavigationController.h
 //  MKKit
 //
-//  Created by xmk on 16/9/29.
-//  Copyright © 2016年 taoqicar. All rights reserved.
+//  Created by xiaomk on 2016/9/29.
+//  Copyright © 2016 mk. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

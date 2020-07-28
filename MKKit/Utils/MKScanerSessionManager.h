@@ -1,6 +1,6 @@
 //
 //  MKScanerSessionManager.h
-//  MKScanner
+//  MKKit
 //
 //  Created by xiaomk on 2019/5/27.
 //  Copyright © 2019 mk. All rights reserved.

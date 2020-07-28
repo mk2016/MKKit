@@ -2,8 +2,8 @@
 //  UINavigationController+MKAdd.h
 //  MKKit
 //
-//  Created by xiaomk on 16/9/21.
-//  Copyright © 2016年 xiaomk. All rights reserved.
+//  Created by xiaomk on 2016/9/21.
+//  Copyright © 2016 mk. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

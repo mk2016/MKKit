@@ -2,8 +2,8 @@
 //  MKHyperlinkButton.m
 //  MKKit
 //
-//  Created by xmk on 2017/7/17.
-//  Copyright © 2017年 mk. All rights reserved.
+//  Created by xiaomk on 2017/7/17.
+//  Copyright © 2017 mk. All rights reserved.
 //
 
 #import "MKHyperlinkButton.h"

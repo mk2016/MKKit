@@ -1,9 +1,9 @@
 //
 //  MKCacheUtils.m
-//  GameWelfare
+//  MKKit
 //
 //  Created by xiaomk on 2020/3/16.
-//  Copyright © 2020 outer. All rights reserved.
+//  Copyright © 2020 mk. All rights reserved.
 //
 
 #import "MKCacheUtils.h"

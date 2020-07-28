@@ -3,7 +3,7 @@
 //  MKKit
 //
 //  Created by xiaomk on 2018/12/24.
-//  Copyright © 2018 tqcar. All rights reserved.
+//  Copyright © 2018 mk. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -1,6 +1,6 @@
 //
 //  AVCaptureDevice+MKAdd.m
-//  STIMProject
+//  MKKit
 //
 //  Created by xiaomk on 2019/7/12.
 //  Copyright © 2019 mk. All rights reserved.

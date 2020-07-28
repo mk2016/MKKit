@@ -219,6 +219,12 @@ typedef NS_ENUM(NSInteger, MKVCState) {
     MKVCStateHaveNextPage,      /*!< 有数据有下一页 */
 };
 
+typedef NS_ENUM(NSInteger, MKComparisonResult) {
+    MKComparisonResultLess     = -1,
+    MKComparisonResultEqual    = 0,
+    MKComparisonResultMore     = 1,
+};
+
 /** inline function */
 static inline NSUInteger hexStringToInt(NSString *str) {
     uint32_t result = 0;

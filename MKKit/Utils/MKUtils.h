@@ -2,12 +2,13 @@
 //  MKUtils.h
 //  MKKit
 //
-//  Created by xmk on 16/9/23.
-//  Copyright © 2016年 mk. All rights reserved.
+//  Created by xiaomk on 2016/9/23.
+//  Copyright © 2016 mk. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "MKConst.h"
 
 @interface MKUtils : NSObject
 
@@ -44,7 +45,7 @@
 + (void)delayTask:(float)second onTimeEnd:(void(^)(void))block;
 
 /** 版本比对  -1:v1<v2, 0:v1=v2, 1:v1>v2  */
-+ (int)compareVersionWith:(NSString *)v1 and:(NSString *)v2;
++ (MKComparisonResult)compareVersionWith:(NSString *)v1 and:(NSString *)v2;
 
 + (void)playShortVoiceWithUrl:(NSURL *)fileUrl;
 

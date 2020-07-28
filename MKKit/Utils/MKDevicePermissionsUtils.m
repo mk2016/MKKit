@@ -2,8 +2,8 @@
 //  MKDevicePermissionsUtils.m
 //  MKKit
 //
-//  Created by xiaomk on 16/5/15.
-//  Copyright © 2016年 xiaomk. All rights reserved.
+//  Created by xiaomk on 2016/5/15.
+//  Copyright © 2016 mk. All rights reserved.
 //
 
 #import "MKDevicePermissionsUtils.h"

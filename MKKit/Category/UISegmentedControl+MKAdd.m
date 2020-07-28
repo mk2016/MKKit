@@ -1,9 +1,9 @@
 //
 //  UISegmentedControl+MKAdd.m
-//  Fanmugua
+//  MKKit
 //
 //  Created by xiaomk on 2020/6/24.
-//  Copyright © 2020 taolang. All rights reserved.
+//  Copyright © 2020 mk. All rights reserved.
 //
 
 #import "UISegmentedControl+MKAdd.h"

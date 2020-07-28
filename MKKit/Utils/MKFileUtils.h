@@ -2,8 +2,8 @@
 //  MKFileUtils.h
 //  MKKit
 //
-//  Created by xmk on 16/10/14.
-//  Copyright © 2016年 mk. All rights reserved.
+//  Created by xiaomk on 2016/10/14.
+//  Copyright © 2016 mk. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
