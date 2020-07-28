@@ -9,6 +9,7 @@
 #import "MKNavigationController.h"
 #import "MKViewController.h"
 #import "UIImage+MKAdd.h"
+#import "UINavigationController+MKAdd.h"
 
 @interface MKNavigationController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) CALayer *bottomeLineLayer;
@@ -35,11 +36,6 @@
     self.interactivePopGestureRecognizer.delegate = self;
     [self setNeedsStatusBarAppearanceUpdate];
     
-}
-
-- (void)setNavigationBarColor:(UIColor *)color{
-    UIImage *img = [UIImage mk_imageWithColor:color];
-    [self.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)setCustomNavigationBarLineHidden:(BOOL)hidden{

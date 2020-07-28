@@ -11,7 +11,6 @@
 
 @implementation UINavigationController (MKAdd)
 
-/** pop to an appointed viewController */
 - (BOOL)mk_canPopToViewContrller:(NSString *)vcName{
     Class class = NSClassFromString(vcName);
     if (class) {
@@ -24,6 +23,7 @@
     return NO;
 }
 
+/** pop to an appointed viewController */
 - (BOOL)mk_popToViewControllerWithName:(NSString *)vcName animated:(BOOL)animated{
     Class class = NSClassFromString(vcName);
     if (class) {

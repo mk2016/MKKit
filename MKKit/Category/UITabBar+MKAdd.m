@@ -7,10 +7,41 @@
 //
 
 #import "UITabBar+MKAdd.h"
+#import "UIImage+MKAdd.h"
 
 #define MKUITabBarTagBase 1102
 
 @implementation UITabBar(MKAdd)
+
+#pragma mark - ***** shadow line ******
+- (void)mk_setShadowWithOffset:(CGSize)offset radius:(CGFloat)radius color:(UIColor *)color opacity:(CGFloat)opacity {
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathAddRect(path, NULL, self.bounds);
+    self.layer.shadowPath = path;
+    CGPathCloseSubpath(path);
+    CGPathRelease(path);
+    
+    self.layer.shadowColor = color.CGColor;
+    self.layer.shadowOffset = offset;
+    self.layer.shadowRadius = radius;
+    self.layer.shadowOpacity = opacity;
+    self.clipsToBounds = NO;
+    
+    [self mk_hideBlackLine];
+}
+
+- (void)mk_hideBlackLine{
+    if (@available(iOS 13.0, *)) {
+        UITabBarAppearance *tabbar = self.standardAppearance;
+        tabbar.backgroundImage = [UIImage mk_imageWithColor:UIColor.clearColor];
+        tabbar.shadowImage = [UIImage mk_imageWithColor:UIColor.clearColor];
+        self.standardAppearance = tabbar;
+    }else{
+        [UITabBar appearance].shadowImage = [UIImage new];
+        [UITabBar appearance].backgroundImage = [UIImage new];
+    }
+}
+
 
 #pragma mark - ***** system badge ******
 - (void)mk_setBadgeWithValue:(NSString *)value onIndex:(int)index{

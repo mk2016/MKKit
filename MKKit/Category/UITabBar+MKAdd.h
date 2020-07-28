@@ -10,6 +10,10 @@
 
 @interface UITabBar(MKAdd)
 
+#pragma mark - ***** shadow line ******
+- (void)mk_setShadowWithOffset:(CGSize)offset radius:(CGFloat)radius color:(UIColor *)color opacity:(CGFloat)opacity;
+- (void)mk_hideBlackLine;
+
 #pragma mark - ***** system badge ******
 - (void)mk_setBadgeWithValue:(NSString *)value onIndex:(int)index;
 

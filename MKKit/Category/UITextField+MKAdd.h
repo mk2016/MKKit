@@ -18,6 +18,6 @@
 /**
  * TextField input money max integer length limit
  */
-- (void)mk_constraintMoneyByIntegerLimit:(NSInteger)length;
+- (void)mk_constraintMoneyByIntegerLimit:(NSInteger)limit;
 
 @end

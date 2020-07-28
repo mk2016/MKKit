@@ -10,6 +10,18 @@
 
 @implementation MKRightImageButton
 
+- (id)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]) {
+    }
+    return self;
+}
+
 - (void)layoutSubviews{
     
     [super layoutSubviews];

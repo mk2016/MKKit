@@ -11,7 +11,6 @@
 
 @implementation UITableViewCell (MKAdd)
 
-
 + (instancetype)mk_cellWithDefaultStyleTableView:(UITableView *)tableView{
     NSString *reuseIdentifier = NSStringFromClass([self class]);
     return [self mk_cellWithStyle:UITableViewCellStyleDefault resuseIdentifier:reuseIdentifier tableView:tableView];
@@ -38,16 +37,11 @@
 
 + (instancetype)mk_cellByNibWith:(UITableView *)tableView{
     NSString *className = NSStringFromClass([self class]);
-    Class class = NSClassFromString(className);
-    UITableViewCell *cell;
-    if (class) {
-        cell = [tableView dequeueReusableCellWithIdentifier:className];
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:className];
     if (!cell) {
-        UINib *_nib = [UINib nibWithNibName:className bundle:nil];
-        if (_nib) {
-            cell = [[_nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
-            [cell mk_setupUI];
+        UINib *nib = [UINib nibWithNibName:className bundle:nil];
+        if (nib) {
+            cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
         }
     }
     return cell;

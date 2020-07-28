@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AdSupport/AdSupport.h>
 
 @interface NSMutableURLRequest (MKAdd)
 

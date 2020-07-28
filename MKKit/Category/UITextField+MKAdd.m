@@ -28,7 +28,7 @@
     self.text = filterStr;
 }
 
-- (void)mk_constraintMoneyByIntegerLimit:(NSInteger)length{
+- (void)mk_constraintMoneyByIntegerLimit:(NSInteger)limit{
     if (self.text.length > 1) {
         NSString *frist = [self.text substringToIndex:1];
         NSString *second = [self.text substringWithRange:NSMakeRange(1, 1)];
@@ -51,9 +51,9 @@
             }
         }
         
-        if (length > 0) {
-            if (self.text.length > length + 3) {    //  x.00
-                self.text = [self.text substringToIndex:length + 3];
+        if (limit > 0) {
+            if (self.text.length > limit + 3) {    //  x.00
+                self.text = [self.text substringToIndex:limit + 3];
             }
         }
         
@@ -65,9 +65,9 @@
             self.text = [self.text stringByReplacingOccurrencesOfString:@"." withString:@""];
         }
     } else { // no '.'
-        if (length > 0) {
-            if (self.text.length > length) {
-                self.text = [self.text substringToIndex:length];
+        if (limit > 0) {
+            if (self.text.length > limit) {
+                self.text = [self.text substringToIndex:limit];
             }
         }
     }
