@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.license       = "MIT"
   s.author             = { "MK Xiao" => "xiaomk7758@sina.com" }
   s.social_media_url   = "https://mk2016.github.io"
-  s.platform      = :ios, "8.0"
+  s.platform      = :ios, "9.0"
   s.source        = { :git => "", :tag => "#{s.version}" }
   s.source_files  = "MKKit/**/*.{h,m}"
   s.requires_arc  = true

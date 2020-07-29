@@ -19,7 +19,7 @@
 
 + (void)initialize{
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+//    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
     UINavigationBar *navBar = [UINavigationBar appearance];
     [navBar setTitleTextAttributes:@{
