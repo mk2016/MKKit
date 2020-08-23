@@ -65,6 +65,7 @@
 		C58BBBBD21EF21B500DF1D2F /* UIView+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBBC21EF21B400DF1D2F /* UIView+MKAdd.m */; };
 		C58BBBC021EF221200DF1D2F /* UIView+MKFrameAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBBF21EF221200DF1D2F /* UIView+MKFrameAdd.m */; };
 		C58BBBC621EF2AC300DF1D2F /* MKDeviceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBC521EF2AC300DF1D2F /* MKDeviceUtils.m */; };
+		C5DED58524F242F60068BE07 /* UIColor+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DED58424F242F50068BE07 /* UIColor+MKAdd.m */; };
 		D9B8B20F64A94904A15506DD /* libPods-CommonPods-MKKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBECCBB78DF3C8573DCD0F3B /* libPods-CommonPods-MKKit.a */; };
 /* End PBXBuildFile section */
 
@@ -198,6 +199,8 @@
 		C58BBBBF21EF221200DF1D2F /* UIView+MKFrameAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKFrameAdd.m"; sourceTree = "<group>"; };
 		C58BBBC421EF2AC300DF1D2F /* MKDeviceUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDeviceUtils.h; sourceTree = "<group>"; };
 		C58BBBC521EF2AC300DF1D2F /* MKDeviceUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDeviceUtils.m; sourceTree = "<group>"; };
+		C5DED58324F242F50068BE07 /* UIColor+MKAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+MKAdd.h"; sourceTree = "<group>"; };
+		C5DED58424F242F50068BE07 /* UIColor+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MKAdd.m"; sourceTree = "<group>"; };
 		CBECCBB78DF3C8573DCD0F3B /* libPods-CommonPods-MKKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CommonPods-MKKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -368,6 +371,8 @@
 				C58BBB9B21EDD9F800DF1D2F /* NSString+MKAdd.m */,
 				C58BBBA121EEFFD800DF1D2F /* UIButton+MKHitRect.h */,
 				C58BBBA021EEFFD800DF1D2F /* UIButton+MKHitRect.m */,
+				C5DED58324F242F50068BE07 /* UIColor+MKAdd.h */,
+				C5DED58424F242F50068BE07 /* UIColor+MKAdd.m */,
 				C58BBBA321EF028400DF1D2F /* UIImage+MKAdd.h */,
 				C58BBBA421EF028400DF1D2F /* UIImage+MKAdd.m */,
 				C58BBBA721EF0F1100DF1D2F /* UIImageView+MKTapAdd.h */,
@@ -670,6 +675,7 @@
 				C5778D78232789BD002D7B59 /* MKScanerSessionManager.m in Sources */,
 				C53E077222115DF200FC09BB /* NSDictionary+MKAdd.m in Sources */,
 				C5080E4C21F59C9C007C2F39 /* MKVButton.m in Sources */,
+				C5DED58524F242F60068BE07 /* UIColor+MKAdd.m in Sources */,
 				C53E077522115FBA00FC09BB /* MKDevicePermissionsUtils.m in Sources */,
 				C5080ED021F6AF77007C2F39 /* MKNetwork.m in Sources */,
 				C58BBB9121EDCACC00DF1D2F /* UIView+MKLogAdd.m in Sources */,
