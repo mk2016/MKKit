@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "AVCaptureDevice+MKAdd.h"
+#import "CALayer+MKAdd.h"
 #import "NSArray+MKAdd.h"
 #import "NSDate+MKAdd.h"
 #import "NSDictionary+MKAdd.h"
@@ -17,6 +18,7 @@
 #import "NSObject+MKPropertyAdd.h"
 #import "NSString+MKAdd.h"
 #import "UIButton+MKHitRect.h"
+#import "UIColor+MKAdd.h"
 #import "UIImage+MKAdd.h"
 #import "UIImageView+MKTapAdd.h"
 #import "UILabel+MKAdd.h"

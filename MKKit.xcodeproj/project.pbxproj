@@ -65,6 +65,7 @@
 		C58BBBBD21EF21B500DF1D2F /* UIView+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBBC21EF21B400DF1D2F /* UIView+MKAdd.m */; };
 		C58BBBC021EF221200DF1D2F /* UIView+MKFrameAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBBF21EF221200DF1D2F /* UIView+MKFrameAdd.m */; };
 		C58BBBC621EF2AC300DF1D2F /* MKDeviceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBC521EF2AC300DF1D2F /* MKDeviceUtils.m */; };
+		C5C2488724F3572400A19F69 /* CALayer+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C2488624F3572400A19F69 /* CALayer+MKAdd.m */; };
 		C5DED58524F242F60068BE07 /* UIColor+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DED58424F242F50068BE07 /* UIColor+MKAdd.m */; };
 		D9B8B20F64A94904A15506DD /* libPods-CommonPods-MKKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBECCBB78DF3C8573DCD0F3B /* libPods-CommonPods-MKKit.a */; };
 /* End PBXBuildFile section */
@@ -199,6 +200,8 @@
 		C58BBBBF21EF221200DF1D2F /* UIView+MKFrameAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MKFrameAdd.m"; sourceTree = "<group>"; };
 		C58BBBC421EF2AC300DF1D2F /* MKDeviceUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDeviceUtils.h; sourceTree = "<group>"; };
 		C58BBBC521EF2AC300DF1D2F /* MKDeviceUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDeviceUtils.m; sourceTree = "<group>"; };
+		C5C2488524F3572400A19F69 /* CALayer+MKAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+MKAdd.h"; sourceTree = "<group>"; };
+		C5C2488624F3572400A19F69 /* CALayer+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+MKAdd.m"; sourceTree = "<group>"; };
 		C5DED58324F242F50068BE07 /* UIColor+MKAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+MKAdd.h"; sourceTree = "<group>"; };
 		C5DED58424F242F50068BE07 /* UIColor+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MKAdd.m"; sourceTree = "<group>"; };
 		CBECCBB78DF3C8573DCD0F3B /* libPods-CommonPods-MKKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CommonPods-MKKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -356,6 +359,8 @@
 			children = (
 				C5778D7023278782002D7B59 /* AVCaptureDevice+MKAdd.h */,
 				C5778D6F23278782002D7B59 /* AVCaptureDevice+MKAdd.m */,
+				C5C2488524F3572400A19F69 /* CALayer+MKAdd.h */,
+				C5C2488624F3572400A19F69 /* CALayer+MKAdd.m */,
 				C58BBB9521EDCEEE00DF1D2F /* MKCategoryHeads.h */,
 				C53E07A82214106000FC09BB /* NSArray+MKAdd.h */,
 				C53E07A92214106000FC09BB /* NSArray+MKAdd.m */,
@@ -702,6 +707,7 @@
 				C58BBB9C21EDD9F800DF1D2F /* NSString+MKAdd.m in Sources */,
 				C55CED1121F1D8EC0049B1C7 /* UIAlertController+MKAdd.m in Sources */,
 				C55CED1621F1DB1E0049B1C7 /* MKWindowView.m in Sources */,
+				C5C2488724F3572400A19F69 /* CALayer+MKAdd.m in Sources */,
 				C58BBBAB21EF12F300DF1D2F /* UILabel+MKAdd.m in Sources */,
 				C582CA0B2202C4C000547417 /* MKViewController.m in Sources */,
 				C5080ECF21F6AF77007C2F39 /* NSMutableURLRequest+MKAdd.m in Sources */,

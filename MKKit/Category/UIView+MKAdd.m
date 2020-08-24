@@ -7,6 +7,7 @@
 //
 
 #import "UIView+MKAdd.h"
+#import "CALayer+MKAdd.h"
 
 @implementation UIView (MKAdd)
 
@@ -15,26 +16,18 @@
     [self mk_setCornerValue:4.f];
 }
 
+- (void)mk_setToCircle{
+    [self mk_setCornerValue:CGRectGetWidth(self.frame)/2];
+}
+
 - (void)mk_setCornerValue:(CGFloat)value{
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = value;
 }
 
-- (void)mk_setToCircle{
-    [self mk_setCornerValue:CGRectGetWidth(self.frame)/2];
-}
-
-- (void)mk_setCornerWith:(UIRectCorner)corners radii:(CGSize)size{
+- (void)mk_setCorners:(UIRectCorner)corners radii:(CGSize)radii{
     [self layoutIfNeeded];
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corners cornerRadii:size];
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = self.bounds;
-    maskLayer.path = maskPath.CGPath;
-    self.layer.mask = maskLayer;
-//    self.layer.cornerRadius = size.width;
-//    self.layer.masksToBounds = YES;
-//    self.layer.shouldRasterize = YES;
-//    self.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    [self.layer mk_setCornerWithRect:self.bounds corners:corners radii:radii];
 }
 
 #pragma mark - ***** shadow ******
@@ -47,23 +40,24 @@
 }
 
 - (void)mk_addShadowWithColor:(UIColor *)color offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius{
-    self.layer.masksToBounds = NO;
-    self.layer.shadowColor = color.CGColor;
-    self.layer.shadowOffset = offset;
-    self.layer.shadowOpacity = opacity;
-    self.layer.shadowRadius = radius;
+    [self.layer mk_setShadowWithColor:color offset:offset opacity:opacity radius:radius];
 }
 
 - (void)mk_addShadowWithCorner:(CGFloat)cornerRadius color:(UIColor *)color offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius{
-    self.layer.masksToBounds = NO;
     self.layer.cornerRadius = cornerRadius;
-    self.layer.shadowColor = color.CGColor;
-    self.layer.shadowOffset = offset;
-    self.layer.shadowOpacity = opacity;
-    self.layer.shadowRadius = radius;
+    [self.layer mk_setShadowWithColor:color offset:offset opacity:opacity radius:radius];
 }
+
+- (void)mk_addShadowWithCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii bgColor:(UIColor *)bgColor andShadowColor:(UIColor *)color offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius{
+    CALayer *cornerLayer = [CALayer layer];
+    cornerLayer.frame = self.bounds;
+    cornerLayer.backgroundColor = bgColor.CGColor;
+    [self.layer addSublayer:cornerLayer];
+    self.backgroundColor = nil;
     
-    
+    [self mk_addShadowWithColor:color offset:offset opacity:opacity radius:radius];
+    [cornerLayer mk_setCornerWithRect:self.bounds corners:corners radii:cornerRadii];
+}
 
 #pragma mark - ***** Border ******
 - (void)mk_setBorderColor:(UIColor *)color{

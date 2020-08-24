@@ -23,15 +23,22 @@ typedef enum {
 
 #pragma mark - ***** rounded corner ******
 - (void)mk_setCorner;
-- (void)mk_setCornerValue:(CGFloat)value;
 - (void)mk_setToCircle;
-- (void)mk_setCornerWith:(UIRectCorner)corners radii:(CGSize)size;
+- (void)mk_setCornerValue:(CGFloat)value;
+- (void)mk_setCorners:(UIRectCorner)corners radii:(CGSize)radii;
 
 #pragma mark - ***** shadow ******
 - (void)mk_addShadowWithColor:(UIColor *)color;
 - (void)mk_addShadowWithColor:(UIColor *)color offset:(CGSize)offset;
 - (void)mk_addShadowWithColor:(UIColor *)color offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius;
 - (void)mk_addShadowWithCorner:(CGFloat)cornerRadius color:(UIColor *)color offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius;
+- (void)mk_addShadowWithCorners:(UIRectCorner)corners
+                    cornerRadii:(CGSize)cornerRadii
+                        bgColor:(UIColor *)bgColor
+                 andShadowColor:(UIColor *)color
+                         offset:(CGSize)offset
+                        opacity:(CGFloat)opacity
+                         radius:(CGFloat)radius;
 
 #pragma mark - ***** Border ******
 - (void)mk_setBorderColor:(UIColor *)color;
