@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MKNavigationController : UINavigationController
+@interface MKNavigationController : UINavigationController<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
 - (void)setCustomNavigationBarLineHidden:(BOOL)hidden;
 
 @end

@@ -11,7 +11,7 @@
 #import "UIImage+MKAdd.h"
 #import "UINavigationController+MKAdd.h"
 
-@interface MKNavigationController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
+@interface MKNavigationController ()
 @property (nonatomic, strong) CALayer *bottomeLineLayer;
 @end
 
