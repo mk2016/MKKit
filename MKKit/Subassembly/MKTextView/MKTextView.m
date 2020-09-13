@@ -18,7 +18,7 @@
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
+    [self addObserver];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
@@ -29,9 +29,20 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
+        [self addObserver];
     }
     return self;
+}
+
+- (void)addObserver{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
+    [self addObserver:self forKeyPath:@"font" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    if ([keyPath isEqualToString:@"font"]) {
+        self.labPlaceholder.font = [change objectForKey:@"new"];
+    }
 }
 
 - (void)textChanged:(NSNotification *)notification{
@@ -82,6 +93,7 @@
 
 - (void)dealloc{
     DLog(@"♻️ dealloc");
+    [self removeObserver:self forKeyPath:@"font"];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -108,13 +120,5 @@
     }
     return _placeholderColor;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end
