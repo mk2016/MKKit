@@ -17,6 +17,7 @@
 #import "NSObject+MKJsonAdd.h"
 #import "NSObject+MKPropertyAdd.h"
 #import "NSString+MKAdd.h"
+#import "UIBarButtonItem+MKAdd.h"
 #import "UIButton+MKHitRect.h"
 #import "UIColor+MKAdd.h"
 #import "UIImage+MKAdd.h"
