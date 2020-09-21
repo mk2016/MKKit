@@ -25,4 +25,30 @@
     maskLayer.path = maskPath.CGPath;
     self.mask = maskLayer;
 }
+
+
+#pragma mark - ***** animation ******
+- (void)mk_oscillatoryAnimation{
+//    NSNumber *animationScale1 = type == TZOscillatoryAnimationToBigger ? @(1.15) : @(0.5);
+//    NSNumber *animationScale2 = type == TZOscillatoryAnimationToBigger ? @(0.92) : @(1.15);
+    NSNumber *animationScale1 = @(1.15);
+    NSNumber *animationScale2 = @(0.92);
+    [UIView animateWithDuration:0.15 delay:0
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+        [self setValue:animationScale1 forKeyPath:@"transform.scale"];
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.15 delay:0
+                            options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseInOut animations:^{
+            [self setValue:animationScale2 forKeyPath:@"transform.scale"];
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.1 delay:0
+                                options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseInOut
+                             animations:^{
+                [self setValue:@(1.0) forKeyPath:@"transform.scale"];
+            } completion:nil];
+        }];
+    }];
+}
+
 @end

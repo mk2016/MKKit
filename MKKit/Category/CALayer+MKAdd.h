@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CALayer (MKAdd)
 - (void)mk_setShadowWithColor:(UIColor *)color offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius;
 - (void)mk_setCornerWithRect:(CGRect)rect corners:(UIRectCorner)corners radii:(CGSize)radii;
+- (void)mk_oscillatoryAnimation;
 @end
 
 NS_ASSUME_NONNULL_END

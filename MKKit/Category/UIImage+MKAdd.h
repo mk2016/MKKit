@@ -20,8 +20,9 @@
 - (BOOL)mk_hasAlpha;
 
 #pragma mark - ***** image ******
-/** image with color */
+/** image with color  size cornerRadius */
 + (UIImage *)mk_imageWithColor:(UIColor *)color;
++ (UIImage *)mk_imageWithColor:(UIColor *)color size:(CGSize)size cornerRadius:(CGFloat)radius;
 
 /** create qrcode image  */
 + (UIImage *)mk_imageWithQRString:(NSString *)qrStr imageWidth:(CGFloat)imgWidth;
