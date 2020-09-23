@@ -75,6 +75,7 @@
 - (NSData *)mk_compressLessThan1M;
 - (NSData *)mk_compressLessThan500KB;
 - (NSData *)mk_compressLessThan:(CGFloat)maxKB;
+- (UIImage *)mk_imageByCompressLessThan:(CGFloat)maxKB;
 - (UIImage *)mk_compressWithRatio:(CGFloat)ratio;
 - (UIImage *)mk_compress;
 - (CGFloat)mk_imageLength;

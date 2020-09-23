@@ -421,7 +421,28 @@
         sizeOriginKB = imgData.length / 1000.f;
         resizeRate -= 0.1;
     } while (sizeOriginKB > maxKB && resizeRate > 0.1);
+    
+    UIImage *image = [UIImage imageWithData:imgData];
+    while (sizeOriginKB > maxKB) {
+        CGFloat fixelW = CGImageGetWidth(image.CGImage);
+        CGFloat fixelH = CGImageGetHeight(image.CGImage);
+        CGSize size = CGSizeMake(fixelW*0.8, fixelH*0.8);
+        //通过图片上下文进行处理图片
+        UIGraphicsBeginImageContext(size);
+        [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+             //获取处理后图片的大小
+        imgData = UIImageJPEGRepresentation(image, 1);
+        sizeOriginKB = imgData.length / 1000.f;
+    }
     return imgData;
+}
+
+- (UIImage *)mk_imageByCompressLessThan:(CGFloat)maxKB{
+    NSData *data = [self mk_compressLessThan:maxKB];
+    UIImage *img = [UIImage imageWithData:data];
+    return img;
 }
 
 - (UIImage *)mk_compressWithRatio:(CGFloat)ratio{
