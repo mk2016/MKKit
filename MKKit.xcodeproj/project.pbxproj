@@ -70,6 +70,11 @@
 		C58BBBC621EF2AC300DF1D2F /* MKDeviceUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C58BBBC521EF2AC300DF1D2F /* MKDeviceUtils.m */; };
 		C5C2488724F3572400A19F69 /* CALayer+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C2488624F3572400A19F69 /* CALayer+MKAdd.m */; };
 		C5DED58524F242F60068BE07 /* UIColor+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DED58424F242F50068BE07 /* UIColor+MKAdd.m */; };
+		C5F016652521EC4200D751C9 /* MKAlbumListView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F0165E2521EC4200D751C9 /* MKAlbumListView.m */; };
+		C5F016662521EC4200D751C9 /* MKAlbumListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F016602521EC4200D751C9 /* MKAlbumListCell.m */; };
+		C5F016672521EC4200D751C9 /* MKPhotoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F016622521EC4200D751C9 /* MKPhotoUtils.m */; };
+		C5F016682521EC4200D751C9 /* MKPhotoModels.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F016642521EC4200D751C9 /* MKPhotoModels.m */; };
+		C5F0166A2521F4D400D751C9 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F016692521F4D400D751C9 /* CoreServices.framework */; };
 		D9B8B20F64A94904A15506DD /* libPods-CommonPods-MKKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBECCBB78DF3C8573DCD0F3B /* libPods-CommonPods-MKKit.a */; };
 /* End PBXBuildFile section */
 
@@ -213,6 +218,16 @@
 		C5C2488624F3572400A19F69 /* CALayer+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+MKAdd.m"; sourceTree = "<group>"; };
 		C5DED58324F242F50068BE07 /* UIColor+MKAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+MKAdd.h"; sourceTree = "<group>"; };
 		C5DED58424F242F50068BE07 /* UIColor+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MKAdd.m"; sourceTree = "<group>"; };
+		C5F0165C2521EC4200D751C9 /* MKAlbumListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAlbumListView.h; sourceTree = "<group>"; };
+		C5F0165D2521EC4200D751C9 /* MKAlbumListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAlbumListCell.h; sourceTree = "<group>"; };
+		C5F0165E2521EC4200D751C9 /* MKAlbumListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAlbumListView.m; sourceTree = "<group>"; };
+		C5F0165F2521EC4200D751C9 /* MKAlbumListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MKAlbumListCell.xib; sourceTree = "<group>"; };
+		C5F016602521EC4200D751C9 /* MKAlbumListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAlbumListCell.m; sourceTree = "<group>"; };
+		C5F016612521EC4200D751C9 /* MKPhotoModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPhotoModels.h; sourceTree = "<group>"; };
+		C5F016622521EC4200D751C9 /* MKPhotoUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPhotoUtils.m; sourceTree = "<group>"; };
+		C5F016632521EC4200D751C9 /* MKPhotoUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPhotoUtils.h; sourceTree = "<group>"; };
+		C5F016642521EC4200D751C9 /* MKPhotoModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPhotoModels.m; sourceTree = "<group>"; };
+		C5F016692521F4D400D751C9 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		CBECCBB78DF3C8573DCD0F3B /* libPods-CommonPods-MKKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CommonPods-MKKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -221,6 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5F0166A2521F4D400D751C9 /* CoreServices.framework in Frameworks */,
 				C52DB31B1E4C4C38009FBA5A /* Accelerate.framework in Frameworks */,
 				C52DB3171E4C4C23009FBA5A /* AVFoundation.framework in Frameworks */,
 				C57BE2F71E4D8CCA00177D4F /* CoreFoundation.framework in Frameworks */,
@@ -291,6 +307,7 @@
 				C5080E4021F59B89007C2F39 /* MKBlurView */,
 				C5080E4421F59C9C007C2F39 /* MKButton */,
 				C55CED0B21F1D8E00049B1C7 /* MKImagePickerCtrlUtils */,
+				C5F0165A2521EC4200D751C9 /* MKPhotosUtils */,
 				C50F9A21238FCBDB00A33155 /* MKTextView */,
 				C5778D72232788AB002D7B59 /* MKView */,
 				C55CED1321F1DB1D0049B1C7 /* MKWindowView */,
@@ -345,6 +362,7 @@
 		C52DB30D1E4C4BDF009FBA5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C5F016692521F4D400D751C9 /* CoreServices.framework */,
 				C52DB31A1E4C4C38009FBA5A /* Accelerate.framework */,
 				C52DB3161E4C4C23009FBA5A /* AVFoundation.framework */,
 				C57BE2F61E4D8CCA00177D4F /* CoreFoundation.framework */,
@@ -503,6 +521,30 @@
 				C582CA55220425A600547417 /* Info.plist */,
 			);
 			path = MKKitTests;
+			sourceTree = "<group>";
+		};
+		C5F0165A2521EC4200D751C9 /* MKPhotosUtils */ = {
+			isa = PBXGroup;
+			children = (
+				C5F016632521EC4200D751C9 /* MKPhotoUtils.h */,
+				C5F016622521EC4200D751C9 /* MKPhotoUtils.m */,
+				C5F0165B2521EC4200D751C9 /* MKAlbum */,
+				C5F016612521EC4200D751C9 /* MKPhotoModels.h */,
+				C5F016642521EC4200D751C9 /* MKPhotoModels.m */,
+			);
+			path = MKPhotosUtils;
+			sourceTree = "<group>";
+		};
+		C5F0165B2521EC4200D751C9 /* MKAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				C5F0165C2521EC4200D751C9 /* MKAlbumListView.h */,
+				C5F0165E2521EC4200D751C9 /* MKAlbumListView.m */,
+				C5F0165D2521EC4200D751C9 /* MKAlbumListCell.h */,
+				C5F016602521EC4200D751C9 /* MKAlbumListCell.m */,
+				C5F0165F2521EC4200D751C9 /* MKAlbumListCell.xib */,
+			);
+			path = MKAlbum;
 			sourceTree = "<group>";
 		};
 		DFEEBCC61843C8AE09856F25 /* Pods */ = {
@@ -691,11 +733,13 @@
 				C582CA4C2204227200547417 /* AFHTTPSessionManager+MKAdd.m in Sources */,
 				C58BBBBA21EF1EB600DF1D2F /* UITableViewCell+MKAdd.m in Sources */,
 				C5080E4B21F59C9C007C2F39 /* MKRightImageButton.m in Sources */,
+				C5F016662521EC4200D751C9 /* MKAlbumListCell.m in Sources */,
 				C5778D7123278782002D7B59 /* AVCaptureDevice+MKAdd.m in Sources */,
 				C5778D78232789BD002D7B59 /* MKScanerSessionManager.m in Sources */,
 				C53E077222115DF200FC09BB /* NSDictionary+MKAdd.m in Sources */,
 				C5080E4C21F59C9C007C2F39 /* MKVButton.m in Sources */,
 				C5DED58524F242F60068BE07 /* UIColor+MKAdd.m in Sources */,
+				C5F016682521EC4200D751C9 /* MKPhotoModels.m in Sources */,
 				C53E077522115FBA00FC09BB /* MKDevicePermissionsUtils.m in Sources */,
 				C5080ED021F6AF77007C2F39 /* MKNetwork.m in Sources */,
 				C58BBB9121EDCACC00DF1D2F /* UIView+MKLogAdd.m in Sources */,
@@ -715,8 +759,10 @@
 				C5778D75232788AB002D7B59 /* MKOverView.m in Sources */,
 				C58BBBB421EF177C00DF1D2F /* UITabBar+MKAdd.m in Sources */,
 				C50DC950250E366A0014A3D1 /* UISegmentedControl+MKAdd.m in Sources */,
+				C5F016652521EC4200D751C9 /* MKAlbumListView.m in Sources */,
 				C58BBBC621EF2AC300DF1D2F /* MKDeviceUtils.m in Sources */,
 				C58BBBB121EF14C400DF1D2F /* UINavigationController+MKAdd.m in Sources */,
+				C5F016672521EC4200D751C9 /* MKPhotoUtils.m in Sources */,
 				C58BBBB721EF1BBC00DF1D2F /* UITextField+MKAdd.m in Sources */,
 				C50DC951250E366A0014A3D1 /* NSNumber+MKAdd.m in Sources */,
 				C582CA2C2202ED9C00547417 /* UIViewController+MKRouter.m in Sources */,

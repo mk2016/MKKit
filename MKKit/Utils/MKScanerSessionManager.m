@@ -144,7 +144,6 @@
     }
     _session = nil;
     _device = nil;
-    _preview = nil;
 }
 @end
 

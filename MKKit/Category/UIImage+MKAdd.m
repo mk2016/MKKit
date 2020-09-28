@@ -141,7 +141,7 @@
 
 /** view -> image */
 + (UIImage *)mk_imageWithView:(UIView *)view{
-    UIImage *imageRet = [[UIImage alloc] init];
+    UIImage *imageRet = nil;
     UIGraphicsBeginImageContextWithOptions(view.frame.size, YES, [UIScreen mainScreen].scale);
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
     imageRet = UIGraphicsGetImageFromCurrentImageContext();

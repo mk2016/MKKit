@@ -8,6 +8,7 @@ abstract_target 'CommonPods' do
     pod 'Masonry', '~> 1.1.0'
     pod 'SAMKeychain', '~> 1.5.3'
     pod 'Toast', '~> 4.0.0'
+    pod 'MBProgressHUD', '~> 1.2.0'
     
     target 'MKKit' do
     end

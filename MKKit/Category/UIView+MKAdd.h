@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef enum {
     MKBorderDirectionTypeNone       = 0,
     MKBorderDirectionTypeTop        = 1 << 1,   //top
@@ -66,3 +68,6 @@ typedef enum {
 - (void)mk_removeFromWindowWithAnimations:(void (^)(void))animations
                                completion:(void (^ __nullable)(BOOL finished))completion;
 @end
+
+NS_ASSUME_NONNULL_END
+

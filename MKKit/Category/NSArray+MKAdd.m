@@ -10,7 +10,7 @@
 
 @implementation NSArray (MKAdd)
 
-- (NSArray *)mk_getNoRepeatSortLettersWithKey:(NSString *)letterKey{
+- (NSArray * __nullable)mk_getNoRepeatSortLettersWithKey:(NSString *)letterKey{
     if (!self || self.count == 0 ) {
         return nil;
     }

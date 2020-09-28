@@ -16,4 +16,5 @@ Pod::Spec.new do |s|
   s.dependency    "Masonry", '~> 1.1.0'
   s.dependency    "SAMKeychain", '~> 1.5.3'
   s.dependency    "Toast", '~> 4.0.0'
+  s.dependency    "MBProgressHUD", '~> 1.2.0'
 end

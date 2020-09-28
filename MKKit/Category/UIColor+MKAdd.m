@@ -12,7 +12,7 @@
 
 + (UIColor *)mk_randomColor{
     NSInteger r = arc4random() % 255;
-    NSInteger g = arc4random() % 255;
+    NSInteger g = arc4random() % 255;
     NSInteger b = arc4random() % 255;
     UIColor *color = [UIColor colorWithRed:r /255.0f green:g/255.0f blue:b/255.0f alpha:1.0f];
     return color;

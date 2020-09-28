@@ -87,11 +87,11 @@
     return [self topViewControllerWith:window.rootViewController];
 }
 
-+ (UIViewController *)topViewControllerWith:(UIViewController *)base{
++ (UIViewController *)topViewControllerWith:(UIViewController * _Nullable)base{
     return [self topViewControllerWith:base ignored:nil];
 }
 
-+ (UIViewController *)topViewControllerWith:(UIViewController *)base ignored:(NSArray<Class> *)clazzAry{
++ (UIViewController *)topViewControllerWith:(UIViewController * _Nullable)base ignored:(NSArray<Class> * _Nullable)clazzAry{
     if (base == nil) {
         base = [UIApplication sharedApplication].keyWindow.rootViewController;
     }
@@ -125,7 +125,7 @@
 
 + (void)callTelephone:(NSString *)phone{
     NSString *str = [NSString stringWithFormat:@"telprompt://%@", phone];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    [self openOuterUrl:str];
 }
 
 + (void)openOuterUrl:(NSString *)urlStr{
@@ -156,7 +156,7 @@
 
 + (void)openAppStoreWithAppId:(NSString *)appId{
     NSString *pkgUrl = [NSString stringWithFormat: @"https://apps.apple.com/cn/app/id%@",appId];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:pkgUrl]];
+    [self openOuterUrl:pkgUrl];
 }
 
 + (void)delayTask:(float)second onTimeEnd:(void(^)(void))block{

@@ -118,7 +118,8 @@
     }
     
     [alertController mk_setupUIWith:buttonTitles config:config block:block];
-    if(!@available(iOS 13.0, *)) {
+    if(@available(iOS 13.0, *)) {
+    }else{
         [alertController.view setNeedsLayout];
         [alertController.view layoutIfNeeded];
     }

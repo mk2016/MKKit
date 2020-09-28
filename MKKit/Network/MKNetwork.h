@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "AFNetworking.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class MKResponseInfo;
 
 typedef NS_ENUM(NSUInteger, MKRequestType) {
@@ -64,3 +66,4 @@ typedef void (^MKAFMultipartFormDataBlock)(id <AFMultipartFormData> formData);
 @property (nonatomic, copy) NSDictionary *headerFields;
 @end
 
+NS_ASSUME_NONNULL_END

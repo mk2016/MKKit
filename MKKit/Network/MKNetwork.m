@@ -402,20 +402,27 @@ static AFHTTPSessionManager *_afHttpSectionManager = nil;
 }
 
 + (BOOL)checkProxySetting{
-    NSDictionary *proxySettings = (__bridge NSDictionary *)(CFNetworkCopySystemProxySettings());
-    NSArray *proxies = (__bridge NSArray *)(CFNetworkCopyProxiesForURL((__bridge CFURLRef _Nonnull)([NSURL URLWithString:@"https://www.baidu.com"]), (__bridge CFDictionaryRef _Nonnull)(proxySettings)));
-
-    NSDictionary *settings = proxies[0];
-    ELog(@"%@",[settings objectForKey:(NSString *)kCFProxyHostNameKey]);
-    ELog(@"%@",[settings objectForKey:(NSString *)kCFProxyPortNumberKey]);
-    ELog(@"%@",[settings objectForKey:(NSString *)kCFProxyTypeKey]);
-    if ([[settings objectForKey:(NSString *)kCFProxyTypeKey] isEqualToString:@"kCFProxyTypeNone"]){
-        ELog(@"no proxy");
-        return NO;
-    }else{
-        ELog(@"had proxy");
-        return YES;
+    CFDictionaryRef dicRef = CFNetworkCopySystemProxySettings();
+    CFArrayRef arrarRef = CFNetworkCopyProxiesForURL((__bridge CFURLRef _Nonnull)[NSURL URLWithString:@"https://www.baidu.com"],
+                                                     dicRef);
+    NSArray *proxies = (__bridge NSArray *)arrarRef;
+    BOOL ret = NO;
+    if (proxies.count > 0) {
+        NSDictionary *settings = proxies[0];
+        ELog(@"%@",[settings objectForKey:(NSString *)kCFProxyHostNameKey]);
+        ELog(@"%@",[settings objectForKey:(NSString *)kCFProxyPortNumberKey]);
+        ELog(@"%@",[settings objectForKey:(NSString *)kCFProxyTypeKey]);
+        if ([[settings objectForKey:(NSString *)kCFProxyTypeKey] isEqualToString:@"kCFProxyTypeNone"]){
+            ELog(@"no proxy");
+            ret = NO;
+        }else{
+            ELog(@"had proxy");
+            ret = YES;
+        }
     }
+    CFRelease(dicRef);
+    CFRelease(arrarRef);
+    return ret;
 }
 
 
