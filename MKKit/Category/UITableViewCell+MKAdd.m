@@ -41,7 +41,7 @@
     if (!cell) {
         UINib *nib = [UINib nibWithNibName:className bundle:nil];
         if (nib) {
-            cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
+            cell = [[nib instantiateWithOwner:nil options:nil] firstObject];
         }
     }
     return cell;

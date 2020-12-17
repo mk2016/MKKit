@@ -31,9 +31,9 @@ typedef NS_ENUM(NSUInteger, MKRequestType) {
 - (NSDictionary *)getRequestHeader;
 @end
 
-typedef void (^MKResponseBlock)(MKResponseInfo *response);
+typedef void (^MKResponseBlock)(MKResponseInfo * __nullable response);
 typedef void (^MKProgressBlock)(NSProgress *progress, CGFloat percent);
-typedef void (^MKAFMultipartFormDataBlock)(id <AFMultipartFormData> formData);
+typedef void (^MKAFMultipartFormDataBlock)(id <AFMultipartFormData> __nullable formData);
 
 @interface MKNetwork : NSObject
 @property (nonatomic, assign) BOOL analysisDNS;
@@ -48,7 +48,7 @@ typedef void (^MKAFMultipartFormDataBlock)(id <AFMultipartFormData> formData);
                   param:(NSDictionary *)param
                    file:(id)file
                fileName:(NSString *)fileName
-  constructingBodyBlock:(MKAFMultipartFormDataBlock)bodyBlock
+  constructingBodyBlock:(MKAFMultipartFormDataBlock __nullable)bodyBlock
                progress:(MKProgressBlock)progressBlock
              completion:(MKResponseBlock)responseBlock;
 

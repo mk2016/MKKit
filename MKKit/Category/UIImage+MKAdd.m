@@ -219,12 +219,18 @@
     return newImage;
 }
 
-/** crop image */
 - (UIImage *)mk_cropWith:(CGRect)rect{
-    rect = CGRectMake(rect.origin.x * self.scale,
-                      rect.origin.y * self.scale,
-                      rect.size.width * self.scale,
-                      rect.size.height * self.scale);
+    return [self mk_cropWith:rect ignoreScale:NO];
+}
+
+/** crop image */
+- (UIImage *)mk_cropWith:(CGRect)rect ignoreScale:(BOOL)ignoreScale{
+    if (!ignoreScale) {
+        rect = CGRectMake(rect.origin.x * self.scale,
+                          rect.origin.y * self.scale,
+                          rect.size.width * self.scale,
+                          rect.size.height * self.scale);
+    }
     
     CGImageRef imageRef = CGImageCreateWithImageInRect(self.CGImage, rect);
     UIImage *result = [UIImage imageWithCGImage:imageRef scale:self.scale orientation:self.imageOrientation];

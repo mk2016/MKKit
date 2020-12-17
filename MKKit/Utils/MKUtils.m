@@ -24,14 +24,17 @@
 }
 
 + (void)showToast:(NSString *)message{
+    [self showToast:message duration:2.0];
+}
+
++ (void)showToast:(NSString *)message duration:(CGFloat)duration{
     if ([message isEqual:[NSNull null]] || message == nil || message.length == 0){
         return;
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[self getCurrentWindow] makeToast:message duration:3.0f position:CSToastPositionCenter style:nil];
+        [[self getCurrentWindow] makeToast:message duration:duration position:CSToastPositionCenter style:nil];
     });
 }
-
 
 
 //set keyWindow's rootViewController by viewController

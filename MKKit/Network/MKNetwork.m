@@ -30,7 +30,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
                    type:(MKRequestType)requestType
                   param:(NSDictionary *)param
                    file:(id)file fileName:(NSString *)fileName
-  constructingBodyBlock:(MKAFMultipartFormDataBlock)bodyBlock
+  constructingBodyBlock:(MKAFMultipartFormDataBlock __nullable)bodyBlock
                progress:(MKProgressBlock)progressBlock
              completion:(MKResponseBlock)responseBlock{
     

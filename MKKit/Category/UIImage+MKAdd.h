@@ -61,6 +61,7 @@
 
 /** crop image */
 - (UIImage *)mk_cropWith:(CGRect)rect;
+- (UIImage *)mk_cropWith:(CGRect)rect ignoreScale:(BOOL)ignoreScale;
 
 /** scale image with size */
 - (UIImage *)mk_scaleToSize:(CGSize)size;

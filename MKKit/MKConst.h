@@ -52,12 +52,19 @@
 #define MK_IS_IPHONE        (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define MK_IS_PAD           (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define MK_IS_IPHONE_X_XS   ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
-CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+                            CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 #define MK_IS_IPHONE_XSMAX  ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
-CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size) : NO)
+                            CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size) : NO)
 #define MK_IS_IPHONE_XR     ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
-CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) : NO)
-#define MK_IS_IPHONE_XX     MK_IS_IPHONE_X_XS || MK_IS_IPHONE_XSMAX || MK_IS_IPHONE_XR
+                            CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) : NO)
+#define MK_IS_IPHONE_12MINI ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
+                            CGSizeEqualToSize(CGSizeMake(1080, 2340), [[UIScreen mainScreen] currentMode].size) : NO)
+#define MK_IS_IPHONE_12     ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
+                            CGSizeEqualToSize(CGSizeMake(1170, 2532), [[UIScreen mainScreen] currentMode].size) : NO)
+#define MK_IS_IPHONE_12MAX  ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
+                            CGSizeEqualToSize(CGSizeMake(1284, 2778), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define MK_IS_IPHONE_XX     MK_IS_IPHONE_X_XS || MK_IS_IPHONE_XSMAX || MK_IS_IPHONE_XR || MK_IS_IPHONE_12MINI || MK_IS_IPHONE_12  || MK_IS_IPHONE_12MAX
 
 #define MK_IS_IPHONE_5      ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
                             CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) || \
@@ -168,6 +175,7 @@ typedef void (^MKBlock)(id result);
 typedef void (^MKVoidBlock)(void);
 typedef void (^MKBoolBlock)(BOOL bRet);
 typedef void (^MKStringBlock)(NSString *text);
+typedef void (^MKNumberBlock)(NSNumber *num);
 typedef void (^MKIntegerBlock)(NSInteger index);
 typedef void (^MKFloatBlock)(CGFloat value);
 typedef void (^MKArrayBlock)(NSArray *array);

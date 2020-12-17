@@ -54,6 +54,16 @@
     [super pushViewController:viewController animated:animated];
 }
 
+- (void)setViewControllers:(NSArray<UIViewController *> *)viewControllers animated:(BOOL)animated{
+    for (NSInteger i = 0; i < viewControllers.count; i++) {
+        UIViewController *vc = viewControllers[i];
+        if (i > 0) {
+            vc.hidesBottomBarWhenPushed = YES;
+        }
+    }
+    [super setViewControllers:viewControllers animated:animated];
+}
+
 #pragma mark - ***** UINavigationControllerDelegate ******
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
