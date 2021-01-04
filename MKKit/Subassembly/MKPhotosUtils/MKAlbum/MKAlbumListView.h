@@ -1,6 +1,6 @@
 //
 //  MKAlbumListView.h
-//  Fanmugua
+//  MKKit
 //
 //  Created by xiaomk on 2020/9/14.
 //  Copyright © 2020 taolang. All rights reserved.

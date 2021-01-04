@@ -228,6 +228,7 @@
 		C5F016632521EC4200D751C9 /* MKPhotoUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPhotoUtils.h; sourceTree = "<group>"; };
 		C5F016642521EC4200D751C9 /* MKPhotoModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPhotoModels.m; sourceTree = "<group>"; };
 		C5F016692521F4D400D751C9 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		C5F0166B25221BDD00D751C9 /* MKPhotosUtils.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MKPhotosUtils.bundle; sourceTree = "<group>"; };
 		CBECCBB78DF3C8573DCD0F3B /* libPods-CommonPods-MKKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CommonPods-MKKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -526,6 +527,7 @@
 		C5F0165A2521EC4200D751C9 /* MKPhotosUtils */ = {
 			isa = PBXGroup;
 			children = (
+				C5F0166B25221BDD00D751C9 /* MKPhotosUtils.bundle */,
 				C5F016632521EC4200D751C9 /* MKPhotoUtils.h */,
 				C5F016622521EC4200D751C9 /* MKPhotoUtils.m */,
 				C5F0165B2521EC4200D751C9 /* MKAlbum */,
@@ -622,11 +624,11 @@
 			};
 			buildConfigurationList = C52DB2EE1E4C48EB009FBA5A /* Build configuration list for PBXProject "MKKit" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = C52DB2EA1E4C48EB009FBA5A;
 			productRefGroup = C52DB2F41E4C48EB009FBA5A /* Products */;
@@ -851,7 +853,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -901,7 +903,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

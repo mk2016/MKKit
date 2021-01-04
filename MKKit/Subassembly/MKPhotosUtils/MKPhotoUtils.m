@@ -1,6 +1,6 @@
 //
 //  MKPhotoUtils.m
-//  Fanmugua
+//  MKKit
 //
 //  Created by xiaomk on 2020/9/14.
 //  Copyright © 2020 taolang. All rights reserved.
@@ -20,17 +20,18 @@
 MK_IMPL_SHAREDINSTANCE(MKPhotoUtils)
 - (id)init{
     if (self = [super init]) {
-        _showAssetType = MKPHFetchAssetTypeImage;
-        _minSize = CGSizeMake(0, 0);
-        _fixOrientation = NO;
-        _showSelectedIndex = YES;
         [self config];
     }
     return self;
 }
 
 - (void)config{
-    NSString *bundle = [[NSBundle bundleForClass:self.class] pathForResource:@"MKPhotoPicker" ofType:@"bundle"];
+    _showAssetType = MKPHFetchAssetTypeImage;
+    _minSize = CGSizeMake(0, 0);
+    _fixOrientation = NO;
+    _showSelectedIndex = YES;
+    
+    NSString *bundle = [[NSBundle bundleForClass:self.class] pathForResource:@"MKPhotosUtils" ofType:@"bundle"];
     NSString *path1 = [bundle stringByAppendingPathComponent:@"img_selected_0.png"];
     self.assetNormalImage = [UIImage imageWithContentsOfFile:path1];
     
@@ -43,6 +44,7 @@ MK_IMPL_SHAREDINSTANCE(MKPhotoUtils)
     self.ablumSelectedImage = [UIImage imageWithContentsOfFile:[bundle stringByAppendingPathComponent:@"icon_selected.png"]];
 }
 
+/** 检查相册权限 */
 - (void)checkPhotoLibraryAuthWithBlock:(MKBoolBlock)block{
     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
     switch (status) {

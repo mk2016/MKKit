@@ -1,6 +1,6 @@
 //
 //  MKAlbumListView.m
-//  Fanmugua
+//  MKKit
 //
 //  Created by xiaomk on 2020/9/14.
 //  Copyright © 2020 taolang. All rights reserved.
@@ -82,16 +82,10 @@
 
 #pragma mark - ***** UITableView ******
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MKAlbumListCell *cell = [MKAlbumListCell mk_cellByNibWith:tableView];
+    MKAlbumListCell *cell = [MKAlbumListCell mk_cellWithDefaultStyleTableView:tableView];
     if (self.datasArray.count > indexPath.row) {
         MKAlbumModel *model = self.datasArray[indexPath.row];
-        cell.labTitle.text = model.title;
-        cell.labCount.text = [NSString stringWithFormat:@"(%@)",@(model.count)];
-        [[MKPhotoUtils sharedInstance] requestThumbnailWithAsset:model.coverAsset
-                                                      targetSize:CGSizeMake([MKAlbumListCell cellHeight], [MKAlbumListCell cellHeight])
-                                                      completion:^(UIImage * _Nonnull image, NSDictionary * _Nonnull info, BOOL isDegraded) {
-            cell.imgCover.image = image;
-        }];
+        cell.model = model;
     }
     cell.isSelected = self.selectedIndex == indexPath.row;
     return cell;

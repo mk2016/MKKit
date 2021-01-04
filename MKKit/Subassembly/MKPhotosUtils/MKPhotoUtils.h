@@ -1,6 +1,6 @@
 //
 //  MKPhotoUtils.h
-//  Fanmugua
+//  MKKit
 //
 //  Created by xiaomk on 2020/9/14.
 //  Copyright © 2020 taolang. All rights reserved.
@@ -20,19 +20,21 @@ typedef enum {
 
 @class MKAlbumModel,MKAssetModel;
 @interface MKPhotoUtils : NSObject
-@property (nonatomic, assign) CGSize minSize;           /** 最小图片尺寸 */
+@property (nonatomic, assign) MKPHFetchAssetType showAssetType; /** 可选资源类型 */
+@property (nonatomic, assign) CGSize minSize;           /** 过滤小于 minSize 的图片  */
 @property (nonatomic, assign) BOOL fixOrientation;      /** 是否修正方向 */
 @property (nonatomic, assign) BOOL showSelectedIndex;   /** 显示选择序号 */
-@property (nonatomic, assign) MKPHFetchAssetType showAssetType;
-@property (nonatomic, strong) UIImage *assetSelectedImage;
-@property (nonatomic, strong) UIImage *assetNormalImage;
-@property (nonatomic, strong) UIImage *ablumSelectedImage;
+
+@property (nonatomic, strong) UIImage *assetNormalImage;    //未选中icon
+@property (nonatomic, strong) UIImage *assetSelectedImage;  //选中icon
+@property (nonatomic, strong) UIImage *ablumSelectedImage;  //相册选中icon
 
 MK_INSTANCETYPE
 
-#pragma mark - ***** 获取所有相册 ******
+/** 检查相册权限 */
 - (void)checkPhotoLibraryAuthWithBlock:(MKBoolBlock)block;
 
+#pragma mark - ***** 获取所有相册 ******
 - (void)getAblumListCompletion:(void (^)(NSArray<MKAlbumModel *> *albums))completion;
 
 - (void)getAblumListByAssetType:(MKPHFetchAssetType)assetType

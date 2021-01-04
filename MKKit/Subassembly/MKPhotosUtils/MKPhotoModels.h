@@ -1,6 +1,6 @@
 //
 //  MKAlbumModel.h
-//  Fanmugua
+//  MKKit
 //
 //  Created by xiaomk on 2020/9/14.
 //  Copyright © 2020 taolang. All rights reserved.
@@ -48,5 +48,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) MKAssetMediaType type;
 @property (nonatomic, copy) NSString *videoTime;
 @property (nonatomic, assign) BOOL needOscillatoryAnimation;
+@property (nonatomic, assign) BOOL loading;
 @end
 NS_ASSUME_NONNULL_END

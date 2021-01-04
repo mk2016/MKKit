@@ -52,6 +52,10 @@ SOFTWARE.
 #import "MKOverView.h"
 #import "MKWindowView.h"
 
+#import "MKPhotoUtils.h"
+#import "MKAlbumListView.h"
+#import "MKPhotoModels.h"
+
 #import "MKCacheUtils.h"
 #import "MKDevicePermissionsUtils.h"
 #import "MKDeviceUtils.h"
