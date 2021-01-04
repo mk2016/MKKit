@@ -13,4 +13,18 @@
 
 - (CGSize)mk_contentSizeWithWidth:(CGFloat)width;
 
+/**
+ *  改变行间距
+ */
+- (void)mk_setLineSpace:(float)space;
+
+/**
+ *  改变字间距
+ */
+- (void)mk_setWordSpace:(float)space;
+
+/**
+ *  改变行间距和字间距
+ */
+- (void)mk_setLineSpace:(float)lineSpace wordSpace:(float)wordSpace;
 @end
