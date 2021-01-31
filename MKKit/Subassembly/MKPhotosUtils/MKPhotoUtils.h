@@ -33,7 +33,7 @@ MK_INSTANCETYPE
 
 /** 检查相册权限 */
 //- (void)checkPhotoLibraryAuthWithBlock:(MKBoolBlock)block;
-- (void)checkPhotoLibraryAuthWithBlock:(void(^)(BOOL ret, PHAuthorizationStatus status))block;
+- (void)checkPhotoLibraryAuthWithBlock:(void(^)(BOOL bRet, PHAuthorizationStatus status))block;
 
 #pragma mark - ***** 获取所有相册 ******
 - (void)getAblumListCompletion:(void (^)(NSArray<MKAlbumModel *> *albums))completion;

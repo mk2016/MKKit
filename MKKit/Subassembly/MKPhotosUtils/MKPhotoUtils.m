@@ -45,29 +45,7 @@ MK_IMPL_SHAREDINSTANCE(MKPhotoUtils)
 }
 
 /** 检查相册权限 */
-- (void)checkPhotoLibraryAuthWithBlock:(MKBoolBlock)block{
-    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
-    switch (status) {
-        case PHAuthorizationStatusNotDetermined:{
-            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-                MK_BLOCK_EXEC(block, status == PHAuthorizationStatusAuthorized);
-            }];
-        }
-            break;
-        case PHAuthorizationStatusAuthorized:
-            MK_BLOCK_EXEC(block, YES);
-            break;
-        case PHAuthorizationStatusRestricted:
-        case PHAuthorizationStatusDenied:
-            MK_BLOCK_EXEC(block, NO);
-            break;
-        default:
-            MK_BLOCK_EXEC(block, NO);
-            break;
-    }
-}
-
-- (void)checkPhotoLibraryStatusWithBlock:(void(^)(BOOL ret, PHAuthorizationStatus status))block{
+- (void)checkPhotoLibraryAuthWithBlock:(void(^)(BOOL ret, PHAuthorizationStatus status))block{
     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
     switch (status) {
         case PHAuthorizationStatusNotDetermined:{
