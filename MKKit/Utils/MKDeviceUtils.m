@@ -21,8 +21,8 @@
     NSString *bundleId = [[NSBundle mainBundle] bundleIdentifier];
     NSString *uuid = [SAMKeychain passwordForService:bundleId account:@"mk_user"];
     if (uuid == nil || uuid == NULL || uuid.length == 0) {
-        CFUUIDRef uuidRef = CFUUIDCreate(NULL);
-        CFStringRef uuidStr = CFUUIDCreateString(NULL, uuidRef);
+        CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
+        CFStringRef uuidStr = CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
         uuid = [NSString stringWithFormat:@"%@", uuidStr];
         [SAMKeychain setPassword:uuid forService:bundleId account:@"mk_user"];
         CFRelease(uuidRef);

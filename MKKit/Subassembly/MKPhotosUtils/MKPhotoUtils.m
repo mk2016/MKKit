@@ -67,6 +67,32 @@ MK_IMPL_SHAREDINSTANCE(MKPhotoUtils)
     }
 }
 
+- (void)checkPhotoLibraryStatusWithBlock:(void(^)(BOOL ret, PHAuthorizationStatus status))block{
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    switch (status) {
+        case PHAuthorizationStatusNotDetermined:{
+            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+                MK_BLOCK_EXEC(block,
+                              status == PHAuthorizationStatusAuthorized ||
+                              status == PHAuthorizationStatusLimited,
+                              status);
+            }];
+        }
+            break;
+        case PHAuthorizationStatusLimited:
+        case PHAuthorizationStatusAuthorized:
+            MK_BLOCK_EXEC(block, YES, status);
+            break;
+        case PHAuthorizationStatusRestricted:
+        case PHAuthorizationStatusDenied:
+            MK_BLOCK_EXEC(block, NO, status);
+            break;
+        default:
+            MK_BLOCK_EXEC(block, NO, status);
+            break;
+    }
+}
+
 #pragma mark - ***** 获取所有相册 ******
 - (void)getAblumListCompletion:(void (^)(NSArray<MKAlbumModel *> *albums))completion{
     [self getAblumListByAssetType:self.showAssetType ascendingByDate:NO completion:completion];

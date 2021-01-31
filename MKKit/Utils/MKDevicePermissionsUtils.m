@@ -7,39 +7,71 @@
 //
 
 #import "MKDevicePermissionsUtils.h"
-#import <AssetsLibrary/AssetsLibrary.h>
+#import <AdSupport/AdSupport.h>
+#import <AppTrackingTransparency/AppTrackingTransparency.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+#import <CoreBluetooth/CBManager.h>
+
+
 #import <CoreLocation/CoreLocation.h>
 #import <AddressBook/AddressBook.h>
 #import <Contacts/Contacts.h>
-#import <CoreBluetooth/CoreBluetooth.h>
+
 #import <EventKit/EventKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import <Photos/Photos.h>
 #import <CoreTelephony/CTCellularData.h>
 
 #import "MKAlertView.h"
 
 @implementation MKDevicePermissionsUtils
 
-#pragma mark - ***** assets lib ******
-+ (void)assetsLibPermissionsWithBlock:(MKBoolBlock)block{
+#pragma mark - ***** openAppPermissionsSetPage ******
++ (void)openAppPermissionsSetPage{
+    NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
+#pragma mark - ***** IDFA ******
++ (void)getIDFAWith:(MKStringBlock)block {
+    if (@available(iOS 14, *)) {
+        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+            if (status == ATTrackingManagerAuthorizationStatusAuthorized) {
+                MK_BLOCK_EXEC(block, [self getIDFA]);
+            }
+        }];
+    }else{
+        MK_BLOCK_EXEC(block, [self getIDFA]);
+    }
+}
+
++ (NSString *)getIDFA{
+    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    return idfa;
+}
+
+#pragma mark - ***** photo lib ******
++ (void)photoLibraryPermissionsWithBlock:(void(^)(BOOL bRet, PHAuthorizationStatus status))block{
     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
     switch (status) {
         case PHAuthorizationStatusNotDetermined:{
             [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-                MK_BLOCK_EXEC(block, status == PHAuthorizationStatusAuthorized);
+                MK_BLOCK_EXEC(block,
+                              status == PHAuthorizationStatusAuthorized ||
+                              status == PHAuthorizationStatusLimited,
+                              status);
             }];
         }
             break;
+        case PHAuthorizationStatusLimited:
         case PHAuthorizationStatusAuthorized:
-            MK_BLOCK_EXEC(block, YES);
+            MK_BLOCK_EXEC(block, YES, status);
             break;
         case PHAuthorizationStatusRestricted:
         case PHAuthorizationStatusDenied:
-            MK_BLOCK_EXEC(block, NO);
+            MK_BLOCK_EXEC(block, NO, status);
             break;
         default:
-            MK_BLOCK_EXEC(block, NO);
+            MK_BLOCK_EXEC(block, NO, status);
             break;
     }
 }
@@ -153,9 +185,7 @@
         case EKAuthorizationStatusNotDetermined:{
             EKEventStore *store = [[EKEventStore alloc] init];
             [store requestAccessToEntityType:type completion:^(BOOL granted, NSError * _Nullable error) {
-                if (granted) {
-                    MK_BLOCK_EXEC(block, granted);
-                }
+                MK_BLOCK_EXEC(block, granted);
             }];
         }
             break;
@@ -174,21 +204,39 @@
 
 
 #pragma mark - ***** bluetooth ******
-+ (void)bluetoothPeripheralPermissionsWithBlock:(MKBoolBlock)block{
-    CBPeripheralManagerAuthorizationStatus authStatus = [CBPeripheralManager authorizationStatus];
-    switch (authStatus) {
-        case CBPeripheralManagerAuthorizationStatusNotDetermined:
-            break;
-        case CBPeripheralManagerAuthorizationStatusAuthorized:
-            MK_BLOCK_EXEC(block, YES);
-            break;
-        case CBPeripheralManagerAuthorizationStatusRestricted:
-        case CBPeripheralManagerAuthorizationStatusDenied:
-            MK_BLOCK_EXEC(block, NO);
-            break;
-        default:
-            MK_BLOCK_EXEC(block, NO);
-            break;
++ (void)bluetoothPermissionsWithBlock:(MKBoolBlock)block{
+    if (@available(iOS 13.1, *)) {
+        CBManagerAuthorization status = CBManager.authorization;
+        switch (status) {
+            case CBManagerAuthorizationNotDetermined:
+                break;
+            case CBManagerAuthorizationAllowedAlways:
+                MK_BLOCK_EXEC(block, YES);
+                break;
+            case CBManagerAuthorizationRestricted:
+            case CBManagerAuthorizationDenied:
+                MK_BLOCK_EXEC(block, NO);
+                break;
+            default:
+                MK_BLOCK_EXEC(block, NO);
+                break;
+        }
+    }else{
+        CBPeripheralManagerAuthorizationStatus status = [CBPeripheralManager authorizationStatus];
+        switch (status) {
+            case CBPeripheralManagerAuthorizationStatusNotDetermined:
+                break;
+            case CBPeripheralManagerAuthorizationStatusAuthorized:
+                MK_BLOCK_EXEC(block, YES);
+                break;
+            case CBPeripheralManagerAuthorizationStatusRestricted:
+            case CBPeripheralManagerAuthorizationStatusDenied:
+                MK_BLOCK_EXEC(block, NO);
+                break;
+            default:
+                MK_BLOCK_EXEC(block, NO);
+                break;
+        }
     }
 }
 
@@ -262,10 +310,6 @@
     return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
 }
 
-+ (void)openAppPermissionsSetPage{
-    NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-    [[UIApplication sharedApplication] openURL:url];
-}
 
 #pragma mark - ***** author with type ******
 + (void)getAppPermissionsWithType:(MKAppPermissionsType)type block:(MKBoolBlock)block{
@@ -284,7 +328,7 @@
     if (MK_iOS_IS_ABOVE(8.0)) {
         switch (type) {
             case MKAppPermissionsType_assetsLib:{
-                [self assetsLibPermissionsWithBlock:^(BOOL bRet) {
+                [self photoLibraryPermissionsWithBlock:^(BOOL bRet, PHAuthorizationStatus status) {
                     MK_BLOCK_EXEC(block, bRet);
                     if (!bRet && show) {
                         [weakSelf showPermissionsSetAlertWithType:MKAppPermissionsType_assetsLib];
