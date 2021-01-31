@@ -10,6 +10,7 @@
 #import <Photos/Photos.h>
 #import "MKPhotoModels.h"
 #import "UIImage+MKAdd.h"
+#import "MKDevicePermissionsUtils.h"
 
 @interface MKPhotoUtils ()
 @property (nonatomic, strong) PHCachingImageManager *cachingImageManager;
@@ -45,30 +46,10 @@ MK_IMPL_SHAREDINSTANCE(MKPhotoUtils)
 }
 
 /** 检查相册权限 */
-- (void)checkPhotoLibraryAuthWithBlock:(void(^)(BOOL ret, PHAuthorizationStatus status))block{
-    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
-    switch (status) {
-        case PHAuthorizationStatusNotDetermined:{
-            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-                MK_BLOCK_EXEC(block,
-                              status == PHAuthorizationStatusAuthorized ||
-                              status == PHAuthorizationStatusLimited,
-                              status);
-            }];
-        }
-            break;
-        case PHAuthorizationStatusLimited:
-        case PHAuthorizationStatusAuthorized:
-            MK_BLOCK_EXEC(block, YES, status);
-            break;
-        case PHAuthorizationStatusRestricted:
-        case PHAuthorizationStatusDenied:
-            MK_BLOCK_EXEC(block, NO, status);
-            break;
-        default:
-            MK_BLOCK_EXEC(block, NO, status);
-            break;
-    }
+- (void)checkPhotoLibraryAuthWithBlock:(void (^)(BOOL, PHAuthorizationStatus))block{
+    [MKDevicePermissionsUtils photoLibraryPermissionsWithBlock:^(BOOL bRet, PHAuthorizationStatus status) {
+        MK_BLOCK_EXEC(block, bRet, status);
+    }];
 }
 
 #pragma mark - ***** 获取所有相册 ******

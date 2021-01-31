@@ -51,7 +51,12 @@
 
 #pragma mark - ***** photo lib ******
 + (void)photoLibraryPermissionsWithBlock:(void(^)(BOOL bRet, PHAuthorizationStatus status))block{
-    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    PHAuthorizationStatus status;
+    if (@available(iOS 14, *)) {
+        status = [PHPhotoLibrary authorizationStatusForAccessLevel:PHAccessLevelReadWrite];
+    }else{
+        status = [PHPhotoLibrary authorizationStatus];
+    }
     switch (status) {
         case PHAuthorizationStatusNotDetermined:{
             [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
