@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MKNavigationController : UINavigationController<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
+@property (nonatomic, assign) NSInteger tabbarIndex;
 - (void)setCustomNavigationBarLineHidden:(BOOL)hidden;
 
 @end

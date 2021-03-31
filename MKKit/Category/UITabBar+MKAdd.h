@@ -12,7 +12,7 @@
 
 #pragma mark - ***** shadow line ******
 - (void)mk_setShadowWithOffset:(CGSize)offset radius:(CGFloat)radius color:(UIColor *)color opacity:(CGFloat)opacity;
-- (void)mk_hideBlackLine;
+- (void)mk_setTitleNormalColor:(UIColor *)normalColor selectedColor:(UIColor *)selectedColor;
 
 #pragma mark - ***** system badge ******
 - (void)mk_setBadgeWithValue:(NSString *)value onIndex:(int)index;
@@ -30,4 +30,8 @@
 /** remove all small badge */
 - (void)mk_clearAllSmallBadge;
 
+@end
+
+@interface UITabBarItem(MKAdd)
+- (void)mk_setTitle:(NSString *)title normalImage:(NSString *)normalImage selectedImage:(NSString *)selectedImage;
 @end

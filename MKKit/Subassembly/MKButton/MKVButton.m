@@ -12,18 +12,19 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+        self.space = 4;
         [self setNeedsLayout];
         [self layoutIfNeeded];
-        self.space = 4;
     }
     return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]) {
+        self.space = 4;
         [self setNeedsLayout];
         [self layoutIfNeeded];
-        self.space = 4;
+        
     }
     return self;
 }

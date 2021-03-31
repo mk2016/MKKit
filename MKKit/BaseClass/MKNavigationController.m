@@ -85,15 +85,19 @@
 }
 
 #pragma mark - ***** UIStatusBarStyle *****
-- (UIStatusBarStyle)preferredStatusBarStyle{
-    return [self.topViewController preferredStatusBarStyle];
-}
-
-- (BOOL)prefersStatusBarHidden{
-    return NO;
-}
+//- (UIStatusBarStyle)preferredStatusBarStyle{
+//    return [self.topViewController preferredStatusBarStyle];
+//}
+//
+//- (BOOL)prefersStatusBarHidden{
+//    return [self.topViewController prefersStatusBarHidden];
+//}
 
 - (UIViewController *)childViewControllerForStatusBarStyle{
+    return self.topViewController;
+}
+
+- (UIViewController *)childViewControllerForStatusBarHidden{
     return self.topViewController;
 }
 

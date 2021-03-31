@@ -18,6 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (@available(iOS 13.0, *)) {
+        self.tabBar.unselectedItemTintColor = UIColor.blueColor;
+    }else{
+           // iOS13 以下
+           UITabBarItem *item = [UITabBarItem appearance];
+           [item setTitleTextAttributes:@{ NSForegroundColorAttributeName:UIColor.redColor} forState:UIControlStateNormal];
+           [item setTitleTextAttributes:@{ NSForegroundColorAttributeName:UIColor.greenColor} forState:UIControlStateSelected];
+     }
+    
 }
 
 - (BOOL)shouldAutorotate{
@@ -32,6 +41,14 @@
 /** preferred orientations */
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
     return [self.selectedViewController preferredInterfaceOrientationForPresentation];
+}
+
+- (UIViewController *)childViewControllerForStatusBarHidden{
+    return self.selectedViewController;
+}
+
+- (UIViewController *)childViewControllerForStatusBarStyle{
+    return self.selectedViewController;
 }
 
 - (void)didReceiveMemoryWarning {

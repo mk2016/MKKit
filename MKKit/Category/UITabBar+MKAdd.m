@@ -8,6 +8,7 @@
 
 #import "UITabBar+MKAdd.h"
 #import "UIImage+MKAdd.h"
+#import "MKConst.h"
 
 #define MKUITabBarTagBase 1102
 
@@ -26,16 +27,40 @@
     self.layer.shadowRadius = radius;
     self.layer.shadowOpacity = opacity;
     self.clipsToBounds = NO;
-    
-    [self mk_hideBlackLine];
+}
+
+- (void)mk_setTitleNormalColor:(UIColor *)normalColor selectedColor:(UIColor *)selectedColor{
+    if (@available(iOS 13.0, *)) {
+        UITabBarItemAppearance *itemAppearance = [[UITabBarItemAppearance  alloc] init];
+        [itemAppearance.normal setTitleTextAttributes:@{ NSForegroundColorAttributeName:normalColor}];
+        [itemAppearance.selected setTitleTextAttributes:@{ NSForegroundColorAttributeName:selectedColor}];
+        
+        UITabBarAppearance *tabbarAppearance = [[UITabBarAppearance alloc] init];
+        tabbarAppearance.stackedLayoutAppearance = itemAppearance;
+        tabbarAppearance.backgroundColor = UIColor.clearColor;
+//        tabbarAppearance.backgroundImage = [UIImage mk_imageWithColor:UIColor.clearColor];
+        tabbarAppearance.shadowImage = [UIImage mk_imageWithColor:UIColor.clearColor];
+        self.standardAppearance = tabbarAppearance;
+        [[UITabBar appearance] setUnselectedItemTintColor:normalColor];
+    }else{
+        [UITabBar appearance].shadowImage = [UIImage new];
+        [UITabBar appearance].backgroundImage = [UIImage new];
+    }
 }
 
 - (void)mk_hideBlackLine{
     if (@available(iOS 13.0, *)) {
-        UITabBarAppearance *tabbar = self.standardAppearance;
-        tabbar.backgroundImage = [UIImage mk_imageWithColor:UIColor.clearColor];
-        tabbar.shadowImage = [UIImage mk_imageWithColor:UIColor.clearColor];
-        self.standardAppearance = tabbar;
+        UITabBarItemAppearance *itemAppearance = [[UITabBarItemAppearance  alloc] init];
+        [itemAppearance.normal setTitleTextAttributes:@{ NSForegroundColorAttributeName:MK_COLOR_HEX(0x333333)}];
+        [itemAppearance.selected setTitleTextAttributes:@{ NSForegroundColorAttributeName:UIColor.greenColor}];
+        
+        UITabBarAppearance *tabbarAppearance = [[UITabBarAppearance alloc] init];
+        tabbarAppearance.stackedLayoutAppearance = itemAppearance;
+        tabbarAppearance.backgroundColor = UIColor.clearColor;
+//        tabbar.backgroundImage = [UIImage mk_imageWithColor:UIColor.clearColor];
+        tabbarAppearance.shadowImage = [UIImage mk_imageWithColor:UIColor.clearColor];
+        self.standardAppearance = tabbarAppearance;
+//        [[UITabBar appearance] setUnselectedItemTintColor:MK_COLOR_HEX(0x333333)];
     }else{
         [UITabBar appearance].shadowImage = [UIImage new];
         [UITabBar appearance].backgroundImage = [UIImage new];
@@ -100,5 +125,16 @@
 }
 
 
+
+@end
+
+
+@implementation UITabBarItem(MKAdd)
+
+- (void)mk_setTitle:(NSString *)title normalImage:(NSString *)normalImage selectedImage:(NSString *)selectedImage{
+    self.title = title;
+    self.image = [[UIImage imageNamed:normalImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.selectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+}
 
 @end
