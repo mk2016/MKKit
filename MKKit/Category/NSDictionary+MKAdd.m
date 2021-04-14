@@ -13,4 +13,20 @@
     if (!key) return NO;
     return self[key] != nil;
 }
+
++ (NSDictionary *)mk_dictionaryWithUrlQuery:(NSString *)query{
+    NSMutableDictionary *dic = @{}.mutableCopy;
+    if (query){
+        NSArray *paramAry = [query componentsSeparatedByString:@"&"];
+        if (paramAry.count > 0) {
+            for (NSString *param in paramAry) {
+                NSArray *ary = [param componentsSeparatedByString:@"="];
+                if (ary.count == 2) {
+                    [dic setValue:ary[1] forKey:ary[0]];
+                }
+            }
+        }
+    }
+    return dic.copy;
+}
 @end

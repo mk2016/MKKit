@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSDictionary (MKAdd)
 
 - (BOOL)mk_containsObjectForKey:(NSString *)key;
-
++ (NSDictionary *)mk_dictionaryWithUrlQuery:(NSString *)query;
 @end
 
 NS_ASSUME_NONNULL_END
