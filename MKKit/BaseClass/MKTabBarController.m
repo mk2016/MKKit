@@ -18,15 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if (@available(iOS 13.0, *)) {
-        self.tabBar.unselectedItemTintColor = UIColor.blueColor;
-    }else{
-           // iOS13 以下
-           UITabBarItem *item = [UITabBarItem appearance];
-           [item setTitleTextAttributes:@{ NSForegroundColorAttributeName:UIColor.redColor} forState:UIControlStateNormal];
-           [item setTitleTextAttributes:@{ NSForegroundColorAttributeName:UIColor.greenColor} forState:UIControlStateSelected];
-     }
-    
+//    if (@available(iOS 13.0, *)) {
+//        self.tabBar.unselectedItemTintColor = UIColor.blueColor;
+//    }else{
+//           // iOS13 以下
+//           UITabBarItem *item = [UITabBarItem appearance];
+//           [item setTitleTextAttributes:@{ NSForegroundColorAttributeName:UIColor.redColor} forState:UIControlStateNormal];
+//           [item setTitleTextAttributes:@{ NSForegroundColorAttributeName:UIColor.greenColor} forState:UIControlStateSelected];
+//     }
 }
 
 - (BOOL)shouldAutorotate{

@@ -45,28 +45,10 @@
     }else{
         [UITabBar appearance].shadowImage = [UIImage new];
         [UITabBar appearance].backgroundImage = [UIImage new];
+        [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName:normalColor} forState:UIControlStateNormal];
+        [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName:selectedColor} forState:UIControlStateSelected];
     }
 }
-
-- (void)mk_hideBlackLine{
-    if (@available(iOS 13.0, *)) {
-        UITabBarItemAppearance *itemAppearance = [[UITabBarItemAppearance  alloc] init];
-        [itemAppearance.normal setTitleTextAttributes:@{ NSForegroundColorAttributeName:MK_COLOR_HEX(0x333333)}];
-        [itemAppearance.selected setTitleTextAttributes:@{ NSForegroundColorAttributeName:UIColor.greenColor}];
-        
-        UITabBarAppearance *tabbarAppearance = [[UITabBarAppearance alloc] init];
-        tabbarAppearance.stackedLayoutAppearance = itemAppearance;
-        tabbarAppearance.backgroundColor = UIColor.clearColor;
-//        tabbar.backgroundImage = [UIImage mk_imageWithColor:UIColor.clearColor];
-        tabbarAppearance.shadowImage = [UIImage mk_imageWithColor:UIColor.clearColor];
-        self.standardAppearance = tabbarAppearance;
-//        [[UITabBar appearance] setUnselectedItemTintColor:MK_COLOR_HEX(0x333333)];
-    }else{
-        [UITabBar appearance].shadowImage = [UIImage new];
-        [UITabBar appearance].backgroundImage = [UIImage new];
-    }
-}
-
 
 #pragma mark - ***** system badge ******
 - (void)mk_setBadgeWithValue:(NSString *)value onIndex:(int)index{
