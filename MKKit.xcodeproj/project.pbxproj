@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F2A5C2449799F9A850F96C8 /* libPods-CommonPods-MKKitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4F332B146CA727091D971D /* libPods-CommonPods-MKKitTests.a */; };
+		4DD0DC29263B180E0080E788 /* UIViewController+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DC28263B180E0080E788 /* UIViewController+MKAdd.m */; };
 		C5080E4321F59B89007C2F39 /* MKBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5080E4121F59B89007C2F39 /* MKBlurView.m */; };
 		C5080E4B21F59C9C007C2F39 /* MKRightImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C5080E4621F59C9C007C2F39 /* MKRightImageButton.m */; };
 		C5080E4C21F59C9C007C2F39 /* MKVButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C5080E4821F59C9C007C2F39 /* MKVButton.m */; };
@@ -104,6 +105,8 @@
 /* Begin PBXFileReference section */
 		2C89D823A96F79DA87E1679C /* Pods-CommonPods-MKKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-MKKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-MKKitTests/Pods-CommonPods-MKKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D4F332B146CA727091D971D /* libPods-CommonPods-MKKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CommonPods-MKKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DD0DC27263B180E0080E788 /* UIViewController+MKAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MKAdd.h"; sourceTree = "<group>"; };
+		4DD0DC28263B180E0080E788 /* UIViewController+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MKAdd.m"; sourceTree = "<group>"; };
 		5425BA844D2BA23C26FBEFA6 /* Pods-CommonPods-MKKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-MKKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-MKKitTests/Pods-CommonPods-MKKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		953AA43383598C1778EE0BC6 /* Pods-CommonPods-MKKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-MKKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-MKKit/Pods-CommonPods-MKKit.release.xcconfig"; sourceTree = "<group>"; };
 		BFEF2D28E92441DBB8FE5B8D /* Pods-CommonPods-MKKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-MKKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-MKKit/Pods-CommonPods-MKKit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -432,6 +435,8 @@
 				C58BBBBF21EF221200DF1D2F /* UIView+MKFrameAdd.m */,
 				C58BBB8F21EDCACC00DF1D2F /* UIView+MKLogAdd.h */,
 				C58BBB9021EDCACC00DF1D2F /* UIView+MKLogAdd.m */,
+				4DD0DC27263B180E0080E788 /* UIViewController+MKAdd.h */,
+				4DD0DC28263B180E0080E788 /* UIViewController+MKAdd.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -771,6 +776,7 @@
 				C58BBBC021EF221200DF1D2F /* UIView+MKFrameAdd.m in Sources */,
 				C58BBB9C21EDD9F800DF1D2F /* NSString+MKAdd.m in Sources */,
 				C55CED1121F1D8EC0049B1C7 /* UIAlertController+MKAdd.m in Sources */,
+				4DD0DC29263B180E0080E788 /* UIViewController+MKAdd.m in Sources */,
 				C55CED1621F1DB1E0049B1C7 /* MKWindowView.m in Sources */,
 				C5C2488724F3572400A19F69 /* CALayer+MKAdd.m in Sources */,
 				C58BBBAB21EF12F300DF1D2F /* UILabel+MKAdd.m in Sources */,
