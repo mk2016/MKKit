@@ -28,7 +28,8 @@
 }
 
 + (void)showToast:(NSString *)message duration:(CGFloat)duration{
-    if ([message isEqual:[NSNull null]] || message == nil || message.length == 0){
+    if ([message isEqual:[NSNull null]] || message == nil ||
+        ![message isKindOfClass:[NSString class]] || message.length == 0){
         return;
     }
     dispatch_async(dispatch_get_main_queue(), ^{
