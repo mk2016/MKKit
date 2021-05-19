@@ -7,6 +7,7 @@
 //
 
 #import "NSString+MKAdd.h"
+#import "NSDictionary+MKAdd.h"
 
 @implementation NSString (MKAdd)
 
@@ -151,4 +152,12 @@
     return ms;
 }
 
+- (NSDictionary * __nullable)mk_dictionaryWithUrlQuery{
+    NSURL *url = [NSURL URLWithString:self];
+    if (url) {
+        NSDictionary *dic = [NSDictionary mk_dictionaryWithUrlQuery:url.query];
+        return dic;
+    }
+    return nil;
+}
 @end

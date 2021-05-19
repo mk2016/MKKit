@@ -46,4 +46,6 @@
 
 /** chinese -> pinyin */
 - (NSString *)mk_hanziToPinyinIsChineseName:(BOOL)isName;
+
+- (NSDictionary *__nullable)mk_dictionaryWithUrlQuery;
 @end
