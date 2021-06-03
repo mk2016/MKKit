@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSString (MKAdd)
 /** get string content size */
 - (CGSize)mk_contentSizeWithFont:(UIFont *)font width:(CGFloat)width;
@@ -49,3 +51,5 @@
 
 - (NSDictionary *__nullable)mk_dictionaryWithUrlQuery;
 @end
+
+NS_ASSUME_NONNULL_END
