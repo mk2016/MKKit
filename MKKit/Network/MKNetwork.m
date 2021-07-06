@@ -170,7 +170,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
 + (void)af_getRequestWihtUrlString:(NSString *)urlStr param:(NSDictionary *)param completion:(MKResponseBlock)responseBlock{
     MK_WEAK_SELF
     AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_get];
-    [manager GET:urlStr parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:urlStr parameters:param headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [weakSelf responseSuccessWithUrl:urlStr
                                    param:param
                                   method:@"GET"
@@ -191,7 +191,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
 + (void)af_postRequestWithUrlString:(NSString *)urlStr param:(NSDictionary *)param completion:(MKResponseBlock)responseBlock{
     MK_WEAK_SELF
     AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_post];
-    [manager POST:urlStr parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:urlStr parameters:param headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [weakSelf responseSuccessWithUrl:urlStr
                                    param:param
                                   method:@"POST"
@@ -211,7 +211,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
 + (void)af_postFormWithUrlString:(NSString *)urlStr param:(NSDictionary *)param formName:(NSString *)formName completion:(MKResponseBlock)responseBlock{
     MK_WEAK_SELF
     AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_postForm];
-    [manager POST:urlStr parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [manager POST:urlStr parameters:param headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFormData:[[param mk_jsonString] dataUsingEncoding:NSUTF8StringEncoding] name:formName];
     } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [weakSelf responseSuccessWithUrl:urlStr
@@ -234,7 +234,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
 + (void)af_putRequestWithUrlString:(NSString *)urlStr param:(NSDictionary *)param completion:(MKResponseBlock)responseBlock{
     MK_WEAK_SELF
     AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_put];
-    [manager PUT:urlStr parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager PUT:urlStr parameters:param headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [weakSelf responseSuccessWithUrl:urlStr
                                    param:param
                                   method:@"PUT"
@@ -255,7 +255,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
 + (void)af_deleteRequestWithUrlString:(NSString *)urlStr param:(NSDictionary *)param completion:(MKResponseBlock)responseBlock{
     MK_WEAK_SELF
     AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_delete];
-    [manager DELETE:urlStr parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager DELETE:urlStr parameters:param headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [weakSelf responseSuccessWithUrl:urlStr
                                    param:param
                                   method:@"DELETE"
@@ -279,7 +279,7 @@ static dispatch_queue_t s_queueNetwork = NULL;
                    completion:(MKResponseBlock)responseBlock{
     MK_WEAK_SELF
     AFHTTPSessionManager *manager = [self createManagerWith:MKRequestType_postImage];;
-    [manager POST:urlStr parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [manager POST:urlStr parameters:param headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         if (bodyBlock) {
             MK_BLOCK_EXEC(bodyBlock,formData);
         }else{
@@ -380,10 +380,9 @@ static AFHTTPSessionManager *_afHttpSectionManager = nil;
     if ([MKNetwork sharedInstance].delegate && [[MKNetwork sharedInstance].delegate respondsToSelector:@selector(getRequestHeader)]) {
         dic = [[MKNetwork sharedInstance].delegate getRequestHeader];
     }
-    NSArray *keysAry = dic.allKeys;
-    for (NSString *key in keysAry) {
-        NSString *value = [dic objectForKey:key];
-        [_afHttpSectionManager.requestSerializer setValue:value forHTTPHeaderField:key];
+    
+    for (NSString *key in dic.keyEnumerator) {
+        [_afHttpSectionManager.requestSerializer setValue:dic[key] forHTTPHeaderField:key];
     }
     return _afHttpSectionManager;
 }

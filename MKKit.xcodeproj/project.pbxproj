@@ -921,7 +921,7 @@
 			baseConfigurationReference = BFEF2D28E92441DBB8FE5B8D /* Pods-CommonPods-MKKit.debug.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -936,7 +936,7 @@
 			baseConfigurationReference = 953AA43383598C1778EE0BC6 /* Pods-CommonPods-MKKit.release.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
