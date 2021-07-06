@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F2A5C2449799F9A850F96C8 /* libPods-CommonPods-MKKitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4F332B146CA727091D971D /* libPods-CommonPods-MKKitTests.a */; };
+		4D504C3926949F8700635340 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D504C3826949F8700635340 /* CoreServices.framework */; };
 		4DD0DC29263B180E0080E788 /* UIViewController+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0DC28263B180E0080E788 /* UIViewController+MKAdd.m */; };
 		C5080E4321F59B89007C2F39 /* MKBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5080E4121F59B89007C2F39 /* MKBlurView.m */; };
 		C5080E4B21F59C9C007C2F39 /* MKRightImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C5080E4621F59C9C007C2F39 /* MKRightImageButton.m */; };
 		C5080E4C21F59C9C007C2F39 /* MKVButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C5080E4821F59C9C007C2F39 /* MKVButton.m */; };
 		C5080E4D21F59C9C007C2F39 /* MKHyperlinkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C5080E4A21F59C9C007C2F39 /* MKHyperlinkButton.m */; };
 		C5080EC521F5BC77007C2F39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5080EC421F5BC77007C2F39 /* CoreGraphics.framework */; };
-		C5080EC721F5BC86007C2F39 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5080EC621F5BC85007C2F39 /* MobileCoreServices.framework */; };
 		C5080EC921F5BC9B007C2F39 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5080EC821F5BC9B007C2F39 /* SystemConfiguration.framework */; };
 		C5080ECF21F6AF77007C2F39 /* NSMutableURLRequest+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C5080ECB21F6AF77007C2F39 /* NSMutableURLRequest+MKAdd.m */; };
 		C5080ED021F6AF77007C2F39 /* MKNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = C5080ECE21F6AF77007C2F39 /* MKNetwork.m */; };
@@ -75,7 +74,6 @@
 		C5F016662521EC4200D751C9 /* MKAlbumListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F016602521EC4200D751C9 /* MKAlbumListCell.m */; };
 		C5F016672521EC4200D751C9 /* MKPhotoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F016622521EC4200D751C9 /* MKPhotoUtils.m */; };
 		C5F016682521EC4200D751C9 /* MKPhotoModels.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F016642521EC4200D751C9 /* MKPhotoModels.m */; };
-		C5F0166A2521F4D400D751C9 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5F016692521F4D400D751C9 /* CoreServices.framework */; };
 		D9B8B20F64A94904A15506DD /* libPods-CommonPods-MKKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBECCBB78DF3C8573DCD0F3B /* libPods-CommonPods-MKKit.a */; };
 /* End PBXBuildFile section */
 
@@ -104,7 +102,7 @@
 
 /* Begin PBXFileReference section */
 		2C89D823A96F79DA87E1679C /* Pods-CommonPods-MKKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-MKKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-MKKitTests/Pods-CommonPods-MKKitTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2D4F332B146CA727091D971D /* libPods-CommonPods-MKKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CommonPods-MKKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D504C3826949F8700635340 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		4DD0DC27263B180E0080E788 /* UIViewController+MKAdd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MKAdd.h"; sourceTree = "<group>"; };
 		4DD0DC28263B180E0080E788 /* UIViewController+MKAdd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MKAdd.m"; sourceTree = "<group>"; };
 		5425BA844D2BA23C26FBEFA6 /* Pods-CommonPods-MKKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonPods-MKKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CommonPods-MKKitTests/Pods-CommonPods-MKKitTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 		C5F016622521EC4200D751C9 /* MKPhotoUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPhotoUtils.m; sourceTree = "<group>"; };
 		C5F016632521EC4200D751C9 /* MKPhotoUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPhotoUtils.h; sourceTree = "<group>"; };
 		C5F016642521EC4200D751C9 /* MKPhotoModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPhotoModels.m; sourceTree = "<group>"; };
-		C5F016692521F4D400D751C9 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		C5F0166B25221BDD00D751C9 /* MKPhotosUtils.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MKPhotosUtils.bundle; sourceTree = "<group>"; };
 		CBECCBB78DF3C8573DCD0F3B /* libPods-CommonPods-MKKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CommonPods-MKKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -240,7 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5F0166A2521F4D400D751C9 /* CoreServices.framework in Frameworks */,
+				4D504C3926949F8700635340 /* CoreServices.framework in Frameworks */,
 				C52DB31B1E4C4C38009FBA5A /* Accelerate.framework in Frameworks */,
 				C52DB3171E4C4C23009FBA5A /* AVFoundation.framework in Frameworks */,
 				C57BE2F71E4D8CCA00177D4F /* CoreFoundation.framework in Frameworks */,
@@ -248,7 +245,6 @@
 				C52DB3151E4C4C1E009FBA5A /* CoreImage.framework in Frameworks */,
 				C52DB3111E4C4C02009FBA5A /* Foundation.framework in Frameworks */,
 				C52DB31D1E4C4C43009FBA5A /* ImageIO.framework in Frameworks */,
-				C5080EC721F5BC86007C2F39 /* MobileCoreServices.framework in Frameworks */,
 				C52DB3191E4C4C2C009FBA5A /* QuartzCore.framework in Frameworks */,
 				C52DB3131E4C4C14009FBA5A /* Security.framework in Frameworks */,
 				C5080EC921F5BC9B007C2F39 /* SystemConfiguration.framework in Frameworks */,
@@ -262,7 +258,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C582CA56220425A600547417 /* libMKKit.a in Frameworks */,
-				1F2A5C2449799F9A850F96C8 /* libPods-CommonPods-MKKitTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,21 +361,20 @@
 		C52DB30D1E4C4BDF009FBA5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C5F016692521F4D400D751C9 /* CoreServices.framework */,
 				C52DB31A1E4C4C38009FBA5A /* Accelerate.framework */,
 				C52DB3161E4C4C23009FBA5A /* AVFoundation.framework */,
 				C57BE2F61E4D8CCA00177D4F /* CoreFoundation.framework */,
 				C5080EC421F5BC77007C2F39 /* CoreGraphics.framework */,
 				C52DB3141E4C4C1D009FBA5A /* CoreImage.framework */,
+				4D504C3826949F8700635340 /* CoreServices.framework */,
 				C52DB3101E4C4C02009FBA5A /* Foundation.framework */,
 				C52DB31C1E4C4C43009FBA5A /* ImageIO.framework */,
+				CBECCBB78DF3C8573DCD0F3B /* libPods-CommonPods-MKKit.a */,
 				C5080EC621F5BC85007C2F39 /* MobileCoreServices.framework */,
 				C52DB3181E4C4C2C009FBA5A /* QuartzCore.framework */,
 				C52DB3121E4C4C14009FBA5A /* Security.framework */,
 				C5080EC821F5BC9B007C2F39 /* SystemConfiguration.framework */,
 				C52DB30E1E4C4BF3009FBA5A /* UIKit.framework */,
-				CBECCBB78DF3C8573DCD0F3B /* libPods-CommonPods-MKKit.a */,
-				2D4F332B146CA727091D971D /* libPods-CommonPods-MKKitTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

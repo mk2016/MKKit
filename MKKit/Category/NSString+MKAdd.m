@@ -48,7 +48,7 @@
 
 /** string URLDecode */
 - (NSString *)mk_stringByURLDecode{
-    if ([self respondsToSelector:@selector(stringByRemovingPercentEncoding)]) {
+    if (@available(iOS 9.0, *)) {
         return [self stringByRemovingPercentEncoding];
     } else {
         NSString *decoded = (__bridge_transfer NSString *)
