@@ -19,8 +19,9 @@
     [super load];
 #pragma clang diagnostic push/
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-    SEL originalSel = @selector(dataTaskWithHTTPMethod:URLString:parameters:uploadProgress:downloadProgress:success:failure:);
-    SEL newSel = @selector(mk_dataTaskWithHTTPMethod:URLString:parameters:uploadProgress:downloadProgress:success:failure:);
+    SEL originalSel = @selector(dataTaskWithHTTPMethod:URLString:parameters:headers:uploadProgress:downloadProgress:success:failure:);
+    
+    SEL newSel = @selector(mk_dataTaskWithHTTPMethod:URLString:parameters:headers:uploadProgress:downloadProgress:success:failure:);
 #pragma clang diagnostic pop
     
     Method originalMethod = class_getInstanceMethod(self, originalSel);
@@ -44,12 +45,12 @@
 
 - (NSURLSessionDataTask *)mk_dataTaskWithHTTPMethod:(NSString *)method
                                           URLString:(NSString *)URLString
-                                         parameters:(id)parameters
+                                         parameters:(nullable id)parameters
+                                            headers:(nullable NSDictionary <NSString *, NSString *> *)headers
                                      uploadProgress:(nullable void (^)(NSProgress *uploadProgress)) uploadProgress
                                    downloadProgress:(nullable void (^)(NSProgress *downloadProgress)) downloadProgress
-                                            success:(void (^)(NSURLSessionDataTask *, id))success
-                                            failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
-{
+                                            success:(nullable void (^)(NSURLSessionDataTask *task, id _Nullable responseObject))success
+                                            failure:(nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError *error))failure{
     NSError *serializationError = nil;
     NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:method URLString:[[NSURL URLWithString:URLString relativeToURL:self.baseURL] absoluteString] parameters:parameters error:&serializationError];
     if ([MKNetwork sharedInstance].analysisDNS) {
@@ -70,17 +71,16 @@
                           uploadProgress:uploadProgress
                         downloadProgress:downloadProgress
                        completionHandler:^(NSURLResponse * __unused response, id responseObject, NSError *error) {
-                           if (error) {
-                               if (failure) {
-                                   failure(dataTask, error);
-                               }
-                           } else {
-                               if (success) {
-                                   success(dataTask, responseObject);
-                               }
-                           }
-                       }];
-    
+        if (error) {
+            if (failure) {
+                failure(dataTask, error);
+            }
+        } else {
+            if (success) {
+                success(dataTask, responseObject);
+            }
+        }
+    }];
     return dataTask;
 }
 

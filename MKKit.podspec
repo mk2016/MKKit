@@ -11,9 +11,9 @@ Pod::Spec.new do |s|
   s.source_files      = "MKKit/**/*.{h,m,xib}"
   s.resource          = "MKKit/**/*.{bundle}"
   s.requires_arc      = true
-  s.dependency        "AFNetworking", '~> 3.2.1'
+  s.dependency        "AFNetworking", '~> 4.0.1'
   s.dependency        "HappyDNS", '~> 0.3.15'
-  s.dependency        "MJExtension", '~> 3.2.1'
+  s.dependency        "MJExtension", '~> 3.3.0'
   s.dependency        "Masonry", '~> 1.1.0'
   s.dependency        "SAMKeychain", '~> 1.5.3'
   s.dependency        "Toast", '~> 4.0.0'

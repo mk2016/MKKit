@@ -60,10 +60,13 @@
     switch (status) {
         case PHAuthorizationStatusNotDetermined:{
             [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-                MK_BLOCK_EXEC(block,
-                              status == PHAuthorizationStatusAuthorized ||
-                              status == PHAuthorizationStatusLimited,
-                              status);
+                BOOL b = NO;
+                if (@available(iOS 14, *)) {
+                    b = status == PHAuthorizationStatusAuthorized || status == PHAuthorizationStatusLimited;
+                } else {
+                    b = status == PHAuthorizationStatusAuthorized;
+                }
+                MK_BLOCK_EXEC(block,b,status);
             }];
         }
             break;
@@ -106,7 +109,7 @@
 
 #pragma mark - ***** contacts ******
 + (void)contactsPermissionsWithBlock:(MKBoolBlock)block{
-    if (MK_iOS_IS_ABOVE(9.0)) {
+//    if (@available(iOS 9.0, *)) {
         CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
         switch (status) {
             case CNAuthorizationStatusNotDetermined:{
@@ -127,29 +130,29 @@
                 MK_BLOCK_EXEC(block, NO);
                 break;
         }
-    }else{
-        ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
-        switch (status) {
-            case kABAuthorizationStatusNotDetermined:{
-                ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
-                ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
-                    MK_BLOCK_EXEC(block, granted);
-                    CFRelease(addressBookRef);
-                });
-            }
-                break;
-            case kABAuthorizationStatusAuthorized:
-                MK_BLOCK_EXEC(block, YES);
-                break;
-            case kABAuthorizationStatusRestricted:
-            case kABAuthorizationStatusDenied:
-                MK_BLOCK_EXEC(block, NO);
-                break;
-            default:
-                MK_BLOCK_EXEC(block, NO);
-                break;
-        }
-    }
+//    }else{
+//        ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
+//        switch (status) {
+//            case kABAuthorizationStatusNotDetermined:{
+//                ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
+//                ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
+//                    MK_BLOCK_EXEC(block, granted);
+//                    CFRelease(addressBookRef);
+//                });
+//            }
+//                break;
+//            case kABAuthorizationStatusAuthorized:
+//                MK_BLOCK_EXEC(block, YES);
+//                break;
+//            case kABAuthorizationStatusRestricted:
+//            case kABAuthorizationStatusDenied:
+//                MK_BLOCK_EXEC(block, NO);
+//                break;
+//            default:
+//                MK_BLOCK_EXEC(block, NO);
+//                break;
+//        }
+//    }
 }
 
 #pragma mark - ***** location ******

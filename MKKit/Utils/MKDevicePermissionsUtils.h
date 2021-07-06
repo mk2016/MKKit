@@ -46,7 +46,6 @@ typedef NS_ENUM(NSInteger, MKAppPermissionsType) {
 + (BOOL)isCameraAvailable;
 + (BOOL)isFrontCameraAvailable;
 + (BOOL)isRearCameraAvailable;
-+ (void)openAppPermissionsSetPage;
 
 + (void)getAppPermissionsWithType:(MKAppPermissionsType)type block:(MKBoolBlock)block;
 
