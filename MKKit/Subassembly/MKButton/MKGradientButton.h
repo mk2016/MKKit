@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MKGradientButton : UIButton
-- (void)setStartColor:(UIColor *)startColor endColor:(UIColor *)endColor;
+- (void)setStartColors:(NSArray <UIColor *> *)colors;
 - (void)setBackgroundImageWithColors:(NSArray<UIColor *> *)colors forState:(UIControlState)state;
 @end
 

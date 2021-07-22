@@ -31,11 +31,15 @@
     return self;
 }
 
-- (void)setStartColor:(UIColor *)startColor endColor:(UIColor *)endColor{
+- (void)setStartColors:(NSArray <UIColor *> *)colors{
+    NSMutableArray *cgColors = @[].mutableCopy;
+    for (UIColor *c in colors) {
+        [cgColors addObject:(id)c.CGColor];
+    }
     self.colorLayer = [CAGradientLayer layer];
     self.colorLayer.startPoint = CGPointMake(0, 0);
     self.colorLayer.endPoint = CGPointMake(1, 1);
-    self.colorLayer.colors = @[(__bridge id)startColor.CGColor, (__bridge id)endColor.CGColor];
+    self.colorLayer.colors = cgColors;
     self.colorLayer.locations = @[@(0.0),@(1)];
     [self.layer addSublayer:self.colorLayer];
     self.colorLayer.zPosition = -1;
