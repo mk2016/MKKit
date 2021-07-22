@@ -480,4 +480,26 @@
     NSData *data = UIImageJPEGRepresentation(self, 1);
     return data.length/1000.f;
 }
+
++ (UIImage *)mk_gradientWithColors:(NSArray <UIColor *> *)colors size:(CGSize)size{
+    if (CGSizeEqualToSize(size, CGSizeZero)) {
+        size = CGSizeMake(1, 1);
+    }
+    
+    NSMutableArray *cgColors = @[].mutableCopy;
+    for(UIColor *color in colors) {
+        [cgColors addObject:(id)color.CGColor];
+    }
+    
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = CGRectMake(0, 0, size.width, size.height);
+    gradientLayer.startPoint = CGPointMake(0.0, 0.0);;
+    gradientLayer.endPoint = CGPointMake(1.0, 0.0);
+    gradientLayer.colors = cgColors;
+    UIGraphicsBeginImageContext(size);
+    [gradientLayer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 @end

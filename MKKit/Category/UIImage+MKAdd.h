@@ -80,4 +80,6 @@
 - (UIImage *)mk_compressWithRatio:(CGFloat)ratio;
 - (UIImage *)mk_compress;
 - (CGFloat)mk_imageLength;
+
++ (UIImage *)mk_gradientWithColors:(NSArray <UIColor *> *)colors size:(CGSize)size;
 @end

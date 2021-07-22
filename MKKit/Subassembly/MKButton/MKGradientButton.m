@@ -7,9 +7,11 @@
 //
 
 #import "MKGradientButton.h"
+#import "UIImage+MKAdd.h"
 
 @interface MKGradientButton ()
 @property (nonatomic, strong) CAGradientLayer *colorLayer;
+@property (nonatomic, strong) UIImage *colorImage;
 @end
 
 @implementation MKGradientButton
@@ -39,6 +41,11 @@
     self.colorLayer.zPosition = -1;
     [self setNeedsLayout];
     [self layoutIfNeeded];
+}
+
+- (void)setBackgroundImageWithColors:(NSArray<UIColor *> *)colors forState:(UIControlState)state{
+    UIImage *img = [UIImage mk_gradientWithColors:colors size:self.frame.size];
+    [self setBackgroundImage:img forState:state];
 }
 
 - (void)layoutSubviews{
