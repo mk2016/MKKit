@@ -14,6 +14,6 @@ abstract_target 'CommonPods' do
     target 'MKKit' do
     end
 
-    target 'MKKitTests' do
-    end
+#    target 'MKKitTests' do
+#    end
 end
