@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)mk_setShadowWithColor:(UIColor *)color offset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius;
 - (void)mk_setCornerWithRect:(CGRect)rect corners:(UIRectCorner)corners radii:(CGSize)radii;
 - (void)mk_oscillatoryAnimation;
++ (CAGradientLayer *)mk_layerGradientWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor;
 @end
 
 NS_ASSUME_NONNULL_END

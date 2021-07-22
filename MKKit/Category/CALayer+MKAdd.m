@@ -51,4 +51,12 @@
     }];
 }
 
++ (CAGradientLayer *)mk_layerGradientWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor{
+    CAGradientLayer *gl = [CAGradientLayer layer];
+    gl.startPoint = CGPointMake(0, 0);
+    gl.endPoint = CGPointMake(1, 1);
+    gl.colors = @[(__bridge id)startColor.CGColor, (__bridge id)endColor.CGColor];
+    gl.locations = @[@(0.0),@(1)];
+    return gl;
+}
 @end
