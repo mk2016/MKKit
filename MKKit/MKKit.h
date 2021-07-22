@@ -44,7 +44,7 @@ SOFTWARE.
 #import "UIAlertController+MKAdd.h"
 #import "MKBlurView.h"
 #import "MKAuthCodeView.h"
-#import "MKGradientButton"
+#import "MKGradientButton.h"
 #import "MKHyperlinkButton.h"
 #import "MKRightImageButton.h"
 #import "MKVButton.h"
