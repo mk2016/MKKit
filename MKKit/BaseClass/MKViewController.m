@@ -48,7 +48,7 @@
 }
 
 - (void)dealloc{
-    DLog(@"dealloc & removeObserver ♻️");
+    DLog([NSString stringWithFormat:@"%@ dealloc & removeObserver ♻️", NSStringFromClass([self class])]);
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
