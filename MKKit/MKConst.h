@@ -64,7 +64,7 @@
 #define MK_IS_IPHONE_12MAX  ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
                             CGSizeEqualToSize(CGSizeMake(1284, 2778), [[UIScreen mainScreen] currentMode].size) : NO)
 
-#define MK_IS_IPHONE_XX     MK_IS_IPHONE_X_XS || MK_IS_IPHONE_XSMAX || MK_IS_IPHONE_XR || MK_IS_IPHONE_12MINI || MK_IS_IPHONE_12  || MK_IS_IPHONE_12MAX
+#define MK_IS_IPHONE_XX     mk_isIPhoneXSeries()
 
 #define MK_IS_IPHONE_5      ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
                             CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) || \
@@ -143,6 +143,16 @@ static type *sharedInstance = nil;\
         sharedInstance = [super allocWithZone:zone];\
     });\
     return sharedInstance;\
+}
+
+static inline BOOL mk_isIPhoneXSeries() {
+    if (@available(iOS 11.0, *)) {
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        if (mainWindow.safeAreaInsets.bottom > 0.0) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 /** thread */
