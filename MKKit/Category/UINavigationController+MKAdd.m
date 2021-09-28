@@ -81,7 +81,18 @@
 }
 
 - (void)mk_setBarColor:(UIColor *)color{
-    UIImage *img = [UIImage mk_imageWithColor:color];
-    [self.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
+    self.navigationBar.translucent = NO;
+    if (@available(iOS 14.0, *)){
+        UINavigationBarAppearance *appearance = [UINavigationBarAppearance new];
+        [appearance configureWithOpaqueBackground];
+        appearance.backgroundColor = color;
+        appearance.shadowColor = UIColor.clearColor;
+
+        self.navigationBar.standardAppearance = appearance;
+        self.navigationBar.scrollEdgeAppearance = self.navigationBar.standardAppearance;
+    }else{
+        UIImage *img = [UIImage mk_imageWithColor:color];
+        [self.navigationBar setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
+    }
 }
 @end
