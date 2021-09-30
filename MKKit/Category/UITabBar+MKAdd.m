@@ -30,18 +30,24 @@
 }
 
 - (void)mk_setTitleNormalColor:(UIColor *)normalColor selectedColor:(UIColor *)selectedColor{
+    self.translucent = NO;
+    
     if (@available(iOS 13.0, *)) {
         UITabBarItemAppearance *itemAppearance = [[UITabBarItemAppearance  alloc] init];
-        [itemAppearance.normal setTitleTextAttributes:@{ NSForegroundColorAttributeName:normalColor}];
-        [itemAppearance.selected setTitleTextAttributes:@{ NSForegroundColorAttributeName:selectedColor}];
-        
-        UITabBarAppearance *tabbarAppearance = [[UITabBarAppearance alloc] init];
-        tabbarAppearance.stackedLayoutAppearance = itemAppearance;
-        tabbarAppearance.backgroundColor = UIColor.clearColor;
-//        tabbarAppearance.backgroundImage = [UIImage mk_imageWithColor:UIColor.clearColor];
-        tabbarAppearance.shadowImage = [UIImage mk_imageWithColor:UIColor.clearColor];
-        self.standardAppearance = tabbarAppearance;
+        [itemAppearance.normal setTitleTextAttributes:@{NSForegroundColorAttributeName:normalColor}];
+        [itemAppearance.selected setTitleTextAttributes:@{NSForegroundColorAttributeName:selectedColor}];
         [[UITabBar appearance] setUnselectedItemTintColor:normalColor];
+
+        UITabBarAppearance *appearance = [UITabBarAppearance new];
+        appearance.stackedLayoutAppearance = itemAppearance;
+        [appearance configureWithOpaqueBackground];
+        appearance.backgroundImage = UIImage.new;
+        appearance.backgroundColor = UIColor.whiteColor;
+        appearance.shadowImage = [UIImage mk_imageWithColor:UIColor.clearColor];
+        self.standardAppearance = appearance;
+        if (@available(iOS 15.0, *)){
+            self.scrollEdgeAppearance = appearance;
+        }
     }else{
         [UITabBar appearance].shadowImage = [UIImage new];
         [UITabBar appearance].backgroundImage = [UIImage new];
