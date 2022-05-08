@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSArray (MKAdd)
-- (NSArray * __nullable)mk_getNoRepeatSortLettersWithKey:(NSString *)letterKey;
+- (NSArray<NSString *> * __nullable)mk_getNoRepeatSortLettersWithKey:(NSString *)letterKey;
+- (NSArray<NSString *> * __nullable)mk_getNoRepeatSortLettersWithKey:(NSString *)letterKey ascending:(BOOL)ascending;
 @end
 
 NS_ASSUME_NONNULL_END

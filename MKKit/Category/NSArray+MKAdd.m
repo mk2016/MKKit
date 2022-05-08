@@ -10,7 +10,11 @@
 
 @implementation NSArray (MKAdd)
 
-- (NSArray * __nullable)mk_getNoRepeatSortLettersWithKey:(NSString *)letterKey{
+- (NSArray<NSString *> * __nullable)mk_getNoRepeatSortLettersWithKey:(NSString *)letterKey{
+    return [self mk_getNoRepeatSortLettersWithKey:letterKey ascending:YES];
+}
+
+- (NSArray<NSString *> * __nullable)mk_getNoRepeatSortLettersWithKey:(NSString *)letterKey ascending:(BOOL)ascending{
     if (!self || self.count == 0 ) {
         return nil;
     }
@@ -22,7 +26,7 @@
         }
     }
 
-    NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:nil ascending:YES];
+    NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:nil ascending:ascending];
     NSArray *descArray = [NSArray arrayWithObject:desc];
     NSArray *sortArray = [tempDic.allValues sortedArrayUsingDescriptors:descArray];
     return sortArray;
