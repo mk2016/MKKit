@@ -68,5 +68,5 @@
 
 /** second -> 0天0时0分 */
 + (NSString *)mk_dayHourMinuteWithSecond:(long long)ts;
-
++ (NSString *)mk_formatWithSecond:(long long)ts showSecond:(BOOL)showSecond;
 @end

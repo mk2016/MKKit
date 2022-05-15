@@ -137,6 +137,11 @@
 
 /** second -> 0天0时0分 */
 + (NSString *)mk_dayHourMinuteWithSecond:(long long)ts{
+    return [self mk_formatWithSecond:ts showSecond:NO];
+}
+
+/** second -> 0天0时0分0秒 */
++ (NSString *)mk_formatWithSecond:(long long)ts showSecond:(BOOL)showSecond{
     ts = llabs(ts);
     while (ts > 10000000000) {
         ts = ts/1000;
@@ -146,6 +151,7 @@
     int hour = (int)(ts/3600);
     ts = ts%3600;
     int min = (int)(ts/60);
+    int sec = ts%60;
     NSString *str = @"";
     if (day > 0) {
         str = [str stringByAppendingString:[NSString stringWithFormat:@"%d天",day]];
@@ -155,6 +161,9 @@
     }
     if (str.length > 0 || min > 0) {
         str = [str stringByAppendingString:[NSString stringWithFormat:@"%d分",min]];
+    }
+    if (showSecond){
+        str = [str stringByAppendingString:[NSString stringWithFormat:@"%d秒",sec]];
     }
     return str;
 }
