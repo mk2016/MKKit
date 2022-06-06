@@ -38,7 +38,7 @@
     }
     self.colorLayer = [CAGradientLayer layer];
     self.colorLayer.startPoint = CGPointMake(0, 0);
-    self.colorLayer.endPoint = CGPointMake(1, 1);
+    self.colorLayer.endPoint = CGPointMake(1, 0);
     self.colorLayer.colors = cgColors;
     self.colorLayer.locations = @[@(0.0),@(1)];
     [self.layer addSublayer:self.colorLayer];

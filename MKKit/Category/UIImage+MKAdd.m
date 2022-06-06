@@ -482,6 +482,10 @@
 }
 
 + (UIImage *)mk_gradientWithColors:(NSArray <UIColor *> *)colors size:(CGSize)size{
+    return [self mk_gradientWithColors:colors size:size start:CGPointMake(0.0, 0.0) end:CGPointMake(1.0, 0.0)];
+}
+
++ (UIImage *)mk_gradientWithColors:(NSArray <UIColor *> *)colors size:(CGSize)size start:(CGPoint)start end:(CGPoint)end{
     if (CGSizeEqualToSize(size, CGSizeZero)) {
         size = CGSizeMake(1, 1);
     }
@@ -493,8 +497,8 @@
     
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.frame = CGRectMake(0, 0, size.width, size.height);
-    gradientLayer.startPoint = CGPointMake(0.0, 0.0);;
-    gradientLayer.endPoint = CGPointMake(1.0, 0.0);
+    gradientLayer.startPoint = start;
+    gradientLayer.endPoint = end;
     gradientLayer.colors = cgColors;
     UIGraphicsBeginImageContext(size);
     [gradientLayer renderInContext:UIGraphicsGetCurrentContext()];

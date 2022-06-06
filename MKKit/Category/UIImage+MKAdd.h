@@ -82,4 +82,5 @@
 - (CGFloat)mk_imageLength;
 
 + (UIImage *)mk_gradientWithColors:(NSArray <UIColor *> *)colors size:(CGSize)size;
++ (UIImage *)mk_gradientWithColors:(NSArray <UIColor *> *)colors size:(CGSize)size start:(CGPoint)start end:(CGPoint)end;
 @end
