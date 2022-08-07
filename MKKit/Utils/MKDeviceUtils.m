@@ -156,6 +156,16 @@
                               @"iPhone12,1": @"iPhone 11",
                               @"iPhone12,3": @"iPhone 11 Pro",
                               @"iPhone12,5": @"iPhone 11 Pro Max",
+                              @"iPhone12,8": @"iPhone SE 2",
+                              @"iPhone13,1": @"iPhone 12 mini",
+                              @"iPhone13,2": @"iPhone 12",
+                              @"iPhone13,3": @"iPhone 12 Pro",
+                              @"iPhone13,4": @"iPhone 12 Pro Max",
+                              @"iPhone14,2": @"iPhone 13 Pro",
+                              @"iPhone14,3": @"iPhone 13 Pro Max",
+                              @"iPhone14,4": @"iPhone 13 mini",
+                              @"iPhone14,5": @"iPhone 13",
+                              @"iPhone14,6": @"iPhone SE 3",
 
                               //iPad
                               @"iPad1,1": @"iPad",
@@ -205,6 +215,8 @@
                               @"iPad7,4": @"iPad Pro 10.5-inch (Cellular)",
                               @"iPad7,5": @"iPad 6th Gen (WiFi)",
                               @"iPad7,6": @"iPad 6th Gen (WiFi+Cellular)",
+                              @"iPad7,11": @"iPad 7th",
+                              @"iPad7,12": @"iPad 7th",
 
                               @"iPad8,1": @"iPad Pro 3rd Gen (11 inch, WiFi)",
                               @"iPad8,2": @"iPad Pro 3rd Gen (11 inch, 1TB, WiFi)",
@@ -214,11 +226,16 @@
                               @"iPad8,6": @"iPad Pro 3rd Gen (12.9 inch, 1TB, WiFi)",
                               @"iPad8,7": @"iPad Pro 3rd Gen (12.9 inch, WiFi+Cellular)",
                               @"iPad8,8": @"iPad Pro 3rd Gen (12.9 inch, 1TB, WiFi+Cellular)",
+                              
                               @"iPad11,1": @"iPad mini 5th Gen (WiFi)",
                               @"iPad11,2": @"iPad mini 5th Gen",
                               @"iPad11,3": @"iPad Air 3rd Gen (WiFi)",
                               @"iPad11,4": @"iPad Air 3rd Gen",
-                              
+                              @"iPad11,6": @"iPad 8th",
+                              @"iPad11,7": @"iPad 8th",
+                              @"iPad12,1": @"iPad 9th",
+                              @"iPad12,2": @"iPad 9th",
+
                               //watch
                               @"Watch1,1" : @"Apple Watch 38mm",
                               @"Watch1,2" : @"Apple Watch 42mm",
