@@ -80,7 +80,7 @@
     }
     
     id dic = nil;
-    if (jsonData){
+    if (jsonData && [jsonData isKindOfClass:[NSData class]]){
         NSError *error;
         dic = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];   //NSJSONReadingMutableContainers
         if (error){
