@@ -207,17 +207,11 @@ typedef void (^MKRectBlock)(CGRect rect);
 }
 
 #define  MK_ADJUSTS_SCROLLVIEW_INSETS_TO_NO(scrollView,vc)\
-do { \
-    _Pragma("clang diagnostic push") \
-    _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
-    if ([scrollView respondsToSelector:NSSelectorFromString(@"setContentInsetAdjustmentBehavior:")]) {\
-        [scrollView performSelector:NSSelectorFromString(@"setContentInsetAdjustmentBehavior:") withObject:@(2)];\
-    } else {\
+    if (@available(iOS 11.0, *)){\
+        scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;\
+    }else{\
         vc.automaticallyAdjustsScrollViewInsets = NO;\
-    }\
-    _Pragma("clang diagnostic pop") \
-} while (0)
-
+    }
 #endif
 
 
