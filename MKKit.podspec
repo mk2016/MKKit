@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "MKKit"
-  s.version           = "0.0.1"
+  s.version           = "0.1.0"
   s.summary           = "MK tool kit."
   s.homepage          = "https://github.com/mk2016/MKKit"
   s.license           = "MIT"
