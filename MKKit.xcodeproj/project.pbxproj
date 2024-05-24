@@ -22,7 +22,7 @@
 		C50DC951250E366A0014A3D1 /* NSNumber+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C50DC94B250E36690014A3D1 /* NSNumber+MKAdd.m */; };
 		C50DC952250E366A0014A3D1 /* UIBarButtonItem+MKAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C50DC94F250E366A0014A3D1 /* UIBarButtonItem+MKAdd.m */; };
 		C50F9A24238FCBDB00A33155 /* MKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C50F9A22238FCBDB00A33155 /* MKTextView.m */; };
-		C52DB2F91E4C48EB009FBA5A /* MKKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C52DB2F61E4C48EB009FBA5A /* MKKit.h */; };
+		C52DB2F91E4C48EB009FBA5A /* MKKit.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C52DB2F61E4C48EB009FBA5A /* MKKit.h */; };
 		C52DB30F1E4C4BF3009FBA5A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52DB30E1E4C4BF3009FBA5A /* UIKit.framework */; };
 		C52DB3111E4C4C02009FBA5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52DB3101E4C4C02009FBA5A /* Foundation.framework */; };
 		C52DB3131E4C4C14009FBA5A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52DB3121E4C4C14009FBA5A /* Security.framework */; };
@@ -89,14 +89,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C52DB2F11E4C48EB009FBA5A /* CopyFiles */ = {
+		C52DB2F11E4C48EB009FBA5A /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				C52DB2F91E4C48EB009FBA5A /* MKKit.h in CopyFiles */,
+				C52DB2F91E4C48EB009FBA5A /* MKKit.h in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -570,7 +571,7 @@
 				FCF572CDA1CED05B6AB65516 /* [CP] Check Pods Manifest.lock */,
 				C52DB2EF1E4C48EB009FBA5A /* Sources */,
 				C52DB2F01E4C48EB009FBA5A /* Frameworks */,
-				C52DB2F11E4C48EB009FBA5A /* CopyFiles */,
+				C52DB2F11E4C48EB009FBA5A /* Copy Files */,
 				8E085C651C01985EE4198F81 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
