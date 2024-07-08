@@ -19,11 +19,17 @@
 /** current timestamp ，second，length : 10  */
 + (NSTimeInterval)mk_currentTimestamp4Second;
 
++ (NSTimeInterval)mk_timestamp4SecondWithFormatFull:(NSString *)dateString;
+
 /** NSDate -> millisecond */
 - (NSTimeInterval)mk_dateToMillisecond;
 
 /** NSDate -> microsecond , length : 16 */
 - (NSTimeInterval)mk_dateToMicrosecond;
+
+/** NSDate -> second , length : 10 */
+- (NSTimeInterval)mk_timestamp4Second;
+
 
 
 #pragma mark - ***** format ******

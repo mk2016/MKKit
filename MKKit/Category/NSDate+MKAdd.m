@@ -42,6 +42,10 @@
     return interval*1000*1000;
 }
 
+- (NSTimeInterval)mk_timestamp4Second{
+    NSTimeInterval interval = [self timeIntervalSince1970];
+    return (long long)interval;
+}
 
 
 #pragma mark - ***** format ******
@@ -95,6 +99,9 @@
     return [formatter dateFromString:dateStr];
 }
 
+- (NSTimeInterval)mk_timestamp4SecondWithFormatFull:(NSString *)dateString{
+    return [[dateString mk_dateWithFormatFull] mk_timestamp4Second];
+}
 @end
 
 @implementation NSString (MKDateAdd)
